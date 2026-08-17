@@ -266,3 +266,34 @@
         padding: 25px 20px;
     }
 }
+
+/*back button*\
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151; /* dark gray */
+  background-color: #ffffff;
+  border: 1px solid #d1d5db; /* light gray border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.backButton:hover {
+  background-color: #f9fafb; /* light hover background */
+  border-color: #9ca3af;
+}
+
+.backButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #6366f1; /* purple focus ring */
+}
+
+.arrow {
+  font-size: 16px;
+}

@@ -1,0 +1,393 @@
+/* ================================
+   OWNER BOOKINGS PAGE
+================================ */
+
+.owner-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.owner-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #172033;
+    color: white;
+    padding: 25px 18px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.owner-logo {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding: 0 12px;
+}
+
+.owner-role {
+    font-size: 12px;
+    color: #9da8bb;
+    letter-spacing: 1.5px;
+    margin-bottom: 35px;
+    padding: 0 12px;
+}
+
+.owner-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.owner-sidebar nav a {
+    color: #cbd3e1;
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.owner-sidebar nav a:hover {
+    background: #26344f;
+    color: white;
+    transform: translateX(3px);
+}
+
+.owner-sidebar nav a:active {
+    background: #334568;
+}
+
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.owner-main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    padding: 35px 45px;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.owner-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.owner-page-header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: #172033;
+}
+
+.owner-page-header p {
+    margin: 0;
+    color: #737b8c;
+    font-size: 15px;
+}
+
+
+/* ================================
+   BOOKING GRID
+================================ */
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+}
+
+
+/* ================================
+   BOOKING CARD
+================================ */
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e5e9f0;
+    box-shadow: 0 4px 15px rgba(23, 32, 51, 0.06);
+    transition: all 0.25s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(23, 32, 51, 0.10);
+}
+
+.booking-card h2 {
+    margin: 0 0 20px;
+    font-size: 19px;
+    color: #172033;
+    border-bottom: 1px solid #edf0f5;
+    padding-bottom: 15px;
+}
+
+.booking-card p {
+    margin: 12px 0;
+    color: #626b7c;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.booking-card strong {
+    color: #30394b;
+}
+
+
+/* ================================
+   BOOKING STATUS
+================================ */
+
+.booking-status {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+/* Pending */
+
+.booking-status.pending {
+    background: #fff4d6;
+    color: #a36a00;
+}
+
+
+/* Approved */
+
+.booking-status.approved {
+    background: #dff7e7;
+    color: #16803c;
+}
+
+
+/* Rejected */
+
+.booking-status.rejected {
+    background: #ffe2e2;
+    color: #c62828;
+}
+
+
+/* Cancelled */
+
+.booking-status.cancelled {
+    background: #eeeeee;
+    color: #666666;
+}
+
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
+.booking-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #edf0f5;
+}
+
+.booking-actions button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+/* Accept */
+
+.approve-btn {
+    background: #198754;
+    color: white;
+}
+
+.approve-btn:hover {
+    background: #157347;
+    transform: translateY(-1px);
+}
+
+
+/* Reject */
+
+.reject-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.reject-btn:hover {
+    background: #bb2d3b;
+    transform: translateY(-1px);
+}
+
+
+/* Delete */
+
+.delete-btn {
+    background: #eef1f5;
+    color: #555f70;
+}
+
+.delete-btn:hover {
+    background: #dfe3e9;
+    color: #c62828;
+}
+
+
+/* ================================
+   NO BOOKINGS
+================================ */
+
+.no-owner-bookings {
+    background: white;
+    border: 1px solid #e5e9f0;
+    border-radius: 12px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(23, 32, 51, 0.05);
+}
+
+.no-owner-bookings > div {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.no-owner-bookings h2 {
+    margin: 5px 0 8px;
+    color: #30394b;
+    font-size: 21px;
+}
+
+.no-owner-bookings p {
+    margin: 0;
+    color: #858d9d;
+    font-size: 14px;
+}
+
+
+/* ================================
+   LOADING
+================================ */
+
+.owner-loading {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+}
+
+.owner-loading h2 {
+    color: #172033;
+    font-size: 20px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+    .owner-sidebar {
+        width: 210px;
+    }
+
+    .owner-main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 30px;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .owner-layout {
+        display: block;
+    }
+
+    .owner-sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .owner-role {
+        margin-bottom: 15px;
+    }
+
+    .owner-sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .owner-sidebar nav a {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .owner-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 25px 18px;
+    }
+
+    .owner-page-header h1 {
+        font-size: 25px;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-card {
+        padding: 20px;
+    }
+
+    .booking-actions {
+        flex-wrap: wrap;
+    }
+
+    .booking-actions button {
+        flex: 1;
+        min-width: 90px;
+    }
+}

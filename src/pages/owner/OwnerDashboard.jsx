@@ -7,12 +7,20 @@ const OwnerDashboard = () => {
     const navigate = useNavigate();
 
     const logout = () => {
+
         localStorage.removeItem("token");
+
         navigate("/login");
     };
 
+
     return (
+
         <div className="owner-layout">
+
+            {/* =========================
+                SIDEBAR
+            ========================== */}
 
             <aside className="owner-sidebar">
 
@@ -23,6 +31,7 @@ const OwnerDashboard = () => {
                 <div className="owner-role">
                     OWNER PANEL
                 </div>
+
 
                 <nav>
 
@@ -44,6 +53,7 @@ const OwnerDashboard = () => {
 
                 </nav>
 
+
                 <button
                     className="owner-logout"
                     onClick={logout}
@@ -53,11 +63,18 @@ const OwnerDashboard = () => {
 
             </aside>
 
+
+            {/* =========================
+                MAIN CONTENT
+            ========================== */}
+
             <main className="owner-main">
 
                 <div className="owner-header">
 
-                    <h1>Owner Dashboard</h1>
+                    <h1>
+                        Owner Dashboard
+                    </h1>
 
                     <p>
                         Manage your venues and bookings
@@ -65,28 +82,82 @@ const OwnerDashboard = () => {
 
                 </div>
 
+
+                {/* =========================
+                    DASHBOARD CARDS
+                ========================== */}
+
                 <div className="owner-cards">
 
-                    <Link to="/owner/venues" className="owner-card">
-                        <h2>My Venues</h2>
+
+                    {/* MY VENUES */}
+
+                    <Link
+                        to="/owner/venues"
+                        className="owner-card"
+                    >
+
+                        <div className="owner-card-icon">
+                            🏢
+                        </div>
+
+                        <h2>
+                            My Venues
+                        </h2>
+
                         <p>
-                            Add, update and manage your venues.
+                            View, update and manage your
+                            venues.
                         </p>
+
                     </Link>
 
-                    <Link to="/owner/bookings" className="owner-card">
-                        <h2>Bookings</h2>
+
+                    {/* BOOKINGS */}
+
+                    <Link
+                        to="/owner/bookings"
+                        className="owner-card"
+                    >
+
+                        <div className="owner-card-icon">
+                            📅
+                        </div>
+
+                        <h2>
+                            Bookings
+                        </h2>
+
                         <p>
-                            View and manage customer bookings.
+                            View and manage customer
+                            booking requests.
                         </p>
+
                     </Link>
 
-                    <Link to="/owner/add-venue" className="owner-card">
-                        <h2>Add Venue</h2>
+
+                    {/* ADD VENUE */}
+
+                    <Link
+                        to="/owner/add-venue"
+                        className="owner-card"
+                    >
+
+                        <div className="owner-card-icon">
+                            ➕
+                        </div>
+
+                        <h2>
+                            Add Venue
+                        </h2>
+
                         <p>
-                            Register a new venue.
+                            Register a new venue and make
+                            it available for customers.
                         </p>
+
                     </Link>
+
 
                 </div>
 

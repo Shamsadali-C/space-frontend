@@ -23,6 +23,8 @@ import AdminVenues from "./pages/admin/AdminVenues";
 
 import OwnerDashboard from "./pages/owner/OwnerDashboard";
 import AddVenue from "./pages/owner/AddVenue";
+import OwnerBooking from "./pages/owner/OwnerBooking";
+import OwnerVenues from "./pages/owner/OwnerVenues";
 
 function App() {
 
@@ -83,6 +85,22 @@ function App() {
                 <Route
                     path="/admin/venues"
                     element={<AdminVenues />}
+                />
+                <Route
+                    path="/owner"
+                    element={<OwnerDashboard />}
+                />
+                <Route
+                     path="/owner/add-venue"
+                     element={<AddVenue />}
+                />
+                <Route
+                     path="/owner/bookings"
+                     element={<OwnerBooking />}
+                />
+                <Route
+                    path="/owner/venues"
+                    element={<OwnerVenues />}
                 />
 
             </Routes>
