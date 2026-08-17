@@ -1,9 +1,9 @@
 import api from "./api";
 
-const createBooking = (userId, venueId) => {
-    return api.post(`/user/${userId}/${venueId}`);
+const createBooking = (venueId) => {
+    return api.post(`/booking/${venueId}`);
 };
 
 export default {
-    createBooking,
+    createBooking
 };
