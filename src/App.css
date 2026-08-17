@@ -1,0 +1,27 @@
+/* App.css */
+body {
+  font-family: Arial, sans-serif;
+  background: #3c5056;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #3c3c3c;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #555;
+  font-size: 1.2rem;
+  background: #eaf0f6;
+
+  padding: 10px 20px;
+
+}

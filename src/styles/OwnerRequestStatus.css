@@ -1,0 +1,149 @@
+.owner-request-page {
+    min-height: 100vh;
+    padding: 50px 20px;
+    background: #f4f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.owner-request-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.owner-request-title {
+    margin-bottom: 30px;
+}
+
+.owner-request-title h1 {
+    margin: 0 0 10px;
+    font-size: 34px;
+    color: #1f2937;
+}
+
+.owner-request-title p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.owner-request-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.owner-request-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #1f2937;
+}
+
+.owner-request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.owner-request-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.owner-request-field label {
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.owner-request-field input {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.owner-request-field input:focus {
+    border-color: #2563eb;
+}
+
+.owner-request-button {
+    margin-top: 5px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.owner-request-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* REQUEST DETAILS */
+
+.owner-request-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.owner-request-detail {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.owner-request-detail strong {
+    color: #6b7280;
+}
+
+.owner-request-detail span {
+    color: #111827;
+}
+
+
+/* STATUS */
+
+.request-status {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.request-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.request-approved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.request-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+@media (max-width: 600px) {
+
+    .owner-request-page {
+        padding: 30px 15px;
+    }
+
+    .owner-request-card {
+        padding: 20px;
+    }
+
+    .owner-request-title h1 {
+        font-size: 27px;
+    }
+}

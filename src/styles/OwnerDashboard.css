@@ -1,0 +1,240 @@
+/* =========================
+   OWNER DASHBOARD
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.owner-layout {
+    min-height: 100vh;
+    display: flex;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.owner-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #18212f;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.owner-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.owner-role {
+    text-align: center;
+    font-size: 12px;
+    color: #aeb8c7;
+    letter-spacing: 1.5px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   SIDEBAR NAVIGATION
+========================= */
+
+.owner-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.owner-sidebar nav a {
+    text-decoration: none;
+    color: #dce2ea;
+    padding: 13px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.owner-sidebar nav a:hover {
+    background: #2b394d;
+    color: white;
+    transform: translateX(3px);
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.owner-logout {
+    margin-top: auto;
+    width: 100%;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    background: #dc3545;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.owner-logout:hover {
+    background: #c82333;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.owner-main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.owner-header {
+    background: white;
+    padding: 28px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.owner-header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: #18212f;
+}
+
+.owner-header p {
+    margin: 0;
+    color: #687385;
+    font-size: 15px;
+}
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.owner-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.owner-card {
+    background: white;
+    text-decoration: none;
+    color: #18212f;
+    padding: 30px;
+    min-height: 180px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e8ebf0;
+    transition: 0.25s;
+}
+
+.owner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+.owner-card h2 {
+    margin: 0 0 15px;
+    font-size: 21px;
+}
+
+.owner-card p {
+    margin: 0;
+    color: #687385;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .owner-sidebar {
+        width: 210px;
+    }
+
+    .owner-main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 25px;
+    }
+
+    .owner-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .owner-layout {
+        display: block;
+    }
+
+    .owner-sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .owner-sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .owner-sidebar nav a {
+        flex: 1;
+        text-align: center;
+        min-width: 100px;
+    }
+
+    .owner-logout {
+        margin-top: 20px;
+    }
+
+    .owner-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .owner-header h1 {
+        font-size: 24px;
+    }
+
+    .owner-cards {
+        grid-template-columns: 1fr;
+    }
+}

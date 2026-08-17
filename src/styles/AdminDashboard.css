@@ -1,0 +1,151 @@
+.admin-dashboard {
+    min-height: 100vh;
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.admin-navbar {
+    height: 70px;
+    padding: 0 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.admin-logout {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+
+    background: #ef4444;
+    color: white;
+
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-logout:hover {
+    background: #dc2626;
+}
+
+.admin-content {
+    max-width: 1150px;
+    margin: auto;
+    padding: 50px 25px;
+}
+
+.admin-content h1 {
+    margin-bottom: 8px;
+}
+
+.admin-subtitle {
+    color: #6b7280;
+    margin-bottom: 35px;
+}
+
+
+/* STATISTICS */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.admin-stat-card {
+    padding: 25px;
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.admin-stat-card h3 {
+    margin: 0 0 10px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.admin-stat-card strong {
+    font-size: 30px;
+    color: #111827;
+}
+
+
+/* MENU */
+
+.admin-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.admin-menu-card {
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+    color: #111827;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+
+    transition: 0.2s;
+}
+
+.admin-menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.admin-menu-card h2 {
+    margin: 15px 0 8px;
+}
+
+.admin-menu-card p {
+    color: #6b7280;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-menu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .admin-navbar {
+        padding: 0 20px;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-menu {
+        grid-template-columns: 1fr;
+    }
+}

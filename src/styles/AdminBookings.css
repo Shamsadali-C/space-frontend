@@ -1,0 +1,234 @@
+.admin-bookings-page {
+    min-height: 100vh;
+    padding: 40px;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Header */
+
+.bookings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.bookings-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+    color: #111827;
+}
+
+.bookings-header p {
+    margin-top: 8px;
+
+    color: #6b7280;
+}
+
+
+/* Booking count */
+
+.booking-count {
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: 600;
+}
+
+
+/* Table */
+
+.bookings-table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+.bookings-table-container table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+
+.bookings-table-container th {
+    padding: 17px 20px;
+
+    text-align: left;
+
+    background: #f8fafc;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.bookings-table-container td {
+    padding: 18px 20px;
+
+    color: #4b5563;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    vertical-align: middle;
+}
+
+
+.bookings-table-container tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+.bookings-table-container strong {
+    color: #111827;
+}
+
+
+.bookings-table-container small {
+    color: #6b7280;
+}
+
+
+/* Status */
+
+.booking-status {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* Pending */
+
+.booking-status.pending {
+    background: #fef3c7;
+
+    color: #92400e;
+}
+
+
+/* Accepted */
+
+.booking-status.accepted {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* Rejected */
+
+.booking-status.rejected {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* Cancelled */
+
+.booking-status.cancelled {
+    background: #e5e7eb;
+
+    color: #374151;
+}
+
+
+/* Details */
+
+.booking-details p {
+    margin: 4px 0;
+
+    font-size: 13px;
+}
+
+
+/* Error */
+
+.booking-error {
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    border-radius: 8px;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* Empty */
+
+.no-bookings {
+    padding: 60px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
+}
+
+.no-bookings h2 {
+    color: #111827;
+}
+
+.no-bookings p {
+    color: #6b7280;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .admin-bookings-page {
+        padding: 20px 15px;
+    }
+
+    .bookings-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .bookings-header h1 {
+        font-size: 26px;
+    }
+
+}
