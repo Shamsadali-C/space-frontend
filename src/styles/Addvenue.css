@@ -1,299 +1,206 @@
-/* =========================
-   OWNER LAYOUT
-========================= */
 
-.owner-layout {
+.add-venue-page {
     min-height: 100vh;
+    background: #f4f6f9;
     display: flex;
-    background: #f5f7fb;
-    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 
-/* =========================
-   SIDEBAR
-========================= */
 
-.owner-sidebar {
-    width: 250px;
-    min-height: 100vh;
-    background: #18212f;
-    color: white;
-
-    padding: 25px 18px;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.owner-logo {
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.owner-role {
-    text-align: center;
-    color: #aeb8c7;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    margin-bottom: 35px;
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.owner-sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.owner-sidebar nav a {
-    color: #dce2ea;
-    text-decoration: none;
-
-    padding: 13px 15px;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    transition: all 0.2s ease;
-}
-
-.owner-sidebar nav a:hover {
-    background: #2b394d;
-    color: white;
-    transform: translateX(3px);
-}
-
-
-/* =========================
-   MAIN CONTENT
-========================= */
-
-.owner-main {
-    margin-left: 250px;
-    width: calc(100% - 250px);
-
-    min-height: 100vh;
-
-    padding: 40px;
-}
-
-.owner-main h1 {
-    margin: 0 0 25px;
-
-    font-size: 30px;
-    color: #18212f;
-}
-
-
-/* =========================
-   FORM CARD
-========================= */
-
-.owner-form-card {
+.add-venue-card {
     width: 100%;
-    max-width: 650px;
-
-    background: white;
-
+    max-width: 600px;
+    background: #ffffff;
     padding: 35px;
-
     border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
 
-    border: 1px solid #e5e7eb;
+.add-venue-card h1 {
+    margin: 0;
+    color: #172033;
+    font-size: 30px;
+}
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+.form-description {
+    margin: 8px 0 30px;
+    color: #6c757d;
+    font-size: 15px;
+}
+
+
+
+
+.success-message {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    padding: 12px 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 12px 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #252b35;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    outline: none;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #536dfe;
+    box-shadow: 0 0 0 3px rgba(83, 109, 254, 0.12);
+}
+
+
+
+
+.form-group input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    border: none;
+    background: #536dfe;
+    color: white;
+    padding: 9px 14px;
+    margin-right: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #4055d6;
+}
+
+
+
+
+.selected-files {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 7px;
+}
+
+.selected-files p {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.selected-files span {
+    display: block;
+    font-size: 13px;
+    color: #6c757d;
+    padding: 4px 0;
+    word-break: break-word;
+}
+
+
+
+.add-venue-card form > button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #536dfe;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add-venue-card form > button:hover {
+    background: #4055d6;
+}
+
+.add-venue-card form > button:disabled {
+    background: #9da7d4;
+    cursor: not-allowed;
 }
 
 
 /* =========================
-   FORM
+   Back Button
 ========================= */
 
-.owner-form-card form {
-    display: flex;
-    flex-direction: column;
-}
-
-.owner-form-card label {
-    margin-bottom: 7px;
-
-    color: #374151;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-.owner-form-card input {
+.back-button {
     width: 100%;
-
-    padding: 12px 14px;
-
-    margin-bottom: 20px;
-
-    border: 1px solid #d1d5db;
-
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #ced4da;
     border-radius: 7px;
-
+    background: white;
+    color: #495057;
     font-size: 15px;
-
-    outline: none;
-
+    cursor: pointer;
     transition: 0.2s;
 }
 
-.owner-form-card input:focus {
-    border-color: #4f46e5;
-
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
-}
-
-.owner-form-card input::placeholder {
-    color: #9ca3af;
+.back-button:hover {
+    background: #f1f3f5;
+    border-color: #adb5bd;
 }
 
 
 /* =========================
-   ADD VENUE BUTTON
+   Responsive
 ========================= */
-
-.owner-form-card button {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-top: 5px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: #4f46e5;
-
-    color: white;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
-}
-
-.owner-form-card button:hover {
-    background: #4338ca;
-
-    transform: translateY(-1px);
-}
-
-.owner-form-card button:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
-    transform: none;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 800px) {
-
-    .owner-sidebar {
-        width: 210px;
-    }
-
-    .owner-main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
-        padding: 25px;
-    }
-
-    .owner-form-card {
-        max-width: 100%;
-    }
-}
-
 
 @media (max-width: 600px) {
 
-    .owner-layout {
-        display: block;
+    .add-venue-page {
+        padding: 20px 12px;
     }
 
-    .owner-sidebar {
-        position: relative;
-        width: 100%;
-        min-height: auto;
-    }
-
-    .owner-sidebar nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .owner-sidebar nav a {
-        flex: 1;
-        min-width: 100px;
-        text-align: center;
-    }
-
-    .owner-main {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px;
-    }
-
-    .owner-main h1 {
-        font-size: 25px;
-    }
-
-    .owner-form-card {
+    .add-venue-card {
         padding: 25px 20px;
     }
-}
 
-/*back button*\
-.backButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151; /* dark gray */
-  background-color: #ffffff;
-  border: 1px solid #d1d5db; /* light gray border */
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.backButton:hover {
-  background-color: #f9fafb; /* light hover background */
-  border-color: #9ca3af;
-}
-
-.backButton:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #6366f1; /* purple focus ring */
-}
-
-.arrow {
-  font-size: 16px;
+    .add-venue-card h1 {
+        font-size: 25px;
+    }
 }

@@ -156,6 +156,29 @@ const UserDashboard = () => {
 
                     </Link>
 
+                       <Link
+                              to="/user/bookings"
+                              className="user-card"
+                          >
+
+                              <div className="user-card-icon">
+                                  📅
+                              </div>
+
+                              <h2>
+                                  My Bookings
+                              </h2>
+
+                              <p>
+                                  View your booking requests
+                                  and check their status.
+                              </p>
+
+                              <span>
+                                  View Bookings →
+                              </span>
+
+                          </Link>
 
                     {/* OWNER */}
 

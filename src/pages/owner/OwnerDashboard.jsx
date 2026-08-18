@@ -13,14 +13,11 @@ const OwnerDashboard = () => {
         navigate("/login");
     };
 
-
     return (
 
         <div className="owner-layout">
 
-            {/* =========================
-                SIDEBAR
-            ========================== */}
+            {/* SIDEBAR */}
 
             <aside className="owner-sidebar">
 
@@ -31,7 +28,6 @@ const OwnerDashboard = () => {
                 <div className="owner-role">
                     OWNER PANEL
                 </div>
-
 
                 <nav>
 
@@ -53,7 +49,6 @@ const OwnerDashboard = () => {
 
                 </nav>
 
-
                 <button
                     className="owner-logout"
                     onClick={logout}
@@ -64,9 +59,7 @@ const OwnerDashboard = () => {
             </aside>
 
 
-            {/* =========================
-                MAIN CONTENT
-            ========================== */}
+            {/* MAIN CONTENT */}
 
             <main className="owner-main">
 
@@ -83,9 +76,7 @@ const OwnerDashboard = () => {
                 </div>
 
 
-                {/* =========================
-                    DASHBOARD CARDS
-                ========================== */}
+                {/* DASHBOARD CARDS */}
 
                 <div className="owner-cards">
 

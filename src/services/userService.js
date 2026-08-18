@@ -24,8 +24,23 @@ const deleteUser = (id) => {
     return api.delete(`/user/${id}`);
 };
 
-const updateUser = (id, userData) => {
-    return api.put(`/user/${id}`, userData);
+const updateUser = (userData) => {
+    return api.put("/user/profile", userData);
+};
+const createBooking = (venueId, bookingDate, bookingTime) => {
+    return api.post(
+        `/user/booking/${venueId}`,
+        null,
+        {
+            params: {
+                bookingDate,
+                bookingTime
+            }
+        }
+    );
+};
+const getMyBookings = () => {
+    return api.get("/user/bookings");
 };
 
 export default {
@@ -36,4 +51,6 @@ export default {
     getVenueImages,
     deleteUser,
     updateUser,
+    createBooking,
+    getMyBookings
 };

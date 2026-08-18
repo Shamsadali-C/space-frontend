@@ -13,6 +13,8 @@ import UserDashboard from "./pages/user/UserDashboard";
 import UserProfile from "./pages/user/UserProfile";
 import UserVenues from "./pages/user/UserVenues";
 import OwnerRequestStatus from "./pages/user/OwnerRequestStatus";
+import BookVenue from "./pages/user/BookVenue";
+import UserBookings from "./pages/user/UserBookings";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import OwnerRequests from "./pages/admin/OwnerRequests";
@@ -65,6 +67,14 @@ function App() {
                     element={<OwnerRequestStatus />}
                 />
                 <Route
+                    path="/user/book/:venueId"
+                    element={<BookVenue />}
+                />
+                <Route
+                    path="/user/bookings"
+                    element={<UserBookings />}
+                />
+                <Route
                     path="/admin/dashboard"
                     element={<AdminDashboard />}
                 />
@@ -99,9 +109,10 @@ function App() {
                      element={<OwnerBooking />}
                 />
                 <Route
-                    path="/owner/venues"
+                    path="/owner/Venues"
                     element={<OwnerVenues />}
                 />
+
 
             </Routes>
 

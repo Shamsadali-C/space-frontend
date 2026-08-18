@@ -1,150 +1,6 @@
-// import React, { useEffect, useState } from "react";
-// import userService from "../../services/userService";
-// import bookingService from "../../services/bookingService";
-//
-//
-// const UserVenues = () => {
-//
-//     const [venues, setVenues] = useState([]);
-//     const [loading, setLoading] = useState(true);
-//     const [message, setMessage] = useState("");
-//
-//     useEffect(() => {
-//
-//         loadVenues();
-//
-//     }, []);
-//
-//     const loadVenues = async () => {
-//
-//         try {
-//
-//             const response = await userService.getVenues();
-//
-//             setVenues(response.data);
-//
-//         } catch (error) {
-//
-//             console.error(error);
-//
-//             setMessage("Failed to load venues");
-//
-//         } finally {
-//
-//             setLoading(false);
-//         }
-//     };
-//
-//     const handleBooking = async (venueId) => {
-//
-//         try {
-//
-//             const profileResponse =
-//                 await userService.getProfile();
-//
-//             const userId = profileResponse.data.id;
-//
-//             await bookingService.createBooking(
-//                 userId,
-//                 venueId
-//             );
-//
-//             alert("Booking created successfully");
-//
-//         } catch (error) {
-//
-//             console.error(error);
-//
-//             alert(
-//                 error.response?.data ||
-//                 "Booking failed"
-//             );
-//         }
-//     };
-//
-//     if (loading) {
-//         return <h2>Loading venues...</h2>;
-//     }
-//
-//     return (
-//         <div>
-//
-//             <h1>Available Venues</h1>
-//
-//             {message && <p>{message}</p>}
-//
-//             {venues.length === 0 ? (
-//
-//                 <p>No venues available.</p>
-//
-//             ) : (
-//
-//                 venues.map((venue) => (
-//
-//                   <div className="venue-grid">
-//
-//                       {venues.map((venue) => (
-//
-//                           <div
-//                               className="venue-card"
-//                               key={venue.id}
-//                           >
-//
-//                               <div className="venue-card-content">
-//
-//                                   <h2>{venue.venueName}</h2>
-//
-//                                   <p className="venue-info">
-//                                       <strong>Location:</strong>{" "}
-//                                       {venue.location}
-//                                   </p>
-//
-//                                   <p className="venue-info">
-//                                       <strong>Capacity:</strong>{" "}
-//                                       {venue.capacity}
-//                                   </p>
-//
-//                                   <p className="venue-price">
-//                                       ₹{venue.price}
-//                                   </p>
-//
-//                                   <span className="venue-status">
-//                                       {venue.venueStatus}
-//                                   </span>
-//
-//                                   <button
-//                                       className="book-button"
-//                                       onClick={() =>
-//                                           handleBooking(venue.id)
-//                                       }
-//                                       disabled={
-//                                           venue.venueStatus !== "AVAILABLE"
-//                                       }
-//                                   >
-//                                       {venue.venueStatus === "AVAILABLE"
-//                                           ? "Book Now"
-//                                           : "Not Available"}
-//                                   </button>
-//
-//                               </div>
-//
-//                           </div>
-//
-//                       ))}
-//
-//                   </div>
-//                 ))
-//             )}
-//
-//         </div>
-//     );
-// };
-//
-// export default UserVenues;
-
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
-import bookingService from "../../services/bookingService";
 import "../../styles/UserVenues.css";
 
 const UserVenues = () => {
@@ -152,6 +8,8 @@ const UserVenues = () => {
     const [venues, setVenues] = useState([]);
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadVenues();
@@ -174,33 +32,6 @@ const UserVenues = () => {
         } finally {
 
             setLoading(false);
-        }
-    };
-
-    const handleBooking = async (venueId) => {
-
-        try {
-
-            const profileResponse =
-                await userService.getProfile();
-
-            const userId = profileResponse.data.id;
-
-            await bookingService.createBooking(
-                userId,
-                venueId
-            );
-
-            alert("Booking created successfully");
-
-        } catch (error) {
-
-            console.error(error);
-
-            alert(
-                error.response?.data ||
-                "Booking failed"
-            );
         }
     };
 
@@ -368,23 +199,17 @@ const UserVenues = () => {
                                     {/* BOOK BUTTON */}
 
                                     <button
-                                        className="book-button"
+                                        className="book-btn"
                                         onClick={() =>
-                                            handleBooking(
-                                                venue.id
+                                            navigate(
+                                                `/user/book/${venue.id}`,
+                                                {
+                                                    state: { venue }
+                                                }
                                             )
                                         }
-                                        disabled={
-                                            venue.venueStatus !==
-                                            "AVAILABLE"
-                                        }
                                     >
-
-                                        {venue.venueStatus ===
-                                        "AVAILABLE"
-                                            ? "Book Now"
-                                            : "Not Available"}
-
+                                        Book Now
                                     </button>
 
                                 </div>
