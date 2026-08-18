@@ -1,0 +1,123 @@
+.book-venue-page {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: #f5f7fb;
+}
+
+.book-venue-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.back-button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.booking-card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.booking-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.booking-header h1 {
+    margin-bottom: 5px;
+}
+
+.booking-header p {
+    color: #777;
+}
+
+.venue-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background: #f7f8fa;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.venue-image {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9edf5;
+    border-radius: 10px;
+    font-size: 40px;
+}
+
+.venue-info h2 {
+    margin: 0 0 10px;
+}
+
+.venue-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.book-button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+}
+
+.book-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.success-message {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.error-message {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.booking-error {
+    text-align: center;
+}
