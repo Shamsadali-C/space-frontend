@@ -14,7 +14,8 @@ import UserProfile from "./pages/user/UserProfile";
 import UserVenues from "./pages/user/UserVenues";
 import OwnerRequestStatus from "./pages/user/OwnerRequestStatus";
 import BookVenue from "./pages/user/BookVenue";
-import UserBookings from "./pages/user/UserBookings";
+import MyBookings from "./pages/user/MyBookings";
+
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import OwnerRequests from "./pages/admin/OwnerRequests";
@@ -72,7 +73,11 @@ function App() {
                 />
                 <Route
                     path="/user/bookings"
-                    element={<UserBookings />}
+                    element={<MyBookings />}
+                />
+                <Route
+                    path="/user/book/:venueId"
+                    element={<BookVenue />}
                 />
                 <Route
                     path="/admin/dashboard"

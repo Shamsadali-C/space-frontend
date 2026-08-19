@@ -1,38 +1,23 @@
-/* =====================================
-   VENUES PAGE
-===================================== */
+/* =========================================
+   USER VENUES PAGE
+========================================= */
 
 .venues-page {
     min-height: 100vh;
-
-    padding: 50px 25px;
-
-    box-sizing: border-box;
-
     background: #f5f7fb;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: #111827;
+    padding: 40px 25px;
+    box-sizing: border-box;
 }
 
-
-/* =====================================
-   CONTAINER
-===================================== */
-
 .venues-container {
-    width: 100%;
-
     max-width: 1200px;
-
     margin: 0 auto;
 }
 
 
-/* =====================================
+/* =========================================
    HEADER
-===================================== */
+========================================= */
 
 .venues-header {
     margin-bottom: 35px;
@@ -40,192 +25,181 @@
 
 .venues-header h1 {
     margin: 0 0 10px;
-
     font-size: 34px;
-
-    color: #111827;
+    font-weight: 700;
+    color: #1f2937;
 }
 
 .venues-header p {
     margin: 0;
-
     color: #6b7280;
-
     font-size: 16px;
 }
 
 
-/* =====================================
-   MESSAGE
-===================================== */
+/* =========================================
+   ERROR MESSAGE
+========================================= */
 
 .venues-message {
-    padding: 15px 18px;
-
+    background: #fff1f2;
+    color: #be123c;
+    border: 1px solid #fecdd3;
+    padding: 14px 18px;
+    border-radius: 10px;
     margin-bottom: 25px;
-
-    border-radius: 8px;
-
-    background: #fee2e2;
-
-    border: 1px solid #fecaca;
-
-    color: #b91c1c;
+    font-size: 14px;
 }
 
 
-/* =====================================
+/* =========================================
    VENUE GRID
-===================================== */
+========================================= */
 
 .venue-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
 
-/* =====================================
+/* =========================================
    VENUE CARD
-===================================== */
+========================================= */
 
 .venue-card {
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
-
-    border-radius: 15px;
-
+    border-radius: 18px;
     overflow: hidden;
 
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
 
     transition:
-        transform 0.2s,
-        box-shadow 0.2s;
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .venue-card:hover {
     transform: translateY(-5px);
-
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
 }
 
 
-/* =====================================
+/* =========================================
    CARD TOP
-===================================== */
+========================================= */
 
 .venue-card-top {
     display: flex;
-
+    justify-content: space-between;
     align-items: center;
 
-    justify-content: space-between;
+    padding: 20px 20px 15px;
 
-    padding: 22px 22px 0;
+    background: #fafafa;
+    border-bottom: 1px solid #eeeeee;
 }
+
+
+/* =========================================
+   VENUE ICON
+========================================= */
 
 .venue-icon {
-    width: 50px;
-
-    height: 50px;
+    width: 48px;
+    height: 48px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    border-radius: 10px;
+    background: #eef2ff;
+    border-radius: 12px;
 
-    background: #eff6ff;
-
-    font-size: 24px;
+    font-size: 25px;
 }
 
 
-/* =====================================
-   STATUS
-===================================== */
+/* =========================================
+   VENUE STATUS
+========================================= */
 
 .venue-status {
-    padding: 6px 12px;
-
+    padding: 7px 13px;
     border-radius: 20px;
 
-    font-size: 11px;
-
+    font-size: 12px;
     font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
+
+
+/* AVAILABLE */
 
 .venue-status.available {
-    background: #dcfce7;
-
-    color: #166534;
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
 }
+
+
+/* UNAVAILABLE */
 
 .venue-status.unavailable {
-    background: #fee2e2;
-
-    color: #991b1b;
+    background: #fff1f2;
+    color: #be123c;
+    border: 1px solid #fecdd3;
 }
 
 
-/* =====================================
+/* =========================================
    CARD CONTENT
-===================================== */
+========================================= */
 
 .venue-card-content {
     padding: 22px;
 }
 
 .venue-card-content h2 {
-    margin: 0 0 22px;
+    margin: 0 0 20px;
+
+    font-size: 22px;
+    font-weight: 700;
 
     color: #111827;
-
-    font-size: 21px;
 }
 
 
-/* =====================================
-   VENUE INFO
-===================================== */
+/* =========================================
+   VENUE INFORMATION
+========================================= */
 
 .venue-info {
     display: flex;
-
     align-items: flex-start;
 
     gap: 12px;
 
-    margin-bottom: 16px;
+    margin-bottom: 17px;
 }
 
-.info-icon {
+.venue-info > span {
     width: 35px;
-
     height: 35px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
 
     flex-shrink: 0;
 
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background: #f1f5f9;
+    background: #f3f4f6;
+    border-radius: 9px;
 
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .venue-info small {
@@ -233,174 +207,177 @@
 
     margin-bottom: 4px;
 
-    color: #94a3b8;
-
+    color: #9ca3af;
     font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .venue-info p {
     margin: 0;
 
-    color: #475569;
-
+    color: #4b5563;
     font-size: 14px;
-
     line-height: 1.4;
 }
 
 
-/* =====================================
+/* =========================================
    PRICE
-===================================== */
+========================================= */
 
 .venue-price-section {
     display: flex;
-
-    align-items: flex-end;
-
     justify-content: space-between;
+    align-items: center;
 
-    margin-top: 20px;
-
+    margin-top: 22px;
     padding-top: 18px;
 
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #eeeeee;
 }
 
 .venue-price-section span {
-    color: #94a3b8;
-
-    font-size: 12px;
+    color: #6b7280;
+    font-size: 13px;
 }
 
 .venue-price-section strong {
-    color: #2563eb;
-
-    font-size: 23px;
+    color: #111827;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 
-/* =====================================
+/* =========================================
    BOOK BUTTON
-===================================== */
+========================================= */
 
-.book-button {
+.book-btn {
     width: 100%;
 
     margin-top: 20px;
-
-    padding: 13px;
+    padding: 13px 18px;
 
     border: none;
-
-    border-radius: 8px;
+    border-radius: 10px;
 
     background: #2563eb;
+    color: white;
 
-    color: #ffffff;
-
-    font-size: 14px;
-
+    font-size: 15px;
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
-.book-button:hover:not(:disabled) {
+.book-btn:hover:not(:disabled) {
     background: #1d4ed8;
-
     transform: translateY(-1px);
 }
 
-.book-button:disabled {
-    background: #cbd5e1;
-
-    color: #64748b;
-
-    cursor: not-allowed;
+.book-btn:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 
-/* =====================================
+/* =========================================
+   DISABLED BOOK BUTTON
+========================================= */
+
+.book-btn:disabled {
+    background: #d1d5db;
+    color: #6b7280;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
    NO VENUES
-===================================== */
+========================================= */
 
 .no-venues {
-    padding: 70px 20px;
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    padding: 70px 25px;
 
     text-align: center;
 
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
 }
 
 .no-venues-icon {
-    font-size: 50px;
-
+    font-size: 55px;
     margin-bottom: 15px;
 }
 
 .no-venues h2 {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
 
-    color: #111827;
-
-    font-size: 22px;
+    color: #1f2937;
+    font-size: 24px;
 }
 
 .no-venues p {
     margin: 0;
 
     color: #6b7280;
-
-    font-size: 14px;
+    font-size: 15px;
 }
 
 
-/* =====================================
+/* =========================================
    LOADING
-===================================== */
+========================================= */
 
 .venues-loading {
     min-height: 100vh;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     background: #f5f7fb;
 
-    color: #6b7280;
-
-    font-family: Arial, Helvetica, sans-serif;
+    color: #4b5563;
 }
 
+.venues-loading p {
+    margin-top: 15px;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   LOADING SPINNER
+========================================= */
+
 .venues-spinner {
-    width: 38px;
-
-    height: 38px;
-
-    margin-bottom: 15px;
+    width: 42px;
+    height: 42px;
 
     border: 4px solid #e5e7eb;
-
     border-top-color: #2563eb;
 
     border-radius: 50%;
 
-    animation: venues-spin 0.8s linear infinite;
+    animation: venueSpin 0.8s linear infinite;
 }
 
-@keyframes venues-spin {
+@keyframes venueSpin {
 
     from {
         transform: rotate(0deg);
@@ -413,43 +390,69 @@
 }
 
 
-/* =====================================
+/* =========================================
    TABLET
-===================================== */
+========================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
 
     .venue-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
 
 
-/* =====================================
+/* =========================================
    MOBILE
-===================================== */
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
     .venues-page {
-        padding: 35px 15px;
+        padding: 25px 15px;
     }
 
     .venues-header h1 {
         font-size: 28px;
     }
 
+    .venues-header p {
+        font-size: 14px;
+    }
+
     .venue-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 
     .venue-card-content {
         padding: 20px;
     }
 
+}
 
 
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .venues-header h1 {
+        font-size: 24px;
+    }
+
+    .venue-card-top {
+        padding: 16px;
+    }
+
+    .venue-card-content {
+        padding: 17px;
+    }
+
+    .venue-card-content h2 {
+        font-size: 20px;
+    }
 
 }
