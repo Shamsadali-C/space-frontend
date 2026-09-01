@@ -180,10 +180,6 @@ const BookVenue = () => {
     const [message, setMessage] = useState("");
 
 
-    // ===============================
-    // DEBUG
-    // ===============================
-
     console.log("BOOKING PAGE VENUE:", venue);
 
     console.log(
@@ -191,10 +187,6 @@ const BookVenue = () => {
         venue?.id
     );
 
-
-    // ===============================
-    // LOAD SLOTS
-    // ===============================
 
     useEffect(() => {
 
@@ -267,10 +259,6 @@ const BookVenue = () => {
     };
 
 
-    // ===============================
-    // BOOK SLOT
-    // ===============================
-
     const bookSlot = async (slotId) => {
 
         try {
@@ -307,9 +295,6 @@ const BookVenue = () => {
     };
 
 
-    // ===============================
-    // INVALID VENUE
-    // ===============================
 
     if (!venue || !venue.id) {
 
@@ -367,7 +352,6 @@ const BookVenue = () => {
                 </div>
 
 
-                {/* VENUE DETAILS */}
 
                 <div className="booking-venue-info">
 
@@ -399,7 +383,6 @@ const BookVenue = () => {
                 </div>
 
 
-                {/* DATE */}
 
                 <div className="date-section">
 
@@ -423,7 +406,6 @@ const BookVenue = () => {
                 </div>
 
 
-                {/* SLOTS */}
 
                 {date && (
 
@@ -525,9 +507,7 @@ const BookVenue = () => {
                                                     slot.id
                                                 )
                                             }
-                                        >
-
-                                            {bookingSlot === slot.id
+                                        > {bookingSlot === slot.id
                                                 ? "Booking..."
                                                 : "Book This Slot"}
 

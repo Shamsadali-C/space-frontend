@@ -16,9 +16,9 @@
 //
 //         try {
 //
-//             const response = await ownerService.getOwnerVenues();
+//             const response = await ownerService.getVenues();
 //
-//             console.log("Owner venues:", response.data);
+//             console.log(" venues:", response.data);
 //
 //             setVenues(response.data);
 //
@@ -269,6 +269,20 @@
 //                                         Holiday
 //                                     </button>
 //
+//                                       <button
+//                                         className="available-btn"
+//                                         onClick={() =>
+//                                             handleAvailable(
+//                                                 venue.id
+//                                             )
+//                                         }
+//                                         disabled={
+//                                             venue.status === "AVAILABLE"
+//                                         }
+//                                     >
+//                                         Available
+//                                     </button>
+//
 //                                 </div>
 //
 //                             </div>
@@ -287,18 +301,21 @@
 //
 // export default OwnerVenues;
 
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ownerService from "../../services/ownerService";
 import "../../styles/OwnerVenues.css";
 
-
 const OwnerVenues = () => {
 
     const [venues, setVenues] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
+
+    /* =========================================
+       LOAD OWNER VENUES
+    ========================================= */
 
     useEffect(() => {
         loadVenues();
@@ -309,21 +326,36 @@ const OwnerVenues = () => {
 
         try {
 
-            const response =
-                await ownerService.getOwnerVenues();
+            setLoading(true);
+            setError("");
 
-            console.log(
-                "Owner venues:",
-                response.data
+
+
+            const data = await ownerService.getVenues();
+
+            console.log("Owner venues:", data);
+
+
+
+            setVenues(
+                Array.isArray(data)
+                    ? data
+                    : []
             );
-
-            setVenues(response.data);
 
         } catch (error) {
 
             console.error(
                 "Failed to load venues:",
                 error
+            );
+
+            setVenues([]);
+
+            setError(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to load your venues."
             );
 
         } finally {
@@ -333,55 +365,65 @@ const OwnerVenues = () => {
     };
 
 
+    /* =========================================
+       MAINTENANCE
+    ========================================= */
+
     const handleMaintenance = async (venueId) => {
 
         const confirmAction = window.confirm(
-            "Put this venue under maintenance?"
+            "Are you sure you want to put this venue under maintenance?"
         );
 
         if (!confirmAction) {
             return;
         }
 
+
         try {
 
-            await ownerService.setMaintenance(
-                venueId
-            );
+            await ownerService.maintenance(venueId);
 
             alert(
-                "Venue moved to maintenance."
+                "Venue is now under maintenance."
             );
 
             await loadVenues();
 
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "Maintenance error:",
+                error
+            );
 
             alert(
+                error.response?.data?.message ||
                 error.response?.data ||
-                "Failed to update venue."
+                "Failed to update venue status."
             );
         }
     };
 
 
+    /* =========================================
+       HOLIDAY
+    ========================================= */
+
     const handleHoliday = async (venueId) => {
 
         const confirmAction = window.confirm(
-            "Mark this venue as holiday?"
+            "Are you sure you want to mark this venue as holiday?"
         );
 
         if (!confirmAction) {
             return;
         }
 
+
         try {
 
-            await ownerService.setHoliday(
-                venueId
-            );
+            await ownerService.holiday(venueId);
 
             alert(
                 "Venue marked as holiday."
@@ -391,31 +433,135 @@ const OwnerVenues = () => {
 
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "Holiday error:",
+                error
+            );
 
             alert(
+                error.response?.data?.message ||
                 error.response?.data ||
-                "Failed to update venue."
+                "Failed to update venue status."
             );
         }
     };
 
 
+    /* =========================================
+       AVAILABLE
+    ========================================= */
+
+    const handleAvailable = async (venueId) => {
+
+        const confirmAction = window.confirm(
+            "Make this venue available again?"
+        );
+
+        if (!confirmAction) {
+            return;
+        }
+
+
+        try {
+
+            await ownerService.available(venueId);
+
+            alert(
+                "Venue is now available."
+            );
+
+            await loadVenues();
+
+        } catch (error) {
+
+            console.error(
+                "Available error:",
+                error
+            );
+
+            alert(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to update venue status."
+            );
+        }
+    };
+
+
+    /* =========================================
+       DELETE VENUE
+    ========================================= */
+
+    const handleDelete = async (venueId) => {
+
+        const confirmAction = window.confirm(
+            "Are you sure you want to delete this venue?"
+        );
+
+        if (!confirmAction) {
+            return;
+        }
+
+
+        try {
+
+            await ownerService.deleteVenue(venueId);
+
+            alert(
+                "Venue deleted successfully."
+            );
+
+            await loadVenues();
+
+        } catch (error) {
+
+            console.error(
+                "Delete venue error:",
+                error
+            );
+
+            alert(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to delete venue."
+            );
+        }
+    };
+
+
+    /* =========================================
+       LOADING
+    ========================================= */
+
     if (loading) {
 
         return (
+
             <div className="owner-loading">
-                <h2>Loading venues...</h2>
+
+                <div className="owner-spinner"></div>
+
+                <h2>
+                    Loading your venues...
+                </h2>
+
             </div>
         );
     }
 
 
+    /* =========================================
+       PAGE
+    ========================================= */
+
     return (
 
         <div className="owner-layout">
 
-            {/* SIDEBAR */}
+
+            {/* =================================
+                SIDEBAR
+            ================================= */}
 
             <aside className="owner-sidebar">
 
@@ -426,6 +572,7 @@ const OwnerVenues = () => {
                 <div className="owner-role">
                     OWNER PANEL
                 </div>
+
 
                 <nav>
 
@@ -444,6 +591,10 @@ const OwnerVenues = () => {
                         Bookings
                     </Link>
 
+                    <Link to="/owner/create-slot">
+                        Create Time Slot
+                    </Link>
+
                     <Link to="/owner/add-venue">
                         Add Venue
                     </Link>
@@ -453,28 +604,77 @@ const OwnerVenues = () => {
             </aside>
 
 
-            {/* MAIN */}
+            {/* =================================
+                MAIN CONTENT
+            ================================= */}
 
             <main className="owner-main">
+
+
+                {/* HEADER */}
 
                 <div className="owner-page-header">
 
                     <div>
+
+                        <span className="owner-page-label">
+                            VENUE MANAGEMENT
+                        </span>
 
                         <h1>
                             My Venues
                         </h1>
 
                         <p>
-                            Manage your venues and availability.
+                            Manage your venues and their
+                            availability.
                         </p>
 
                     </div>
 
+
+                    <Link
+                        to="/owner/add-venue"
+                        className="add-venue-btn"
+                    >
+                        + Add Venue
+                    </Link>
+
                 </div>
 
 
-                {venues.length === 0 ? (
+                {/* =================================
+                    ERROR
+                ================================= */}
+
+                {error && (
+
+                    <div className="owner-error">
+
+                        <strong>
+                            Unable to load venues
+                        </strong>
+
+                        <p>
+                            {error}
+                        </p>
+
+                        <button
+                            onClick={loadVenues}
+                        >
+                            Try Again
+                        </button>
+
+                    </div>
+
+                )}
+
+
+                {/* =================================
+                    NO VENUES
+                ================================= */}
+
+                {!error && venues.length === 0 ? (
 
                     <div className="no-owner-venues">
 
@@ -487,124 +687,218 @@ const OwnerVenues = () => {
                         </h2>
 
                         <p>
-                            Add a venue to start managing
-                            your spaces.
+                            You haven't added any venues yet.
+                            Add your first venue to start
+                            accepting bookings.
                         </p>
 
                         <Link
                             to="/owner/add-venue"
-                            className="add-venue-btn"
+                            className="empty-add-btn"
                         >
-                            + Add Venue
+                            + Add Your First Venue
                         </Link>
 
                     </div>
 
                 ) : (
 
-                    <div className="venue-grid">
 
-                        {venues.map((venue) => (
+                    /* =================================
+                       VENUE GRID
+                    ================================= */
 
-                            <div
-                                className="venue-card"
-                                key={venue.id}
-                            >
+                    !error && (
 
-                                <div className="venue-card-top">
+                        <div className="venue-grid">
 
-                                    <div className="venue-icon">
-                                        🏢
+                            {venues.map((venue) => (
+
+                                <div
+                                    className="venue-card"
+                                    key={venue.id}
+                                >
+
+
+                                    {/* CARD TOP */}
+
+                                    <div className="venue-card-top">
+
+                                        <div className="venue-icon">
+                                            🏢
+                                        </div>
+
+
+                                        <span
+                                            className={
+                                                `venue-status ${
+                                                    venue.status
+                                                        ?.toLowerCase()
+                                                        || "available"
+                                                }`
+                                            }
+                                        >
+                                            {venue.status ||
+                                                "AVAILABLE"}
+                                        </span>
+
                                     </div>
 
-                                    <span
-                                        className={
-                                            `venue-status ${
-                                                venue.status
-                                                    ?.toLowerCase()
-                                            }`
-                                        }
-                                    >
-                                        {venue.status}
-                                    </span>
 
-                                </div>
+                                    {/* VENUE NAME */}
+
+                                    <h2>
+                                        {venue.venueName}
+                                    </h2>
 
 
-                                <h2>
-                                    {venue.venueName}
-                                </h2>
+                                    {/* VENUE DETAILS */}
+
+                                    <div className="venue-details">
+
+                                        <div className="detail-item">
+
+                                            <span>
+                                                📍
+                                            </span>
+
+                                            <div>
+
+                                                <small>
+                                                    Location
+                                                </small>
+
+                                                <p>
+                                                    {venue.location ||
+                                                        "Not specified"}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
 
 
-                                <div className="venue-details">
+                                        <div className="detail-item">
 
-                                    <p>
-                                        <strong>
-                                            Location
-                                        </strong>
-                                        <br />
-                                        {venue.location}
-                                    </p>
+                                            <span>
+                                                👥
+                                            </span>
 
-                                    <p>
-                                        <strong>
-                                            Capacity
-                                        </strong>
-                                        <br />
-                                        {venue.capacity}
-                                    </p>
+                                            <div>
 
-                                    <p>
-                                        <strong>
-                                            Price
-                                        </strong>
-                                        <br />
-                                        ₹{venue.price}
-                                    </p>
+                                                <small>
+                                                    Capacity
+                                                </small>
 
-                                </div>
+                                                <p>
+                                                    {venue.capacity ||
+                                                        "N/A"}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
 
 
-                                <div className="venue-actions">
+                                        <div className="detail-item">
+
+                                            <span>
+                                                ₹
+                                            </span>
+
+                                            <div>
+
+                                                <small>
+                                                    Price
+                                                </small>
+
+                                                <p>
+                                                    ₹{venue.price || 0}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ACTIONS */}
+
+                                    <div className="venue-actions">
+
+
+                                        <button
+                                            className="maintenance-btn"
+                                            onClick={() =>
+                                                handleMaintenance(
+                                                    venue.id
+                                                )
+                                            }
+                                            disabled={
+                                                venue.status ===
+                                                "MAINTENANCE"
+                                            }
+                                        >
+                                            Maintenance
+                                        </button>
+
+
+                                        <button
+                                            className="holiday-btn"
+                                            onClick={() =>
+                                                handleHoliday(
+                                                    venue.id
+                                                )
+                                            }
+                                            disabled={
+                                                venue.status ===
+                                                "HOLIDAY"
+                                            }
+                                        >
+                                            Holiday
+                                        </button>
+
+
+                                        <button
+                                            className="available-btn"
+                                            onClick={() =>
+                                                handleAvailable(
+                                                    venue.id
+                                                )
+                                            }
+                                            disabled={
+                                                venue.status ===
+                                                "AVAILABLE"
+                                            }
+                                        >
+                                            Available
+                                        </button>
+
+                                    </div>
+
+
+                                    {/* DELETE */}
 
                                     <button
-                                        className="maintenance-btn"
+                                        className="delete-venue-btn"
                                         onClick={() =>
-                                            handleMaintenance(
+                                            handleDelete(
                                                 venue.id
                                             )
                                         }
-                                        disabled={
-                                            venue.status ===
-                                            "MAINTENANCE"
-                                        }
                                     >
-                                        Maintenance
+                                        🗑 Delete Venue
                                     </button>
 
-
-                                    <button
-                                        className="holiday-btn"
-                                        onClick={() =>
-                                            handleHoliday(
-                                                venue.id
-                                            )
-                                        }
-                                        disabled={
-                                            venue.status ===
-                                            "HOLIDAY"
-                                        }
-                                    >
-                                        Holiday
-                                    </button>
 
                                 </div>
 
-                            </div>
+                            ))}
 
-                        ))}
+                        </div>
 
-                    </div>
+                    )
 
                 )}
 
@@ -613,6 +907,5 @@ const OwnerVenues = () => {
         </div>
     );
 };
-
 
 export default OwnerVenues;

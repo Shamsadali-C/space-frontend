@@ -1,383 +1,961 @@
-/* =========================================
+/* =====================================================
    USER VENUES PAGE
-========================================= */
+===================================================== */
 
-.venues-page {
-    min-height: 100vh;
-    background: #f5f7fb;
-    padding: 40px 25px;
+* {
     box-sizing: border-box;
 }
 
-.venues-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.venues-header {
-    margin-bottom: 35px;
-}
-
-.venues-header h1 {
-    margin: 0 0 10px;
-    font-size: 34px;
-    font-weight: 700;
-    color: #1f2937;
-}
-
-.venues-header p {
+body {
     margin: 0;
-    color: #6b7280;
-    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #111827;
 }
 
 
-/* =========================================
-   ERROR MESSAGE
-========================================= */
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
 
-.venues-message {
-    background: #fff1f2;
-    color: #be123c;
-    border: 1px solid #fecdd3;
-    padding: 14px 18px;
+.user-layout {
+    min-height: 100vh;
+    display: flex;
+    background: #f5f7fb;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.user-sidebar {
+    width: 260px;
+    min-width: 260px;
+    min-height: 100vh;
+
+    background: #111827;
+
+    color: white;
+
+    padding: 32px 18px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 100;
+}
+
+
+.user-logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #4f6df5;
+
+    padding: 0 16px;
+
+    margin-bottom: 8px;
+}
+
+
+.user-role {
+    padding: 0 16px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #9ca3af;
+
+    margin-bottom: 40px;
+}
+
+
+/* NAVIGATION */
+
+.user-sidebar nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.user-sidebar nav a {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 16px;
+
     border-radius: 10px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+.user-sidebar nav a:hover {
+    background: #1f2937;
+    color: white;
+
+    transform: translateX(3px);
+}
+
+
+.user-sidebar nav a.active {
+    background: #4f46e5;
+
+    color: white;
+
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.user-main {
+    margin-left: 260px;
+
+    width: calc(100% - 260px);
+
+    min-height: 100vh;
+
+    padding: 50px 60px 70px;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.user-page-header {
+    width: 100%;
+
+    margin-bottom: 38px;
+}
+
+
+.user-page-header > div {
+    width: 100%;
+}
+
+
+.user-page-header span {
+    display: inline-block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: #6366f1;
+
+    margin-bottom: 10px;
+}
+
+
+.user-page-header h1 {
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    color: #111827;
+}
+
+
+.user-page-header p {
+    margin: 0;
+
+    font-size: 16px;
+
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   ERROR / MESSAGE
+===================================================== */
+
+.user-error,
+.user-message {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 10px;
+
     margin-bottom: 25px;
+
     font-size: 14px;
+
+    font-weight: 600;
 }
 
 
-/* =========================================
+.user-error {
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    border: 1px solid #fecaca;
+}
+
+
+.user-message {
+    background: #dcfce7;
+
+    color: #15803d;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* =====================================================
    VENUE GRID
-========================================= */
+===================================================== */
 
-.venue-grid {
+.user-venue-grid {
+    width: 100%;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+
+    grid-template-columns:
+        repeat(3, minmax(280px, 1fr));
+
+    gap: 28px;
+
+    align-items: stretch;
 }
 
 
-/* =========================================
+/* =====================================================
    VENUE CARD
-========================================= */
+===================================================== */
 
-.venue-card {
-    background: #ffffff;
+.user-venue-card {
+    background: white;
+
     border: 1px solid #e5e7eb;
+
     border-radius: 18px;
+
     overflow: hidden;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+    min-width: 0;
+
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, 0.06);
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
 
-.venue-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+
+.user-venue-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.12);
 }
 
 
-/* =========================================
-   CARD TOP
-========================================= */
+/* =====================================================
+   VENUE IMAGE
+===================================================== */
 
-.venue-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.venue-image {
+    width: 100%;
 
-    padding: 20px 20px 15px;
+    height: 220px;
 
-    background: #fafafa;
-    border-bottom: 1px solid #eeeeee;
+    background: #eef2ff;
+
+    overflow: hidden;
+
+    position: relative;
 }
 
 
-/* =========================================
-   VENUE ICON
-========================================= */
+.venue-image img {
+    width: 100%;
 
-.venue-icon {
-    width: 48px;
-    height: 48px;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+.user-venue-card:hover .venue-image img {
+    transform: scale(1.05);
+}
+
+
+.venue-image-placeholder {
+    width: 100%;
+    height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    background: #eef2ff;
-    border-radius: 12px;
+    font-size: 60px;
 
-    font-size: 25px;
+    color: #6366f1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #e0e7ff
+        );
 }
 
 
-/* =========================================
-   VENUE STATUS
-========================================= */
-
-.venue-status {
-    padding: 7px 13px;
-    border-radius: 20px;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-}
-
-
-/* AVAILABLE */
-
-.venue-status.available {
-    background: #ecfdf5;
-    color: #047857;
-    border: 1px solid #a7f3d0;
-}
-
-
-/* UNAVAILABLE */
-
-.venue-status.unavailable {
-    background: #fff1f2;
-    color: #be123c;
-    border: 1px solid #fecdd3;
-}
-
-
-/* =========================================
+/* =====================================================
    CARD CONTENT
-========================================= */
+===================================================== */
 
 .venue-card-content {
     padding: 22px;
 }
 
+
+/* =====================================================
+   CARD TOP
+===================================================== */
+
+.venue-card-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+
+.venue-available {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.venue-available::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    background: #10b981;
+
+    border-radius: 50%;
+}
+
+
+/* =====================================================
+   VENUE NAME
+===================================================== */
+
 .venue-card-content h2 {
+    margin: 0 0 12px;
+
+    font-size: 22px;
+
+    font-weight: 750;
+
+    color: #111827;
+}
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+.venue-location {
     margin: 0 0 20px;
 
-    font-size: 22px;
-    font-weight: 700;
-
-    color: #111827;
-}
-
-
-/* =========================================
-   VENUE INFORMATION
-========================================= */
-
-.venue-info {
-    display: flex;
-    align-items: flex-start;
-
-    gap: 12px;
-
-    margin-bottom: 17px;
-}
-
-.venue-info > span {
-    width: 35px;
-    height: 35px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #f3f4f6;
-    border-radius: 9px;
-
-    font-size: 17px;
-}
-
-.venue-info small {
-    display: block;
-
-    margin-bottom: 4px;
-
-    color: #9ca3af;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.venue-info p {
-    margin: 0;
-
-    color: #4b5563;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-
-/* =========================================
-   PRICE
-========================================= */
-
-.venue-price-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-top: 22px;
-    padding-top: 18px;
-
-    border-top: 1px solid #eeeeee;
-}
-
-.venue-price-section span {
     color: #6b7280;
-    font-size: 13px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
 
-.venue-price-section strong {
-    color: #111827;
-    font-size: 22px;
-    font-weight: 700;
+
+/* =====================================================
+   META
+===================================================== */
+
+.venue-meta {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 16px 0;
+
+    margin-bottom: 18px;
+
+    border-top: 1px solid #edf0f4;
+
+    border-bottom: 1px solid #edf0f4;
 }
 
 
-/* =========================================
-   BOOK BUTTON
-========================================= */
+.venue-meta span {
+    color: #6b7280;
 
-.book-btn {
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.venue-meta strong {
+    color: #4f46e5;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   VIEW SLOTS BUTTON
+===================================================== */
+
+.view-slots-btn {
     width: 100%;
 
-    margin-top: 20px;
-    padding: 13px 18px;
-
     border: none;
+
     border-radius: 10px;
 
-    background: #2563eb;
+    padding: 13px 16px;
+
+    background: #111827;
+
     color: white;
 
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.book-btn:hover:not(:disabled) {
-    background: #1d4ed8;
+
+.view-slots-btn:hover {
+    background: #4f46e5;
+
     transform: translateY(-1px);
 }
 
-.book-btn:active:not(:disabled) {
-    transform: translateY(0);
-}
 
+/* =====================================================
+   SLOT SECTION
+===================================================== */
 
-/* =========================================
-   DISABLED BOOK BUTTON
-========================================= */
+.slot-section {
+    width: 100%;
 
-.book-btn:disabled {
-    background: #d1d5db;
-    color: #6b7280;
+    margin-top: 45px;
 
-    cursor: not-allowed;
-
-    transform: none;
-}
-
-
-/* =========================================
-   NO VENUES
-========================================= */
-
-.no-venues {
     background: white;
 
     border: 1px solid #e5e7eb;
+
     border-radius: 18px;
 
-    padding: 70px 25px;
+    padding: 30px;
 
-    text-align: center;
-
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0 5px 20px rgba(15, 23, 42, 0.06);
 }
 
-.no-venues-icon {
-    font-size: 55px;
-    margin-bottom: 15px;
+
+/* =====================================================
+   SLOT HEADER
+===================================================== */
+
+.slot-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #edf0f4;
+
+    margin-bottom: 25px;
 }
 
-.no-venues h2 {
-    margin: 0 0 10px;
 
-    color: #1f2937;
-    font-size: 24px;
+.slot-header span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #6366f1;
 }
 
-.no-venues p {
+
+.slot-header h2 {
+    margin: 0 0 7px;
+
+    font-size: 28px;
+
+    color: #111827;
+}
+
+
+.slot-header p {
     margin: 0;
 
     color: #6b7280;
-    font-size: 15px;
+
+    font-size: 14px;
 }
 
 
-/* =========================================
-   LOADING
-========================================= */
+/* CLOSE BUTTON */
 
+.close-slot-btn {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f3f4f6;
+
+    color: #374151;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.close-slot-btn:hover {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* =====================================================
+   DATE SELECTOR
+===================================================== */
+
+.date-selector {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+}
+
+
+.date-selector label {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #374151;
+}
+
+
+.date-selector input {
+    padding: 11px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #111827;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.date-selector input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =====================================================
+   SLOT GRID
+===================================================== */
+
+.slot-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(250px, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =====================================================
+   SLOT CARD
+===================================================== */
+
+.slot-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 13px;
+
+    transition: all 0.2s ease;
+}
+
+
+.slot-card:hover {
+    border-color: #c7d2fe;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.06);
+}
+
+
+/* SLOT ICON */
+
+.slot-icon {
+    width: 45px;
+    height: 45px;
+
+    min-width: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #eef2ff;
+
+    font-size: 20px;
+}
+
+
+/* SLOT INFO */
+
+.slot-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.slot-info h3 {
+    margin: 0 0 6px;
+
+    font-size: 15px;
+
+    color: #111827;
+}
+
+
+.slot-info span {
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.status-available {
+    color: #059669;
+}
+
+
+.status-unavailable {
+    color: #dc2626;
+}
+
+
+/* =====================================================
+   BOOK SLOT BUTTON
+===================================================== */
+
+.book-slot-btn {
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+}
+
+
+.book-slot-btn:hover {
+    background: #4338ca;
+}
+
+
+.book-slot-btn:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.65;
+}
+
+
+/* =====================================================
+   UNAVAILABLE SLOT
+===================================================== */
+
+.slot-card.slot-unavailable {
+    background: #fafafa;
+
+    border-color: #e5e7eb;
+
+    opacity: 0.8;
+}
+
+
+.slot-card.slot-unavailable .slot-icon {
+    background: #f3f4f6;
+
+    filter: grayscale(1);
+}
+
+
+.unavailable-btn {
+    background: #9ca3af !important;
+
+    color: white;
+
+    cursor: not-allowed !important;
+}
+
+
+/* =====================================================
+   NO SLOTS
+===================================================== */
+
+.no-slots {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    background: #f8fafc;
+
+    border-radius: 14px;
+
+    border: 1px dashed #d1d5db;
+}
+
+
+.no-slots > div {
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+
+.no-slots h3 {
+    margin: 0 0 8px;
+
+    color: #374151;
+
+    font-size: 19px;
+}
+
+
+.no-slots p {
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.user-empty {
+    width: 100%;
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+}
+
+
+.user-empty > div {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+
+.user-empty h2 {
+    margin: 0 0 10px;
+
+    font-size: 24px;
+}
+
+
+.user-empty p {
+    margin: 0;
+
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.user-loading,
 .venues-loading {
     min-height: 100vh;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     background: #f5f7fb;
 
-    color: #4b5563;
-}
-
-.venues-loading p {
-    margin-top: 15px;
-
-    font-size: 15px;
+    color: #374151;
 }
 
 
-/* =========================================
-   LOADING SPINNER
-========================================= */
-
+.user-spinner,
 .venues-spinner {
     width: 42px;
     height: 42px;
 
     border: 4px solid #e5e7eb;
-    border-top-color: #2563eb;
+
+    border-top-color: #4f46e5;
 
     border-radius: 50%;
 
-    animation: venueSpin 0.8s linear infinite;
+    animation: spin 0.8s linear infinite;
+
+    margin-bottom: 15px;
 }
 
-@keyframes venueSpin {
+
+@keyframes spin {
 
     from {
         transform: rotate(0deg);
@@ -390,69 +968,149 @@
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+/* =====================================================
+   DESKTOP - LARGE SCREEN
+===================================================== */
 
-@media (max-width: 1000px) {
+@media (min-width: 1500px) {
 
-    .venue-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .user-main {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .user-venue-grid {
+        grid-template-columns:
+            repeat(3, minmax(300px, 1fr));
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .user-main {
+        padding: 40px;
+    }
+
+    .user-venue-grid {
+        grid-template-columns:
+            repeat(2, minmax(280px, 1fr));
+    }
+
+    .slot-grid {
+        grid-template-columns:
+            repeat(2, minmax(250px, 1fr));
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .user-sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .user-main {
+        margin-left: 220px;
+
+        width: calc(100% - 220px);
+
+        padding: 30px;
+    }
+
+    .user-venue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .slot-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
 @media (max-width: 650px) {
 
-    .venues-page {
-        padding: 25px 15px;
+    .user-layout {
+        display: block;
     }
 
-    .venues-header h1 {
-        font-size: 28px;
-    }
+    .user-sidebar {
+        position: relative;
 
-    .venues-header p {
-        font-size: 14px;
-    }
+        width: 100%;
+        min-width: 100%;
 
-    .venue-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
+        min-height: auto;
 
-    .venue-card-content {
         padding: 20px;
     }
 
-}
-
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 400px) {
-
-    .venues-header h1 {
-        font-size: 24px;
+    .user-role {
+        margin-bottom: 20px;
     }
 
-    .venue-card-top {
-        padding: 16px;
+    .user-sidebar nav {
+        gap: 5px;
     }
 
-    .venue-card-content {
-        padding: 17px;
+    .user-sidebar nav a {
+        padding: 11px 13px;
     }
 
-    .venue-card-content h2 {
-        font-size: 20px;
+    .user-main {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 25px 18px 50px;
+    }
+
+    .user-page-header h1 {
+        font-size: 30px;
+    }
+
+    .user-venue-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .slot-section {
+        padding: 20px;
+    }
+
+    .date-selector {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .date-selector input {
+        width: 100%;
+    }
+
+    .slot-card {
+        flex-wrap: wrap;
+    }
+
+    .book-slot-btn {
+        width: 100%;
     }
 
 }

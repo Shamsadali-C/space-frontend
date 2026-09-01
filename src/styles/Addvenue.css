@@ -1,206 +1,718 @@
+```css
+/* =========================================================
+   ADD VENUE PAGE
+========================================================= */
 
 .add-venue-page {
     min-height: 100vh;
-    background: #f4f6f9;
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
     padding: 50px 20px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(99, 102, 241, 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(168, 85, 247, 0.10),
+            transparent 35%
+        ),
+        #f5f7fb;
+
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
 }
 
 
+/* =========================================================
+   CARD
+========================================================= */
 
 .add-venue-card {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
+
     background: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+
+    border-radius: 22px;
+
+    padding: 40px;
+
     box-sizing: border-box;
+
+    border: 1px solid #e8eaf0;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.08);
+
+    animation: cardAppear 0.5s ease;
 }
 
-.add-venue-card h1 {
-    margin: 0;
-    color: #172033;
-    font-size: 30px;
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.add-venue-header {
+    margin-bottom: 30px;
+}
+
+
+.form-label {
+    display: inline-block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #6366f1;
+
+    margin-bottom: 8px;
+}
+
+
+.add-venue-header h1 {
+    margin: 0;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    color: #111827;
+
+    letter-spacing: -0.7px;
+}
+
 
 .form-description {
-    margin: 8px 0 30px;
-    color: #6c757d;
+    margin: 8px 0 0;
+
     font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #6b7280;
 }
 
 
-
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
 
 .success-message {
-    background: #d1e7dd;
-    color: #0f5132;
-    border: 1px solid #badbcc;
-    padding: 12px 15px;
-    border-radius: 7px;
-    margin-bottom: 20px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 16px;
+
+    margin-bottom: 24px;
+
+    border-radius: 12px;
+
+    background: #ecfdf5;
+
+    border: 1px solid #a7f3d0;
+
+    color: #047857;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    animation: messageAppear 0.3s ease;
+}
+
+
+.success-message span {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #10b981;
+
+    color: white;
+
     font-size: 14px;
 }
+
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
 
 .error-message {
-    background: #f8d7da;
-    color: #842029;
-    border: 1px solid #f5c2c7;
-    padding: 12px 15px;
-    border-radius: 7px;
-    margin-bottom: 20px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 16px;
+
+    margin-bottom: 24px;
+
+    border-radius: 12px;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+
     font-size: 14px;
+
+    font-weight: 600;
 }
 
 
+.error-message span {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ef4444;
+
+    color: white;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+form {
+    width: 100%;
+}
 
 
 .form-group {
     margin-bottom: 22px;
 }
 
+
 .form-group label {
     display: block;
+
     margin-bottom: 8px;
-    color: #252b35;
-    font-weight: 600;
+
+    color: #374151;
+
     font-size: 14px;
+
+    font-weight: 700;
 }
 
-.form-group input {
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
     width: 100%;
-    padding: 12px 13px;
-    border: 1px solid #ced4da;
-    border-radius: 7px;
-    outline: none;
-    font-size: 15px;
+
+    height: 50px;
+
+    padding: 0 15px;
+
     box-sizing: border-box;
-    background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
+
+    border: 1px solid #d9dde7;
+
+    border-radius: 11px;
+
+    background: #fafbfc;
+
+    color: #111827;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-.form-group input:focus {
-    border-color: #536dfe;
-    box-shadow: 0 0 0 3px rgba(83, 109, 254, 0.12);
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+    background: #ffffff;
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.10);
 }
 
 
+.form-group input::placeholder {
+    color: #9ca3af;
+}
 
+
+/* =========================================================
+   NUMBER INPUT
+========================================================= */
+
+.form-group input[type="number"] {
+    appearance: textfield;
+}
+
+
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FILE INPUT
+========================================================= */
 
 .form-group input[type="file"] {
-    padding: 10px;
+    width: 100%;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border: 1px dashed #c7cad5;
+
+    border-radius: 12px;
+
+    background: #f9fafb;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
     cursor: pointer;
-    background: #f8f9fa;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
+
+
+.form-group input[type="file"]:hover {
+    border-color: #6366f1;
+
+    background: #f5f3ff;
+}
+
+
+/* =========================================================
+   FILE BUTTON
+========================================================= */
 
 .form-group input[type="file"]::file-selector-button {
-    border: none;
-    background: #536dfe;
-    color: white;
-    padding: 9px 14px;
     margin-right: 12px;
-    border-radius: 6px;
+
+    padding: 9px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #6366f1;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
     cursor: pointer;
+
+    transition: background 0.2s ease;
 }
+
 
 .form-group input[type="file"]::file-selector-button:hover {
-    background: #4055d6;
+    background: #4f46e5;
 }
 
 
+/* =========================================================
+   IMAGE HELP
+========================================================= */
 
+.image-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SELECTED FILES
+========================================================= */
 
 .selected-files {
-    margin-top: 12px;
-    padding: 12px;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 7px;
+    margin-top: 14px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #f5f3ff;
+
+    border: 1px solid #ddd6fe;
 }
 
+
 .selected-files p {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+
+    color: #4f46e5;
+
     font-size: 13px;
-    font-weight: 600;
-    color: #495057;
+
+    font-weight: 700;
 }
+
 
 .selected-files span {
     display: block;
+
+    padding: 7px 0;
+
+    color: #4b5563;
+
     font-size: 13px;
-    color: #6c757d;
-    padding: 4px 0;
-    word-break: break-word;
+
+    border-bottom: 1px solid #e9e7f7;
 }
 
 
+.selected-files span:last-child {
+    border-bottom: none;
+}
 
-.add-venue-card form > button {
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-venue-btn {
     width: 100%;
-    padding: 13px;
+
+    height: 52px;
+
+    margin-top: 8px;
+
     border: none;
-    border-radius: 7px;
-    background: #536dfe;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
     color: white;
-    font-size: 16px;
-    font-weight: 600;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
     cursor: pointer;
-    transition: background 0.2s;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
 }
 
-.add-venue-card form > button:hover {
-    background: #4055d6;
+
+.submit-venue-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(99, 102, 241, 0.32);
 }
 
-.add-venue-card form > button:disabled {
-    background: #9da7d4;
+
+.submit-venue-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+
+.submit-venue-btn:disabled {
     cursor: not-allowed;
+
+    opacity: 0.65;
+
+    box-shadow: none;
 }
 
 
-/* =========================
-   Back Button
-========================= */
+/* =========================================================
+   BUTTON SPINNER
+========================================================= */
+
+.button-spinner {
+    display: inline-block;
+
+    width: 15px;
+    height: 15px;
+
+    margin-right: 9px;
+
+    vertical-align: -2px;
+
+    border: 2px solid rgba(255, 255, 255, 0.45);
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    animation: spin 0.7s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
 
 .back-button {
     width: 100%;
-    margin-top: 12px;
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 7px;
-    background: white;
-    color: #495057;
-    font-size: 15px;
+
+    height: 46px;
+
+    margin-top: 18px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #4b5563;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
     cursor: pointer;
-    transition: 0.2s;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
-.back-button:hover {
-    background: #f1f3f5;
-    border-color: #adb5bd;
+
+.back-button:hover:not(:disabled) {
+    background: #f9fafb;
+
+    border-color: #c7cad5;
+
+    color: #111827;
 }
 
 
-/* =========================
-   Responsive
-========================= */
+/* =========================================================
+   MY VENUES BUTTON
+========================================================= */
 
-@media (max-width: 600px) {
+.my-venues-button {
+    width: 100%;
+
+    height: 46px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.my-venues-button:hover:not(:disabled) {
+    background: #e0e7ff;
+
+    transform: translateY(-1px);
+}
+
+
+.back-button:disabled,
+.my-venues-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   REQUIRED FIELD FEEDBACK
+========================================================= */
+
+.form-group input:invalid:not(:placeholder-shown) {
+    border-color: #fca5a5;
+}
+
+
+.form-group input:valid:not(:placeholder-shown) {
+    border-color: #d9dde7;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
 
     .add-venue-page {
-        padding: 20px 12px;
+        padding: 25px 15px;
     }
+
 
     .add-venue-card {
-        padding: 25px 20px;
+        padding: 28px 22px;
+
+        border-radius: 18px;
     }
 
-    .add-venue-card h1 {
-        font-size: 25px;
+
+    .add-venue-header h1 {
+        font-size: 28px;
+    }
+
+
+    .form-description {
+        font-size: 14px;
     }
 }
+
+
+@media (max-width: 450px) {
+
+    .add-venue-page {
+        padding: 15px 10px;
+    }
+
+
+    .add-venue-card {
+        padding: 23px 17px;
+
+        border-radius: 15px;
+    }
+
+
+    .add-venue-header h1 {
+        font-size: 25px;
+    }
+
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+
+    .form-group input[type="text"],
+    .form-group input[type="number"] {
+        height: 47px;
+    }
+
+
+    .submit-venue-btn {
+        height: 49px;
+    }
+}
+```

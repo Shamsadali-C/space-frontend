@@ -91,10 +91,10 @@ const AdminDashboard = () => {
 
                     <div className="admin-stats">
 
-                        <div className="admin-stat-card">
-                            <h3>Total Users</h3>
-                            <strong>{data.totalUsers}</strong>
-                        </div>
+{/*                         <div className="admin-stat-card"> */}
+{/*                             <h3>Total Users</h3> */}
+{/*                             <strong>{data.totalUsers}</strong> */}
+{/*                         </div> */}
 
                         <div className="admin-stat-card">
                             <h3>Total Venues</h3>
@@ -116,10 +116,10 @@ const AdminDashboard = () => {
                             <strong>{data.owners}</strong>
                         </div>
 
-                        <div className="admin-stat-card">
-                            <h3>Admins</h3>
-                            <strong>{data.admins}</strong>
-                        </div>
+{/*                         <div className="admin-stat-card"> */}
+{/*                             <h3>Admins</h3> */}
+{/*                             <strong>{data.admins}</strong> */}
+{/*                         </div> */}
 
                     </div>
                 )}

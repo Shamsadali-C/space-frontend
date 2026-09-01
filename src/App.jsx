@@ -28,6 +28,7 @@ import OwnerDashboard from "./pages/owner/OwnerDashboard";
 import AddVenue from "./pages/owner/AddVenue";
 import OwnerBooking from "./pages/owner/OwnerBooking";
 import OwnerVenues from "./pages/owner/OwnerVenues";
+import CreateTimeSlot from "./pages/owner/CreateTimeSlot";
 
 function App() {
 
@@ -116,6 +117,10 @@ function App() {
                 <Route
                     path="/owner/Venues"
                     element={<OwnerVenues />}
+                />
+                <Route
+                    path="/owner/create-slot"
+                    element={<CreateTimeSlot />}
                 />
 
 

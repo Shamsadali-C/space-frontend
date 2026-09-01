@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import adminService from "../../services/adminService";
-import AdminSidebar from "./AdminSidebar";
 import "../../styles/OwnerRequests.css";
 
 const OwnerRequests = () => {

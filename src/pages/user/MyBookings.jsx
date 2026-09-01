@@ -207,18 +207,26 @@
 //
 // export default UserBookings;
 
-import React, { useEffect, useState } from "react";
+import React, {  useEffect,  useState} from "react";
+import {  Link} from "react-router-dom";
 import userService from "../../services/userService";
 import "../../styles/MyBookings.css";
+
 
 const MyBookings = () => {
 
     const [bookings, setBookings] = useState([]);
+
     const [loading, setLoading] = useState(true);
-    const [message, setMessage] = useState("");
+
+    const [error, setError] = useState("");
 
 
-    useEffect(() => {  loadBookings(); }, []);
+    useEffect(() => {
+
+        loadBookings();
+
+    }, []);
 
 
     const loadBookings = async () => {
@@ -227,37 +235,38 @@ const MyBookings = () => {
 
             setLoading(true);
 
-            const response =
+            setError("");
+
+
+            const data =
                 await userService.getMyBookings();
 
+
             console.log(
-                "MY BOOKINGS:",
-                response.data
+                "My bookings:",
+                data
             );
 
-            if (Array.isArray(response.data)) {
 
-                setBookings(response.data);
+            setBookings(
+                Array.isArray(data)
+                    ? data
+                    : []
+            );
 
-            } else {
-
-                setBookings([]);
-
-                setMessage(
-                    "Invalid booking data received"
-                );
-            }
 
         } catch (error) {
 
             console.error(
-                "Booking loading error:",
+                "Failed to load bookings:",
                 error
             );
 
-            setMessage(
+
+            setError(
+                error.response?.data?.message ||
                 error.response?.data ||
-                "Failed to load bookings"
+                "Failed to load bookings."
             );
 
         } finally {
@@ -270,8 +279,15 @@ const MyBookings = () => {
     if (loading) {
 
         return (
-            <div className="bookings-loading">
-                Loading your bookings...
+
+            <div className="user-loading">
+
+                <div className="user-spinner"></div>
+
+                <h2>
+                    Loading your bookings...
+                </h2>
+
             </div>
         );
     }
@@ -279,28 +295,78 @@ const MyBookings = () => {
 
     return (
 
-        <div className="my-bookings-page">
+        <div className="user-layout">
 
-            <div className="my-bookings-container">
 
-                <div className="bookings-header">
+            {/* SIDEBAR */}
+
+            <aside className="user-sidebar">
+
+                <div className="user-logo">
+                    Book My Space
+                </div>
+
+                <div className="user-role">
+                    USER PANEL
+                </div>
+
+
+                <nav>
+
+                    <Link to="/home">
+                        🏠 Dashboard
+                    </Link>
+
+                    <Link to="/user/venues">
+                        🏢 Find Venues
+                    </Link>
+
+                    <Link
+                        to="/user/bookings"
+                        className="active"
+                    >
+                        📅 My Bookings
+                    </Link>
+
+                    <Link to="/user/profile">
+                        👤 Profile
+                    </Link>
+
+                    <Link to="/user/owner-request">
+                        ⭐ Become an Owner
+                    </Link>
+
+                </nav>
+
+            </aside>
+
+
+            {/* MAIN */}
+
+            <main className="user-main">
+
+                <div className="user-page-header">
+
+                    <span>
+                        BOOKING MANAGEMENT
+                    </span>
 
                     <h1>
                         My Bookings
                     </h1>
 
                     <p>
-                        View your booking requests
-                        and their current status.
+                        Track all your venue booking
+                        requests.
                     </p>
 
                 </div>
 
 
-                {message && (
+                {error && (
 
-                    <div className="booking-message">
-                        {message}
+                    <div className="user-error">
+                        {error}
                     </div>
 
                 )}
@@ -308,7 +374,7 @@ const MyBookings = () => {
 
                 {bookings.length === 0 ? (
 
-                    <div className="no-bookings">
+                    <div className="user-empty">
 
                         <div>
                             📅
@@ -323,90 +389,116 @@ const MyBookings = () => {
                             booking requests.
                         </p>
 
+                        <Link
+                            to="/user/venues"
+                            className="browse-btn"
+                        >
+                            Find a Venue →
+                        </Link>
+
                     </div>
 
                 ) : (
 
-                    <div className="bookings-list">
+                    <div className="booking-list">
 
-                        {bookings.map((booking) => (
+                        {bookings.map(
+                            (booking) => (
 
-                            <div
-                                className="booking-card"
-                                key={booking.id}
-                            >
+                                <div
+                                    className="booking-card"
+                                    key={
+                                        booking.id
+                                    }
+                                >
 
-                                <div className="booking-info">
+                                    <div className="booking-top">
 
-                                    <h2>
-                                        {booking.venue?.venueName ||
-                                            "Venue"}
-                                    </h2>
+                                        <div>
 
-                                    <p>
-                                        📍{" "}
-                                        {booking.venue?.location ||
-                                            "Location not available"}
-                                    </p>
+                                            <span>
+                                                BOOKING #
+                                                {booking.id}
+                                            </span>
 
-                                    {booking.timeSlot && (
+                                            <h2>
+                                                {booking.venue
+                                                    ?.venueName ||
+                                                    "Venue"}
+                                            </h2>
+
+                                        </div>
+
+
+                                        <span
+                                            className={
+                                                `booking-status ${
+                                                    booking.bookingStatus
+                                                        ?.toLowerCase()
+                                                }`
+                                            }
+                                        >
+                                            {
+                                                booking.bookingStatus ||
+                                                "PENDING"
+                                            }
+                                        </span>
+
+                                    </div>
+
+
+                                    <div className="booking-details">
 
                                         <p>
+                                            📍{" "}
+                                            {booking.venue
+                                                ?.location ||
+                                                "N/A"}
+                                        </p>
 
+
+                                        <p>
+                                            📅{" "}
+                                            {booking.timeSlot
+                                                ?.slotDate ||
+                                                booking.bookingDate ||
+                                                "N/A"}
+                                        </p>
+
+
+                                        <p>
                                             🕐{" "}
 
-                                            {booking.timeSlot.startTime}
+                                            {booking.timeSlot
+                                                ?.startTime ||
+                                                booking.startTime ||
+                                                "N/A"}
 
                                             {" - "}
 
-                                            {booking.timeSlot.endTime}
+                                            {booking.timeSlot
+                                                ?.endTime ||
+                                                booking.endTime ||
+                                                "N/A"}
 
                                         </p>
 
-                                    )}
-
-                                    {booking.timeSlot && (
-
-                                        <p>
-
-                                            📅{" "}
-
-                                            {booking.timeSlot.slotDate}
-
-                                        </p>
-
-                                    )}
+                                    </div>
 
                                 </div>
 
-
-                                <div className="booking-status-container">
-
-                                    <span
-                                        className={`booking-status ${
-                                            booking.bookingStatus
-                                                ?.toLowerCase()
-                                        }`}
-                                    >
-
-                                        {booking.bookingStatus}
-
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        ))}
+                            )
+                        )}
 
                     </div>
 
                 )}
 
-            </div>
+            </main>
 
         </div>
     );
 };
+
 
 export default MyBookings;

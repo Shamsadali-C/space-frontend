@@ -1,43 +1,139 @@
 
 import api from "./api";
 
-// Get owner's venues
-const getOwnerVenues = () => {
-    return api.get("/owner/venues");
+
+
+const getVenues = async () => {
+
+    const response = await api.get(
+        "/owner/venues"
+    );
+
+    return response.data;
 };
 
-// Get owner's bookings
-const getOwnerBookings = () => {
-    return api.get("/owner/bookings");
+
+const addVenue = async (venue) => {
+
+    const response = await api.post(
+        "/owner/add-venue",
+        venue
+    );
+
+    return response.data;
 };
 
-// Approve booking
-const approveBooking = (bookingId) => {
-    return api.put(`/owner/Approve/${bookingId}`);
+
+/* =========================================
+   VENUE STATUS
+========================================= */
+
+const maintenance = async (venueId) => {
+
+    const response = await api.put(
+        `/owner/venue/maintanence/${venueId}`
+    );
+
+    return response.data;
 };
 
-// Reject booking
-const rejectBooking = (bookingId) => {
-    return api.put(`/owner/reject/${bookingId}`);
+
+const available = async (venueId) => {
+
+    const response = await api.put(
+        `/owner/venue/available/${venueId}`
+    );
+
+    return response.data;
 };
 
-// Add venue
-const addVenue = (venueData) => {
-    return api.post("/owner/add-venue", venueData);
+
+const holiday = async (venueId) => {
+
+    const response = await api.put(
+        `/owner/venue/holiday/${venueId}`
+    );
+
+    return response.data;
 };
 
-// Maintenance
-const setMaintenance = (venueId) => {
-    return api.put(`/owner/venue/maintanence/${venueId}`);
+
+/* =========================================
+   DELETE VENUE
+========================================= */
+
+const deleteVenue = async (venueId) => {
+
+    const response = await api.delete(
+        `/owner/venue/${venueId}`
+    );
+
+    return response.data;
 };
 
-// Holiday
-const setHoliday = (venueId) => {
-    return api.put(`/owner/venue/holiday/${venueId}`);
+
+/* =========================================
+   GET OWNER BOOKINGS
+========================================= */
+
+const getBookings = async () => {
+
+    const response = await api.get(
+        "/owner/bookings"
+    );
+
+    return response.data;
 };
 
-// Upload venue images
-const uploadImages = (venueId, files) => {
+
+/* =========================================
+   APPROVE BOOKING
+========================================= */
+
+const approveBooking = async (bookingId) => {
+
+    const response = await api.put(
+        `/owner/Approve/${bookingId}`
+    );
+
+    return response.data;
+};
+
+
+/* =========================================
+   REJECT BOOKING
+========================================= */
+
+const rejectBooking = async (bookingId) => {
+
+    const response = await api.put(
+        `/owner/reject/${bookingId}`
+    );
+
+    return response.data;
+};
+
+
+/* =========================================
+   CREATE TIME SLOT
+========================================= */
+
+const createTimeSlot = async (venueId, slot) => {
+
+    const response = await api.post(
+        `/owner/venue/${venueId}/slots`,
+        slot
+    );
+
+    return response.data;
+};
+
+
+/* =========================================
+   UPLOAD VENUE IMAGES
+========================================= */
+
+const uploadImages = async (venueId, files) => {
 
     const formData = new FormData();
 
@@ -45,24 +141,65 @@ const uploadImages = (venueId, files) => {
         formData.append("files", file);
     });
 
-    return api.post(
+    const response = await api.post(
         `/owner/venue/${venueId}/images`,
-        formData,
-        {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }
+        formData
     );
+
+    return response.data;
 };
 
+
+/* =========================================
+   GET VENUE IMAGES
+========================================= */
+
+const getImages = async (venueId) => {
+
+    const response = await api.get(
+        `/owner/venue/${venueId}/images`
+    );
+
+    return response.data;
+};
+
+
+/* =========================================
+   DELETE IMAGE
+========================================= */
+
+const deleteImage = async (id) => {
+
+    const response = await api.delete(
+        `/owner/venue/images/${id}`
+    );
+
+    return response.data;
+};
+
+
+/* =========================================
+   EXPORT
+========================================= */
+
 export default {
-    getOwnerVenues,
-    getOwnerBookings,
+
+    getVenues,
+    addVenue,
+
+    maintenance,
+    available,
+    holiday,
+    deleteVenue,
+
+    getBookings,
     approveBooking,
     rejectBooking,
-    addVenue,
-    setMaintenance,
-    setHoliday,
-    uploadImages
+
+    createTimeSlot,
+
+    uploadImages,
+    getImages,
+    deleteImage
 };
+

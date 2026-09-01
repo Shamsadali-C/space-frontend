@@ -13,7 +13,6 @@ const getConfig = () => {
 };
 
 
-// Dashboard
 const getDashboard = () => {
     return axios.get(
         `${API_URL}/dashboard`,
@@ -22,7 +21,6 @@ const getDashboard = () => {
 };
 
 
-// Users
 const getUsers = () => {
     return axios.get(
         `${API_URL}/users`,
@@ -54,7 +52,6 @@ const makeUser = (id) => {
 };
 
 
-// Venues
 const getVenues = () => {
     return axios.get(
         `${API_URL}/venues`,
@@ -70,7 +67,6 @@ const deleteVenue = (id) => {
 };
 
 
-// Bookings
 const getBookings = () => {
     return axios.get(
         `${API_URL}/bookings`,
@@ -86,7 +82,6 @@ const deleteBooking = (id) => {
 };
 
 
-// Owner Requests
 const getOwnerRequests = () => {
     return axios.get(
         `${API_URL}/owner-requests`,

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import adminService from "../../services/adminService";
-import AdminSidebar from "./AdminSidebar";
 import "../../styles/AdminVenues.css";
 
 function AdminVenues() {
@@ -57,7 +56,7 @@ function AdminVenues() {
 
             {/* SIDEBAR */}
 
-          {/*}  <aside className="admin-venues-sidebar">
+            <aside className="admin-venues-sidebar">
 
                 <h2 className="admin-venues-logo">
                     Book My Space
@@ -90,7 +89,7 @@ function AdminVenues() {
 
                 </nav>
 
-            </aside>*/}
+            </aside>
 
 
             {/* MAIN CONTENT */}

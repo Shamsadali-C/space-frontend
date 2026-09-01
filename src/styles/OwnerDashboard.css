@@ -237,4 +237,200 @@
     .owner-cards {
         grid-template-columns: 1fr;
     }
+
+    /* =========================================
+       DASHBOARD CARDS
+    ========================================= */
+
+    .owner-dashboard-cards {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 22px;
+
+        margin-top: 30px;
+    }
+
+
+    .owner-dashboard-card {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+        padding: 25px;
+
+        background: #ffffff;
+
+        border: 1px solid #e8eaf0;
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 8px 25px rgba(15, 23, 42, 0.06);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+
+    .owner-dashboard-card:hover {
+        transform: translateY(-5px);
+
+        box-shadow:
+            0 15px 35px rgba(15, 23, 42, 0.10);
+
+        border-color: #c7d2fe;
+    }
+
+
+    /* =========================================
+       CARD ICON
+    ========================================= */
+
+    .dashboard-card-icon {
+        width: 55px;
+        height: 55px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 15px;
+
+        background: #eef2ff;
+
+        font-size: 26px;
+    }
+
+
+    /* =========================================
+       CARD CONTENT
+    ========================================= */
+
+    .dashboard-card-content {
+        flex: 1;
+    }
+
+
+    .dashboard-card-content h3 {
+        margin: 0 0 8px;
+
+        font-size: 20px;
+
+        font-weight: 750;
+
+        color: #111827;
+    }
+
+
+    .dashboard-card-content p {
+        margin: 0 0 18px;
+
+        color: #6b7280;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================================
+       CARD BUTTON
+    ========================================= */
+
+    .dashboard-card-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        padding: 9px 15px;
+
+        border-radius: 9px;
+
+        background: #6366f1;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+
+    .dashboard-card-btn:hover {
+        background: #4f46e5;
+
+        transform: translateX(2px);
+    }
+
+
+    /* =========================================
+       TIME SLOT CARD
+    ========================================= */
+
+    .slot-card {
+        background:
+            linear-gradient(
+                135deg,
+                #ffffff 0%,
+                #f5f3ff 100%
+            );
+
+        border-color: #ddd6fe;
+    }
+
+
+    .slot-card .dashboard-card-icon {
+        background: #ede9fe;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 800px) {
+
+        .owner-dashboard-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    @media (max-width: 500px) {
+
+        .owner-dashboard-card {
+            padding: 20px;
+
+            gap: 15px;
+        }
+
+
+        .dashboard-card-icon {
+            width: 45px;
+            height: 45px;
+
+            font-size: 21px;
+        }
+
+
+        .dashboard-card-content h3 {
+            font-size: 17px;
+        }
+    }
 }

@@ -1,270 +1,574 @@
-// import React, { useEffect, useState } from "react";
-// import userService from "../../services/userService";
-// import "../styles/UserProfile.css";
-//
-// const UserProfile = () => {
-//
-//     const [user, setUser] = useState(null);
-//     const [loading, setLoading] = useState(true);
-//     const [error, setError] = useState("");
-//
-//     useEffect(() => {
-//
-//         const loadProfile = async () => {
-//
-//             try {
-//
-//                 const response = await userService.getProfile();
-//
-//                 setUser(response.data);
-//
-//             } catch (error) {
-//
-//                 console.error(error);
-//
-//                 setError("Failed to load profile");
-//
-//             } finally {
-//
-//                 setLoading(false);
-//             }
-//         };
-//
-//         loadProfile();
-//
-//     }, []);
-//
-//     if (loading) {
-//         return <h2>Loading...</h2>;
-//     }
-//
-//     if (error) {
-//         return <h2>{error}</h2>;
-//     }
-//
-//     return (
-//         <div>
-//
-//             <h1>My Profile</h1>
-//
-//             {user && (
-//                 <div>
-//
-//                     <p>
-//                         <strong>ID:</strong> {user.id}
-//                     </p>
-//
-//                     <p>
-//                         <strong>Username:</strong> {user.username}
-//                     </p>
-//
-//                     <p>
-//                         <strong>Email:</strong> {user.email}
-//                     </p>
-//
-// {/*                     <p> */}
-// {/*                         <strong>Role:</strong> {user.role} */}
-// {/*                     </p> */}
-//
-//                 </div>
-//             )}
-//
-//         </div>
-//     );
-// };
-//
-// export default UserProfile;
-
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import userService from "../../services/userService";
 import "../../styles/UserProfile.css";
 
 const UserProfile = () => {
 
     const [user, setUser] = useState(null);
+
+    const [form, setForm] = useState({
+        username: "",
+        email: ""
+    });
+
     const [loading, setLoading] = useState(true);
+
+    const [updating, setUpdating] = useState(false);
+
+    const [message, setMessage] = useState("");
+
     const [error, setError] = useState("");
 
+    const [editMode, setEditMode] = useState(false);
+
+
+    /*
+    =====================================================
+    LOAD PROFILE
+    =====================================================
+    */
+
     useEffect(() => {
-
-        const loadProfile = async () => {
-
-            try {
-
-                const response =
-                    await userService.getProfile();
-
-                setUser(response.data);
-
-            } catch (error) {
-
-                console.error(error);
-
-                setError("Failed to load profile");
-
-            } finally {
-
-                setLoading(false);
-            }
-        };
 
         loadProfile();
 
     }, []);
 
-    if (loading) {
-        return (
-            <div className="profile-loading">
-                <div className="profile-spinner"></div>
-                <p>Loading profile...</p>
-            </div>
-        );
-    }
 
-    if (error) {
+    const loadProfile = async () => {
+
+        try {
+
+            setLoading(true);
+
+            setError("");
+
+            const data =
+                await userService.getProfile();
+
+            console.log("PROFILE:", data);
+
+            setUser(data);
+
+            setForm({
+                username: data.username || "",
+                email: data.email || ""
+            });
+
+        } catch (error) {
+
+            console.error(
+                "Failed to load profile:",
+                error
+            );
+
+            setError(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to load profile."
+            );
+
+        } finally {
+
+            setLoading(false);
+        }
+    };
+
+
+    /*
+    =====================================================
+    HANDLE INPUT
+    =====================================================
+    */
+
+    const handleChange = (e) => {
+
+        const { name, value } = e.target;
+
+        setForm({
+            ...form,
+            [name]: value
+        });
+    };
+
+
+    /*
+    =====================================================
+    UPDATE PROFILE
+    =====================================================
+    */
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            setUpdating(true);
+
+            setMessage("");
+
+            setError("");
+
+
+            const updatedUser =
+                await userService.updateUser(form);
+
+
+            console.log(
+                "UPDATED USER:",
+                updatedUser
+            );
+
+
+            setUser(updatedUser);
+
+            setForm({
+                username: updatedUser.username || "",
+                email: updatedUser.email || ""
+            });
+
+
+            setMessage(
+                "Profile updated successfully!"
+            );
+
+            setEditMode(false);
+
+
+        } catch (error) {
+
+            console.error(
+                "Update profile error:",
+                error
+            );
+
+            setError(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to update profile."
+            );
+
+        } finally {
+
+            setUpdating(false);
+        }
+    };
+
+
+    /*
+    =====================================================
+    CANCEL EDIT
+    =====================================================
+    */
+
+    const handleCancel = () => {
+
+        setForm({
+            username: user?.username || "",
+            email: user?.email || ""
+        });
+
+        setError("");
+
+        setMessage("");
+
+        setEditMode(false);
+    };
+
+
+    /*
+    =====================================================
+    LOADING
+    =====================================================
+    */
+
+    if (loading) {
+
         return (
-            <div className="profile-error">
-                <div className="error-icon">
-                    ⚠️
-                </div>
+
+            <div className="profile-loading">
+
+                <div className="profile-spinner"></div>
 
                 <h2>
-                    {error}
+                    Loading profile...
                 </h2>
 
-                <p>
-                    Please try again later.
-                </p>
             </div>
         );
     }
 
+
+    /*
+    =====================================================
+    PAGE
+    =====================================================
+    */
+
     return (
+
         <div className="profile-page">
 
-            <div className="profile-container">
+
+            {/* =================================================
+                SIDEBAR
+            ================================================= */}
+
+            <aside className="profile-sidebar">
+
+                <div className="profile-logo">
+                    Book My Space
+                </div>
+
+                <div className="profile-role">
+                    USER PANEL
+                </div>
+
+
+                <nav>
+
+                    <Link to="/user">
+                        🏠 Dashboard
+                    </Link>
+
+                    <Link to="/user/venues">
+                        🏢 Find Venues
+                    </Link>
+
+                    <Link to="/user/bookings">
+                        📅 My Bookings
+                    </Link>
+
+                    <Link
+                        to="/user/profile"
+                        className="active"
+                    >
+                        👤 Profile
+                    </Link>
+
+                    <Link to="/user/owner-request">
+                        ⭐ Become an Owner
+                    </Link>
+
+                </nav>
+
+            </aside>
+
+
+            {/* =================================================
+                MAIN
+            ================================================= */}
+
+            <main className="profile-main">
+
 
                 {/* HEADER */}
 
                 <div className="profile-header">
 
-                    <div className="profile-avatar">
-                        {user?.username
-                            ?.charAt(0)
-                            .toUpperCase()}
-                    </div>
+                    <span>
+                        ACCOUNT SETTINGS
+                    </span>
 
-                    <div>
+                    <h1>
+                        My Profile
+                    </h1>
 
-                        <h1>
-                            My Profile
-                        </h1>
-
-                        <p>
-                            View your account information
-                        </p>
-
-                    </div>
+                    <p>
+                        View and manage your account
+                        information.
+                    </p>
 
                 </div>
 
 
-                {/* PROFILE CARD */}
+                {/* =================================================
+                    MESSAGES
+                ================================================= */}
+
+                {message && (
+
+                    <div className="profile-success">
+                        ✓ {message}
+                    </div>
+
+                )}
+
+
+                {error && (
+
+                    <div className="profile-error">
+                        {error}
+                    </div>
+
+                )}
+
+
+                {/* =================================================
+                    PROFILE CARD
+                ================================================= */}
 
                 {user && (
 
                     <div className="profile-card">
 
-                        <div className="profile-card-title">
 
-                            <h2>
-                                Personal Information
-                            </h2>
+                        {/* TOP */}
 
-                            <span className="profile-badge">
-                                User
-                            </span>
+                        <div className="profile-card-top">
 
-                        </div>
+                            <div className="profile-avatar">
+                                {user.username
+                                    ?.charAt(0)
+                                    ?.toUpperCase() || "U"}
+                            </div>
 
 
-                        <div className="profile-details">
+                            <div className="profile-name">
 
-                            {/* ID */}
+                                <h2>
+                                    {user.username}
+                                </h2>
 
-                            <div className="profile-detail">
-
-                                <div className="detail-icon">
-                                    🆔
-                                </div>
-
-                                <div className="detail-content">
-
-                                    <span>
-                                        User ID
-                                    </span>
-
-                                    <strong>
-                                        {user.id}
-                                    </strong>
-
-                                </div>
+                                <span>
+                                    {user.role || "USER"}
+                                </span>
 
                             </div>
 
 
-                            {/* USERNAME */}
+                            {!editMode && (
 
-                            <div className="profile-detail">
+                                <button
+                                    className="edit-profile-btn"
+                                    onClick={() => {
 
-                                <div className="detail-icon">
-                                    👤
+                                        setMessage("");
+
+                                        setError("");
+
+                                        setEditMode(true);
+
+                                    }}
+                                >
+                                    ✏️ Edit Profile
+                                </button>
+
+                            )}
+
+                        </div>
+
+
+                        {/* =================================================
+                            PROFILE INFORMATION
+                        ================================================= */}
+
+                        {!editMode ? (
+
+                            <div className="profile-information">
+
+
+                                <div className="profile-info-item">
+
+                                    <span className="info-icon">
+                                        👤
+                                    </span>
+
+                                    <div>
+
+                                        <small>
+                                            Username
+                                        </small>
+
+                                        <strong>
+                                            {user.username || "Not available"}
+                                        </strong>
+
+                                    </div>
+
                                 </div>
 
-                                <div className="detail-content">
 
-                                    <span>
+                                <div className="profile-info-item">
+
+                                    <span className="info-icon">
+                                        📧
+                                    </span>
+
+                                    <div>
+
+                                        <small>
+                                            Email Address
+                                        </small>
+
+                                        <strong>
+                                            {user.email || "Not available"}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div className="profile-info-item">
+
+                                    <span className="info-icon">
+                                        🛡️
+                                    </span>
+
+                                    <div>
+
+                                        <small>
+                                            Account Role
+                                        </small>
+
+                                        <strong className="role-value">
+                                            {user.role || "USER"}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+{/*                                 <div className="profile-info-item"> */}
+
+{/*                                     <span className="info-icon"> */}
+{/*                                         🆔 */}
+{/*                                     </span> */}
+
+{/*                                     <div> */}
+
+{/*                                         <small> */}
+{/*                                             User ID */}
+{/*                                         </small> */}
+
+{/*                                         <strong> */}
+{/*                                             #{user.id} */}
+{/*                                         </strong> */}
+
+{/*                                     </div> */}
+
+{/*                                 </div> */}
+
+
+                            </div>
+
+                        ) : (
+
+
+                            /* =================================================
+                               EDIT FORM
+                            ================================================= */
+
+                            <form
+                                className="profile-form"
+                                onSubmit={handleSubmit}
+                            >
+
+
+                                <div className="profile-form-group">
+
+                                    <label>
                                         Username
-                                    </span>
+                                    </label>
 
-                                    <strong>
-                                        {user.username}
-                                    </strong>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        value={form.username}
+                                        onChange={handleChange}
+                                        placeholder="Enter username"
+                                        required
+                                    />
 
                                 </div>
 
-                            </div>
 
+                                <div className="profile-form-group">
 
-                            {/* EMAIL */}
+                                    <label>
+                                        Email Address
+                                    </label>
 
-                            <div className="profile-detail">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        placeholder="Enter email address"
+                                        required
+                                    />
 
-                                <div className="detail-icon">
-                                    ✉️
                                 </div>
 
-                                <div className="detail-content">
+
+                                <div className="profile-readonly">
 
                                     <span>
-                                        Email Address
+                                        🛡️
                                     </span>
 
-                                    <strong>
-                                        {user.email}
-                                    </strong>
+                                    <div>
+
+                                        <small>
+                                            Account Role
+                                        </small>
+
+                                        <strong>
+                                            {user.role || "USER"}
+                                        </strong>
+
+                                        <p>
+                                            Your account role
+                                            cannot be changed
+                                            from this page.
+                                        </p>
+
+                                    </div>
 
                                 </div>
 
-                            </div>
 
-                        </div>
+                                {/* BUTTONS */}
+
+                                <div className="profile-actions">
+
+                                    <button
+                                        type="button"
+                                        className="cancel-btn"
+                                        onClick={handleCancel}
+                                        disabled={updating}
+                                    >
+                                        Cancel
+                                    </button>
+
+
+                                    <button
+                                        type="submit"
+                                        className="save-profile-btn"
+                                        disabled={updating}
+                                    >
+
+                                        {updating
+                                            ? "Saving..."
+                                            : "✓ Save Changes"}
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        )}
 
                     </div>
 
                 )}
 
-            </div>
+            </main>
 
         </div>
     );

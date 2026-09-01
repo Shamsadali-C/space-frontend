@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import adminService from "../../services/adminService";
-import AdminSidebar from "./AdminSidebar";
 import "../../styles/AdminBookings.css";
 
 const AdminBookings = () => {
@@ -17,8 +16,7 @@ const AdminBookings = () => {
 
         try {
 
-            const response =
-                await adminService.getBookings();
+            const response = await adminService.getBookings();
 
             console.log("Bookings:", response.data);
 

@@ -1,49 +1,26 @@
-/* =========================================
-   BOOK VENUE PAGE
-========================================= */
-
 .book-venue-page {
     min-height: 100vh;
     background: #f5f7fb;
-    padding: 40px 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 35px 20px;
 }
 
 .book-venue-container {
-    width: 100%;
     max-width: 1050px;
     margin: 0 auto;
 }
 
 
-/* =========================================
+/* =========================
    HEADER
-========================================= */
+========================= */
 
 .booking-header {
-    background: #ffffff;
-    padding: 28px 32px;
+    background: white;
+    padding: 28px;
     border-radius: 16px;
-    margin-bottom: 22px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin-bottom: 22px;
 }
-
-.booking-header h1 {
-    margin: 15px 0 8px;
-    font-size: 30px;
-    color: #1f2937;
-}
-
-.booking-header p {
-    margin: 0;
-    color: #6b7280;
-    font-size: 16px;
-}
-
-
-/* =========================================
-   BACK BUTTON
-========================================= */
 
 .back-btn {
     border: none;
@@ -53,81 +30,91 @@
     font-weight: 600;
     cursor: pointer;
     padding: 0;
+    margin-bottom: 18px;
 }
 
 .back-btn:hover {
-    text-decoration: underline;
+    color: #1d4ed8;
+}
+
+.booking-header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #111827;
+}
+
+.booking-header p {
+    margin: 8px 0 0;
+    color: #6b7280;
+    font-size: 15px;
 }
 
 
-/* =========================================
+/* =========================
    VENUE INFORMATION
-========================================= */
+========================= */
 
 .booking-venue-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
     margin-bottom: 22px;
 }
 
 .booking-venue-info > div {
-    background: #ffffff;
-    padding: 22px 28px;
+    background: white;
     border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-
+    padding: 22px;
+    border: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
 .booking-venue-info span {
-    color: #6b7280;
-    font-size: 14px;
+    color: #9ca3af;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .booking-venue-info strong {
-    color: #111827;
+    color: #1f2937;
     font-size: 20px;
 }
 
 
-/* =========================================
+/* =========================
    DATE SECTION
-========================================= */
+========================= */
 
 .date-section {
-    background: #ffffff;
-    padding: 25px 28px;
+    background: white;
+    padding: 25px;
     border-radius: 14px;
+    border: 1px solid #e5e7eb;
     margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 .date-section label {
-    font-size: 16px;
-    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
     color: #374151;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .date-section input {
-    width: 220px;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
     padding: 12px 14px;
-
     border: 1px solid #d1d5db;
-    border-radius: 8px;
-
+    border-radius: 9px;
     font-size: 15px;
     color: #374151;
-    background: #ffffff;
-
     outline: none;
+    cursor: pointer;
 }
 
 .date-section input:focus {
@@ -136,27 +123,27 @@
 }
 
 
-/* =========================================
+/* =========================
    SLOTS SECTION
-========================================= */
+========================= */
 
 .slots-section {
-    background: #ffffff;
+    background: white;
     padding: 28px;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
 }
 
 .slots-section h2 {
     margin: 0 0 22px;
-    font-size: 22px;
     color: #1f2937;
+    font-size: 22px;
 }
 
 
-/* =========================================
+/* =========================
    SLOTS GRID
-========================================= */
+========================= */
 
 .slots-grid {
     display: grid;
@@ -165,116 +152,96 @@
 }
 
 
-/* =========================================
+/* =========================
    SLOT CARD
-========================================= */
+========================= */
 
 .slot-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
+    border-radius: 13px;
     padding: 20px;
-
+    border: 1px solid #e5e7eb;
     background: #ffffff;
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .slot-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
 }
 
 
-/* =========================================
-   AVAILABLE SLOT
-========================================= */
+/* AVAILABLE */
 
 .slot-available {
-    border-left: 4px solid #16a34a;
-}
-
-.slot-available .slot-status {
-    color: #15803d;
-    background: #dcfce7;
+    border-left: 5px solid #16a34a;
 }
 
 
-/* =========================================
-   BOOKED SLOT
-========================================= */
+/* BOOKED */
 
 .slot-booked {
-    border-left: 4px solid #9ca3af;
-    background: #f9fafb;
-}
-
-.slot-booked .slot-status {
-    color: #6b7280;
-    background: #e5e7eb;
+    border-left: 5px solid #ef4444;
+    background: #fafafa;
 }
 
 
-/* =========================================
+/* =========================
    SLOT TIME
-========================================= */
+========================= */
 
 .slot-time {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
+    margin-bottom: 14px;
 }
 
 .slot-time span {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .slot-time strong {
-    font-size: 17px;
     color: #1f2937;
+    font-size: 15px;
 }
 
 
-/* =========================================
-   SLOT STATUS
-========================================= */
+/* =========================
+   STATUS
+========================= */
 
 .slot-status {
-    width: fit-content;
-
-    padding: 6px 12px;
+    display: inline-block;
+    padding: 5px 11px;
     border-radius: 20px;
-
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
+    margin-bottom: 17px;
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.slot-booked .slot-status {
+    background: #fee2e2;
+    color: #dc2626;
 }
 
 
-/* =========================================
+/* =========================
    BOOK BUTTON
-========================================= */
+========================= */
 
 .slot-book-btn {
     width: 100%;
+    padding: 11px;
     border: none;
-
-    padding: 11px 15px;
-
     border-radius: 8px;
-
     background: #2563eb;
-    color: #ffffff;
-
+    color: white;
     font-size: 14px;
     font-weight: 600;
-
     cursor: pointer;
-
-    transition: background 0.2s ease;
+    transition: 0.2s;
 }
 
 .slot-book-btn:hover {
@@ -287,149 +254,112 @@
 }
 
 
-/* =========================================
+/* =========================
    DISABLED BUTTON
-========================================= */
+========================= */
 
 .slot-disabled-btn {
     width: 100%;
-
-    padding: 11px 15px;
-
+    padding: 11px;
     border: none;
     border-radius: 8px;
-
     background: #e5e7eb;
     color: #6b7280;
-
     font-size: 14px;
     font-weight: 600;
-
     cursor: not-allowed;
 }
 
 
-/* =========================================
+/* =========================
    LOADING
-========================================= */
+========================= */
 
 .slot-loading {
-    padding: 25px;
-
+    padding: 30px;
     text-align: center;
-
     color: #6b7280;
-    font-size: 15px;
 }
 
 
-/* =========================================
+/* =========================
    MESSAGE
-========================================= */
+========================= */
 
 .slot-message {
-    padding: 15px 18px;
-
-    border-radius: 8px;
-
-    background: #fef3c7;
-    color: #92400e;
-
-    font-size: 14px;
-
-    margin-bottom: 18px;
+    padding: 15px;
+    background: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #fed7aa;
+    border-radius: 9px;
+    margin-bottom: 20px;
 }
 
 
-/* =========================================
+/* =========================
    NO SLOTS
-========================================= */
+========================= */
 
 .no-slots {
+    padding: 35px;
     text-align: center;
-
-    padding: 45px 20px;
-
-    border: 1px dashed #d1d5db;
-    border-radius: 12px;
-
     background: #f9fafb;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .no-slots h3 {
     margin: 0 0 8px;
-
     color: #374151;
-    font-size: 18px;
 }
 
 .no-slots p {
     margin: 0;
-
     color: #6b7280;
     font-size: 14px;
 }
 
 
-/* =========================================
+/* =========================
    INVALID VENUE
-========================================= */
+========================= */
 
 .booking-error {
-    min-height: 100vh;
-
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
     gap: 20px;
-
     background: #f5f7fb;
 }
 
 .booking-error h2 {
     color: #374151;
-    font-size: 22px;
 }
 
 .booking-error button {
     border: none;
-
-    padding: 12px 22px;
-
-    border-radius: 8px;
-
     background: #2563eb;
     color: white;
-
-    font-weight: 600;
-
+    padding: 11px 20px;
+    border-radius: 8px;
     cursor: pointer;
-}
-
-.booking-error button:hover {
-    background: #1d4ed8;
+    font-weight: 600;
 }
 
 
-/* =========================================
-   RESPONSIVE - TABLET
-========================================= */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 900px) {
 
     .slots-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
-
-/* =========================================
-   RESPONSIVE - MOBILE
-========================================= */
 
 @media (max-width: 600px) {
 
@@ -438,7 +368,7 @@
     }
 
     .booking-header {
-        padding: 22px;
+        padding: 20px;
     }
 
     .booking-header h1 {
@@ -449,16 +379,6 @@
         grid-template-columns: 1fr;
     }
 
-    .date-section {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .date-section input {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
     .slots-section {
         padding: 20px;
     }
@@ -466,5 +386,4 @@
     .slots-grid {
         grid-template-columns: 1fr;
     }
-
 }

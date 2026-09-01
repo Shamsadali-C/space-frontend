@@ -1,149 +1,734 @@
-.owner-request-page {
+```css
+/* =========================================================
+   OWNER REQUEST PAGE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.user-layout {
     min-height: 100vh;
-    padding: 50px 20px;
-    background: #f4f7fb;
-    font-family: Arial, sans-serif;
+    display: flex;
+    background: #f5f7fb;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.owner-request-container {
-    max-width: 700px;
-    margin: 0 auto;
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.user-sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: linear-gradient(
+        180deg,
+        #111827 0%,
+        #1f2937 100%
+    );
+
+    color: white;
+    padding: 30px 20px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.08);
 }
 
-.owner-request-title {
-    margin-bottom: 30px;
+
+/* LOGO */
+
+.user-logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
 }
 
-.owner-request-title h1 {
-    margin: 0 0 10px;
-    font-size: 34px;
-    color: #1f2937;
+
+/* ROLE */
+
+.user-role {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #9ca3af;
+
+    margin-bottom: 35px;
 }
 
-.owner-request-title p {
-    margin: 0;
-    color: #6b7280;
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.user-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
+
+
+.user-sidebar nav a {
+    display: flex;
+    align-items: center;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.user-sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    transform: translateX(3px);
+}
+
+
+/* ACTIVE LINK */
+
+.user-sidebar nav a.active {
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #4f46e5
+    );
+
+    color: white;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.user-main {
+    flex: 1;
+
+    margin-left: 260px;
+
+    min-height: 100vh;
+
+    padding: 60px 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* =========================================================
+   OWNER REQUEST CARD
+========================================================= */
 
 .owner-request-card {
+    width: 100%;
+    max-width: 760px;
+
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-}
 
-.owner-request-card h2 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: #1f2937;
-}
+    border-radius: 20px;
 
-.owner-request-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
+    padding: 42px;
 
-.owner-request-field {
-    display: flex;
-    flex-direction: column;
-}
+    box-shadow:
+        0 15px 45px rgba(15, 23, 42, 0.08);
 
-.owner-request-field label {
-    margin-bottom: 7px;
-    font-weight: 600;
-    color: #374151;
-}
+    border: 1px solid #e5e7eb;
 
-.owner-request-field input {
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-}
+    position: relative;
 
-.owner-request-field input:focus {
-    border-color: #2563eb;
-}
-
-.owner-request-button {
-    margin-top: 5px;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.owner-request-button:hover {
-    background: #1d4ed8;
+    overflow: hidden;
 }
 
 
-/* REQUEST DETAILS */
+/* Decorative top line */
 
-.owner-request-details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.owner-request-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #8b5cf6,
+        #ec4899
+    );
 }
 
-.owner-request-detail {
-    padding: 15px;
-    background: #f8fafc;
-    border-radius: 8px;
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.owner-request-card > span {
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+    color: #6366f1;
+
+    margin-bottom: 10px;
 }
 
-.owner-request-detail strong {
-    color: #6b7280;
-}
 
-.owner-request-detail span {
+.owner-request-card h1 {
+    margin: 0 0 12px;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
     color: #111827;
+
+    letter-spacing: -1px;
+}
+
+
+.owner-request-card > p {
+    margin: 0 0 30px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    max-width: 620px;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.request-success {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 16px;
+
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+
+    background: #ecfdf5;
+
+    border: 1px solid #a7f3d0;
+
+    color: #047857;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.request-error {
+    padding: 14px 16px;
+
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.owner-request-card form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+/* FORM GROUP */
+
+.request-form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* LABEL */
+
+.request-form-group label {
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* INPUT + TEXTAREA */
+
+.request-form-group input,
+.request-form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    background: #f9fafb;
+
+    color: #111827;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.request-form-group input {
+    height: 48px;
+}
+
+
+.request-form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+
+    font-family: inherit;
+
+    line-height: 1.5;
+}
+
+
+/* PLACEHOLDER */
+
+.request-form-group input::placeholder,
+.request-form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+
+/* FOCUS */
+
+.request-form-group input:focus,
+.request-form-group textarea:focus {
+    background: white;
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.owner-request-card form button {
+    margin-top: 5px;
+
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #4f46e5
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.owner-request-card form button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+
+.owner-request-card form button:active {
+    transform: translateY(0);
+}
+
+
+.owner-request-card form button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.65;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   EXISTING REQUEST
+========================================================= */
+
+.existing-request {
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-top: 10px;
+}
+
+
+/* STATUS HEADER */
+
+.existing-request > div {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.existing-request small {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
 }
 
 
 /* STATUS */
 
 .request-status {
-    display: inline-block;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
 }
 
-.request-pending {
+
+/* PENDING */
+
+.request-status.pending {
     background: #fef3c7;
+
     color: #92400e;
 }
 
-.request-approved {
+
+/* APPROVED */
+
+.request-status.approved {
     background: #dcfce7;
+
     color: #166534;
 }
 
-.request-rejected {
+
+/* REJECTED */
+
+.request-status.rejected {
     background: #fee2e2;
+
     color: #991b1b;
 }
 
 
-@media (max-width: 600px) {
+/* REQUEST DETAILS */
 
-    .owner-request-page {
-        padding: 30px 15px;
+.existing-request p {
+    margin: 12px 0;
+
+    color: #4b5563;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.existing-request p strong {
+    color: #111827;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.user-loading {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: #f5f7fb;
+
+    color: #374151;
+}
+
+
+.user-loading h2 {
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* SPINNER */
+
+.user-spinner {
+    width: 42px;
+
+    height: 42px;
+
+    border: 4px solid #e5e7eb;
+
+    border-top-color: #6366f1;
+
+    border-radius: 50%;
+
+    animation: ownerSpin 0.8s linear infinite;
+}
+
+
+@keyframes ownerSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .user-sidebar {
+        width: 220px;
+    }
+
+    .user-main {
+        margin-left: 220px;
+
+        padding: 40px 30px;
     }
 
     .owner-request-card {
+        padding: 32px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .user-layout {
+        display: block;
+    }
+
+
+    .user-sidebar {
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+
         padding: 20px;
     }
 
-    .owner-request-title h1 {
+
+    .user-logo {
+        margin-bottom: 5px;
+    }
+
+
+    .user-role {
+        margin-bottom: 18px;
+    }
+
+
+    .user-sidebar nav {
+        gap: 5px;
+    }
+
+
+    .user-sidebar nav a {
+        padding: 10px 12px;
+    }
+
+
+    .user-main {
+        margin-left: 0;
+
+        padding: 25px 15px;
+    }
+
+
+    .owner-request-card {
+        padding: 25px 20px;
+
+        border-radius: 15px;
+    }
+
+
+    .owner-request-card h1 {
         font-size: 27px;
     }
+
+
+    .existing-request > div {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
 }
+
+
+@media (max-width: 420px) {
+
+    .owner-request-card {
+        padding: 22px 16px;
+    }
+
+
+    .owner-request-card h1 {
+        font-size: 24px;
+    }
+
+
+    .owner-request-card > p {
+        font-size: 14px;
+    }
+
+}
+```

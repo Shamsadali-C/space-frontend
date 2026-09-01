@@ -1,92 +1,111 @@
-/* ================================
+/* =====================================================
    USER DASHBOARD
-================================ */
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
 
 .user-dashboard {
     min-height: 100vh;
     background: #f5f7fb;
     font-family: Arial, Helvetica, sans-serif;
-    color: #111827;
+    color: #172033;
 }
 
 
-/* ================================
+/* =====================================================
    NAVBAR
-================================ */
+===================================================== */
 
 .user-navbar {
     height: 70px;
-    padding: 0 50px;
+    width: 100%;
+
+    background: #ffffff;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: #ffffff;
+    padding: 0 60px;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e7eaf0;
 
-    box-sizing: border-box;
-}
-
-.user-logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: #2563eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 
-/* ================================
-   LOGOUT
-================================ */
+/* LOGO */
+
+.user-navbar .user-logo {
+    font-size: 24px;
+    font-weight: 800;
+
+    color: #3157e8;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* LOGOUT */
 
 .user-logout {
-    padding: 10px 20px;
-
     border: none;
-    border-radius: 7px;
 
-    background: #ef4444;
+    background: #172033;
     color: white;
+
+    padding: 10px 22px;
+
+    border-radius: 8px;
 
     font-size: 14px;
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .user-logout:hover {
-    background: #dc2626;
+    background: #3157e8;
+
+    transform: translateY(-1px);
 }
 
 
-/* ================================
+/* =====================================================
    MAIN CONTENT
-================================ */
+===================================================== */
 
 .user-content {
-    max-width: 1100px;
+    max-width: 1200px;
 
     margin: 0 auto;
 
-    padding: 60px 25px;
+    padding: 65px 40px 80px;
 }
 
 
-/* ================================
-   WELCOME
-================================ */
+/* =====================================================
+   WELCOME SECTION
+===================================================== */
 
 .user-welcome {
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
 .user-welcome h1 {
-    margin: 0 0 10px;
+    margin: 0 0 12px;
 
-    font-size: 34px;
+    font-size: 38px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
 
     color: #111827;
 }
@@ -94,105 +113,143 @@
 .user-welcome p {
     margin: 0;
 
-    color: #6b7280;
-
     font-size: 16px;
 
     line-height: 1.6;
+
+    color: #6b7280;
+
+    max-width: 650px;
 }
 
 
-/* ================================
-   CARDS
-================================ */
+/* =====================================================
+   CARDS GRID
+===================================================== */
 
 .user-cards {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
-    gap: 25px;
+    gap: 24px;
 }
 
 
-/* ================================
+/* =====================================================
    CARD
-================================ */
+===================================================== */
 
 .user-card {
-    min-height: 250px;
-
-    padding: 30px;
-
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
+    min-height: 245px;
 
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
 
-    border-radius: 15px;
+    border-radius: 14px;
+
+    padding: 30px;
 
     text-decoration: none;
 
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.05);
+    color: inherit;
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: relative;
+
+    overflow: hidden;
 
     transition:
-        transform 0.2s,
-        box-shadow 0.2s;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
+
+
+/* TOP ACCENT */
+
+.user-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #3157e8;
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: transform 0.25s ease;
+}
+
+
+/* HOVER */
 
 .user-card:hover {
     transform: translateY(-5px);
 
+    border-color: #d7ddff;
+
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.10);
+        0 15px 35px rgba(17, 24, 39, 0.09);
+}
+
+.user-card:hover::before {
+    transform: scaleX(1);
 }
 
 
-/* ================================
-   ICON
-================================ */
+/* =====================================================
+   CARD ICON
+===================================================== */
 
 .user-card-icon {
-    width: 55px;
-    height: 55px;
+    width: 54px;
+    height: 54px;
+
+    border-radius: 12px;
+
+    background: #eef2ff;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
+    font-size: 25px;
+
     margin-bottom: 20px;
-
-    border-radius: 12px;
-
-    background: #eff6ff;
-
-    font-size: 26px;
 }
 
 
-/* ================================
+/* =====================================================
    CARD TITLE
-================================ */
+===================================================== */
 
 .user-card h2 {
     margin: 0 0 10px;
 
-    font-size: 20px;
+    font-size: 21px;
+
+    font-weight: 700;
 
     color: #111827;
 }
 
 
-/* ================================
+/* =====================================================
    CARD DESCRIPTION
-================================ */
+===================================================== */
 
 .user-card p {
     margin: 0;
@@ -202,67 +259,101 @@
     font-size: 14px;
 
     line-height: 1.6;
+
+    max-width: 400px;
 }
 
 
-/* ================================
+/* =====================================================
    CARD LINK
-================================ */
+===================================================== */
 
 .user-card span {
     margin-top: auto;
 
-    padding-top: 20px;
+    padding-top: 22px;
 
-    color: #2563eb;
+    color: #3157e8;
 
     font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.user-card:hover span {
+    transform: translateX(5px);
 }
 
 
-/* ================================
-   TABLET
-================================ */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-@media (max-width: 900px) {
-
-    .user-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     .user-navbar {
-        padding: 0 20px;
-    }
-
-    .user-logo {
-        font-size: 18px;
+        padding: 0 25px;
     }
 
     .user-content {
-        padding: 40px 15px;
+        padding: 45px 25px 60px;
     }
 
     .user-welcome h1 {
-        font-size: 27px;
+        font-size: 32px;
     }
 
     .user-cards {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .user-navbar {
+        height: 64px;
+
+        padding: 0 18px;
+    }
+
+    .user-navbar .user-logo {
+        font-size: 20px;
+    }
+
+    .user-logout {
+        padding: 8px 15px;
+
+        font-size: 13px;
+    }
+
+    .user-content {
+        padding: 35px 18px 50px;
+    }
+
+    .user-welcome {
+        margin-bottom: 30px;
+    }
+
+    .user-welcome h1 {
+        font-size: 27px;
+
+        line-height: 1.25;
+    }
+
+    .user-welcome p {
+        font-size: 14px;
+    }
 
     .user-card {
         min-height: 220px;
-    }
 
+        padding: 24px;
+    }
 }
