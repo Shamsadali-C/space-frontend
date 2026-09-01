@@ -313,7 +313,7 @@ const MyBookings = () => {
 
                 <nav>
 
-                    <Link to="/home">
+                    <Link to="/user">
                         🏠 Dashboard
                     </Link>
 

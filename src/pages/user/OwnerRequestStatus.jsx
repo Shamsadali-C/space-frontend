@@ -554,7 +554,7 @@ const OwnerRequest = () => {
 
                 <nav>
 
-                    <Link to="/home">
+                    <Link to="/user">
                         🏠 Dashboard
                     </Link>
 
