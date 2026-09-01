@@ -1,53 +1,3 @@
-// import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import "../../styles/UserDashboard.css";
-//
-// const UserDashboard = () => {
-//
-//     const navigate = useNavigate();
-//
-//     const logout = () => {
-//         localStorage.removeItem("token");
-//         navigate("/login");
-//     };
-//
-//     return (
-//         <div>
-//
-//             <h1>User Dashboard</h1>
-//
-//             <nav>
-//
-//                 <Link to="/user/profile">
-//                     Profile
-//                 </Link>
-//
-//                 <br />
-//
-//                 <Link to="/user/venues">
-//                     View Venues
-//                 </Link>
-//
-//                 <br />
-//
-//                 <Link to="/user/owner-request">
-//                     Become an Owner
-//                 </Link>
-//
-//                 <br />
-//
-//                 <button onClick={logout}>
-//                     Logout
-//                 </button>
-//
-//             </nav>
-//
-//         </div>
-//     );
-// };
-//
-// export default UserDashboard;
-
 
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -65,7 +15,7 @@ const UserDashboard = () => {
     return (
         <div className="user-dashboard">
 
-            {/* HEADER */}
+
 
             <header className="user-navbar">
 
@@ -83,7 +33,6 @@ const UserDashboard = () => {
             </header>
 
 
-            {/* MAIN */}
 
             <main className="user-content">
 
@@ -101,7 +50,7 @@ const UserDashboard = () => {
                 </div>
 
 
-                {/* CARDS */}
+
 
                 <div className="user-cards">
 

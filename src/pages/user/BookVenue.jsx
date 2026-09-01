@@ -1,166 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
-// import userService from "../../services/userService";
-//
-// const BookVenue = () => {
-//
-//     const location = useLocation();
-//     const navigate = useNavigate();
-//
-//     const venue = location.state?.venue;
-//
-//     const [date, setDate] = useState("");
-//     const [slots, setSlots] = useState([]);
-//     const [loading, setLoading] = useState(false);
-//
-//     useEffect(() => {
-//
-//         if (!venue || !date) {
-//             return;
-//         }
-//
-//         loadSlots();
-//
-//     }, [date]);
-//
-//     const loadSlots = async () => {
-//
-//         try {
-//
-//             setLoading(true);
-//
-//             const response =
-//                 await userService.getTimeSlots(
-//                     venue.id,
-//                     date
-//                 );
-//
-//             setSlots(response.data);
-//
-//         } catch (error) {
-//
-//             console.error(error);
-//
-//         } finally {
-//
-//             setLoading(false);
-//         }
-//     };
-//
-//     const bookSlot = async (slotId) => {
-//
-//         try {
-//
-//             await userService.createBooking(slotId);
-//
-//             alert(
-//                 "Booking request sent successfully"
-//             );
-//
-//             loadSlots();
-//
-//         } catch (error) {
-//
-//             console.error(error);
-//
-//             alert(
-//                 error.response?.data ||
-//                 "Booking failed"
-//             );
-//         }
-//     };
-//
-//     if (!venue) {
-//
-//         return (
-//             <h2>
-//                 Venue not found
-//             </h2>
-//         );
-//     }
-//
-//     return (
-//
-//         <div>
-//
-//             <h1>
-//                 Book {venue.venueName}
-//             </h1>
-//
-//             <p>
-//                 {venue.location}
-//             </p>
-//
-//             <label>
-//                 Select Date
-//             </label>
-//
-//             <input
-//                 type="date"
-//                 value={date}
-//                 onChange={(e) =>
-//                     setDate(e.target.value)
-//                 }
-//             />
-//
-//             <h2>
-//                 Time Slots
-//             </h2>
-//
-//             {loading && (
-//                 <p>
-//                     Loading slots...
-//                 </p>
-//             )}
-//
-//             <div>
-//
-//                 {slots.map((slot) => (
-//
-//                     <div
-//                         key={slot.id}
-//                         style={{
-//                             border: "1px solid #ccc",
-//                             padding: "15px",
-//                             margin: "10px"
-//                         }}
-//                     >
-//
-//                         <h3>
-//                             {slot.startTime}
-//                             {" - "}
-//                             {slot.endTime}
-//                         </h3>
-//
-//                         <p>
-//                             {slot.status}
-//                         </p>
-//
-//                         {slot.status === "AVAILABLE" && (
-//
-//                             <button
-//                                 onClick={() =>
-//                                     bookSlot(slot.id)
-//                                 }
-//                             >
-//                                 Book This Slot
-//                             </button>
-//
-//                         )}
-//
-//                     </div>
-//
-//                 ))}
-//
-//             </div>
-//
-//         </div>
-//     );
-// };
-//
-// export default BookVenue;
-
-
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
@@ -273,7 +110,7 @@ const BookVenue = () => {
                 "Booking request sent successfully!"
             );
 
-            // Reload slots
+
             await loadSlots();
 
         } catch (error) {
@@ -327,7 +164,6 @@ const BookVenue = () => {
             <div className="book-venue-container">
 
 
-                {/* HEADER */}
 
                 <div className="booking-header">
 
