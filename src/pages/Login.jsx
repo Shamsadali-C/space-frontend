@@ -28,7 +28,7 @@ function Login() {
 
             console.log("Login response:", response);
 
-            // Backend returns JWT as String
+
             const token = response;
 
             if (!token) {
