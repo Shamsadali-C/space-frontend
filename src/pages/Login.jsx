@@ -35,15 +35,14 @@ function Login() {
                 throw new Error("Token not received");
             }
 
-            // Save JWT
+
             localStorage.setItem("token", token);
 
-            // Get role from JWT
+
             const role = getRoleFromToken(token);
 
             console.log("User role:", role);
 
-            // Navigate based on role
             if (role === "ADMIN") {
 
                 navigate("/admin/dashboard");
