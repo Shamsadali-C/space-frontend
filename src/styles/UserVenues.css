@@ -1,80 +1,102 @@
-/* =====================================================
-   USER VENUES PAGE
-===================================================== */
+/* =========================================================
+   USER VENUES - MODERN BOOKING UI
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #111827;
-}
-
-
-/* =====================================================
-   MAIN LAYOUT
-===================================================== */
-
 .user-layout {
     min-height: 100vh;
     display: flex;
-    background: #f5f7fb;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(91, 76, 255, 0.10),
+            transparent 30%
+        ),
+        #f5f7fc;
+
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #1e293b;
 }
 
 
-/* =====================================================
+/* =========================================================
    SIDEBAR
-===================================================== */
+========================================================= */
 
 .user-sidebar {
-    width: 260px;
-    min-width: 260px;
+    width: 255px;
     min-height: 100vh;
-
-    background: #111827;
-
-    color: white;
-
-    padding: 32px 18px;
 
     position: fixed;
     left: 0;
     top: 0;
-    bottom: 0;
+
+    padding: 30px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #151a35 0%,
+            #202657 55%,
+            #171c3c 100%
+        );
+
+    color: white;
+
+    box-shadow:
+        8px 0 30px rgba(15, 23, 42, 0.12);
 
     z-index: 100;
 }
 
 
+/* =========================================================
+   LOGO
+========================================================= */
+
 .user-logo {
-    font-size: 25px;
+    padding: 5px 12px;
+
+    font-size: 23px;
     font-weight: 800;
-    color: #4f6df5;
 
-    padding: 0 16px;
+    letter-spacing: -0.6px;
 
-    margin-bottom: 8px;
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #aeb8ff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+
+/* =========================================================
+   ROLE
+========================================================= */
 
 .user-role {
-    padding: 0 16px;
+    margin: 7px 12px 35px;
 
-    font-size: 12px;
+    color: #8994d8;
+
+    font-size: 10px;
     font-weight: 700;
 
-    letter-spacing: 1.5px;
-
-    color: #9ca3af;
-
-    margin-bottom: 40px;
+    letter-spacing: 2px;
 }
 
 
-/* NAVIGATION */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .user-sidebar nav {
     display: flex;
@@ -83,235 +105,465 @@ body {
     gap: 8px;
 }
 
-
 .user-sidebar nav a {
+    position: relative;
+
     display: flex;
     align-items: center;
 
-    gap: 12px;
+    padding: 13px 15px;
 
-    padding: 14px 16px;
+    border-radius: 11px;
 
-    border-radius: 10px;
-
-    color: #d1d5db;
+    color: #b7bfdf;
 
     text-decoration: none;
 
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 
-    transition: all 0.2s ease;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
-
 
 .user-sidebar nav a:hover {
-    background: #1f2937;
+    background: rgba(255, 255, 255, 0.08);
+
     color: white;
 
-    transform: translateX(3px);
+    transform: translateX(4px);
 }
-
 
 .user-sidebar nav a.active {
-    background: #4f46e5;
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 8px 22px rgba(99, 102, 241, 0.28);
+}
+
+.user-sidebar nav a.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -18px;
+
+    width: 4px;
+    height: 28px;
+
+    border-radius: 0 5px 5px 0;
+
+    background: #8b5cf6;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.user-main {
+    width: calc(100% - 255px);
+
+    margin-left: 255px;
+
+    padding: 40px 45px 70px;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.user-page-header {
+    margin-bottom: 25px;
+}
+
+.user-page-label {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.user-error {
+    margin-bottom: 25px;
+
+    padding: 18px 22px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 14px;
+
+    background: #fff1f2;
+
+    color: #991b1b;
+
+    box-shadow:
+        0 5px 18px rgba(239, 68, 68, 0.08);
+}
+
+.user-error strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.user-error p {
+    margin: 4px 0 12px;
+}
+
+.user-error button {
+    border: none;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    background: #dc2626;
 
     color: white;
 
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.user-error button:hover {
+    background: #b91c1c;
+
+    transform: translateY(-1px);
 }
 
 
-/* =====================================================
-   MAIN CONTENT
-===================================================== */
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
 
-.user-main {
-    margin-left: 260px;
-
-    width: calc(100% - 260px);
-
-    min-height: 100vh;
-
-    padding: 50px 60px 70px;
-}
-
-
-/* =====================================================
-   PAGE HEADER
-===================================================== */
-
-.user-page-header {
-    width: 100%;
-
-    margin-bottom: 38px;
-}
-
-
-.user-page-header > div {
-    width: 100%;
-}
-
-
-.user-page-header span {
-    display: inline-block;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    color: #6366f1;
-
-    margin-bottom: 10px;
-}
-
-
-.user-page-header h1 {
-    margin: 0 0 10px;
-
-    font-size: 38px;
-
-    line-height: 1.2;
-
-    font-weight: 800;
-
-    color: #111827;
-}
-
-
-.user-page-header p {
-    margin: 0;
-
-    font-size: 16px;
-
-    color: #6b7280;
-}
-
-
-/* =====================================================
-   ERROR / MESSAGE
-===================================================== */
-
-.user-error,
 .user-message {
-    width: 100%;
+    margin-bottom: 22px;
 
     padding: 14px 18px;
 
-    border-radius: 10px;
+    border: 1px solid #a7f3d0;
 
-    margin-bottom: 25px;
+    border-radius: 12px;
+
+    background: #ecfdf5;
+
+    color: #047857;
 
     font-size: 14px;
-
     font-weight: 600;
+
+    animation: messageSlide 0.35s ease;
+}
+
+@keyframes messageSlide {
+
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-.user-error {
-    background: #fee2e2;
-
-    color: #b91c1c;
-
-    border: 1px solid #fecaca;
-}
-
-
-.user-message {
-    background: #dcfce7;
-
-    color: #15803d;
-
-    border: 1px solid #bbf7d0;
-}
-
-
-/* =====================================================
+/* =========================================================
    VENUE GRID
-===================================================== */
+========================================================= */
 
 .user-venue-grid {
-    width: 100%;
-
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(280px, 1fr));
+        repeat(3, minmax(0, 1fr));
 
-    gap: 28px;
+    gap: 24px;
 
-    align-items: stretch;
+    padding: 10px 0 40px;
 }
 
 
-/* =====================================================
+/* =========================================================
    VENUE CARD
-===================================================== */
+========================================================= */
 
 .user-venue-card {
-    background: white;
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ffffff;
 
     border: 1px solid #e5e7eb;
 
     border-radius: 18px;
 
-    overflow: hidden;
-
-    min-width: 0;
-
     box-shadow:
-        0 4px 15px rgba(15, 23, 42, 0.06);
+        0 8px 25px rgba(15, 23, 42, 0.07);
 
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
+    animation: cardAppear 0.5s ease both;
+}
 
 .user-venue-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
+
+    border-color: #818cf8;
 
     box-shadow:
-        0 15px 35px rgba(15, 23, 42, 0.12);
+        0 20px 45px rgba(76, 61, 160, 0.15);
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* =====================================================
-   VENUE IMAGE
-===================================================== */
+/* =========================================================
+   CARD IMAGE AREA
+========================================================= */
 
-.venue-image {
-    width: 100%;
+.user-venue-card .venue-card-top {
+    position: relative;
 
     height: 220px;
 
-    background: #eef2ff;
-
     overflow: hidden;
 
-    position: relative;
+    background:
+        linear-gradient(
+            135deg,
+            #e0e7ff,
+            #ede9fe
+        );
 }
 
 
-.venue-image img {
-    width: 100%;
+/* =========================================================
+   IMAGE SLIDER
+========================================================= */
 
+.venue-image-slider {
+    position: relative;
+
+    width: 100%;
     height: 100%;
 
+    overflow: hidden;
+}
+
+.venue-image-slider img {
     display: block;
+
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
-    transition: transform 0.4s ease;
+    transition:
+        transform 0.6s ease,
+        filter 0.4s ease;
+}
+
+.user-venue-card:hover
+.venue-image-slider img {
+    transform: scale(1.06);
+
+    filter: brightness(1.04);
 }
 
 
-.user-venue-card:hover .venue-image img {
-    transform: scale(1.05);
+/* =========================================================
+   SLIDER BUTTONS
+========================================================= */
+
+.venue-image-slider button {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 23, 42, 0.55);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    backdrop-filter: blur(5px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
+.venue-image-slider button:hover {
+    background:
+        rgba(15, 23, 42, 0.85);
+
+    transform:
+        translateY(-50%) scale(1.08);
+}
+
+.venue-image-slider button:first-of-type {
+    left: 10px;
+}
+
+.venue-image-slider button:last-of-type {
+    right: 10px;
+}
+
+
+/* =========================================================
+   SLIDER DOTS
+========================================================= */
+
+.venue-image-slider .slider-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 12px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 5px;
+
+    z-index: 10;
+}
+
+.venue-image-slider .slider-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    cursor: pointer;
+
+    transition:
+        width 0.2s ease,
+        background 0.2s ease;
+}
+
+.venue-image-slider .slider-dot.active {
+    width: 18px;
+
+    border-radius: 10px;
+
+    background: white;
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.user-venue-card .venue-card-top::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 80px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(15, 23, 42, 0.38)
+        );
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/*
+   Keep slider controls above overlay
+*/
+
+.venue-image-slider button,
+.venue-image-slider .slider-dots {
+    z-index: 10;
+}
+
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+========================================================= */
 
 .venue-image-placeholder {
     width: 100%;
@@ -322,105 +574,44 @@ body {
     align-items: center;
     justify-content: center;
 
-    font-size: 60px;
-
-    color: #6366f1;
-
     background:
         linear-gradient(
             135deg,
             #eef2ff,
-            #e0e7ff
+            #f3e8ff
         );
+
+    color: #6366f1;
+
+    font-size: 48px;
 }
 
 
-/* =====================================================
+/* =========================================================
    CARD CONTENT
-===================================================== */
+========================================================= */
 
 .venue-card-content {
-    padding: 22px;
+    padding: 20px;
 }
-
-
-/* =====================================================
-   CARD TOP
-===================================================== */
-
-.venue-card-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 14px;
-}
-
-
-.venue-available {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding: 6px 11px;
-
-    border-radius: 20px;
-
-    background: #ecfdf5;
-
-    color: #059669;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-}
-
-
-.venue-available::before {
-    content: "";
-
-    width: 7px;
-    height: 7px;
-
-    background: #10b981;
-
-    border-radius: 50%;
-}
-
-
-/* =====================================================
-   VENUE NAME
-===================================================== */
 
 .venue-card-content h2 {
-    margin: 0 0 12px;
-
-    font-size: 22px;
-
-    font-weight: 750;
+    margin: 0 0 10px;
 
     color: #111827;
+
+    font-size: 21px;
+    font-weight: 750;
+
+    letter-spacing: -0.4px;
 }
 
-
-/* =====================================================
-   LOCATION
-===================================================== */
-
 .venue-location {
-    margin: 0 0 20px;
+    margin: 0 0 18px;
 
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 14px;
-
-    line-height: 1.5;
 
     white-space: nowrap;
 
@@ -430,232 +621,371 @@ body {
 }
 
 
-/* =====================================================
-   META
-===================================================== */
+/* =========================================================
+   VENUE META
+========================================================= */
 
 .venue-meta {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
-    padding: 16px 0;
+    margin-bottom: 17px;
 
-    margin-bottom: 18px;
+    padding: 13px 0;
 
-    border-top: 1px solid #edf0f4;
+    border-top: 1px solid #eef2f7;
 
-    border-bottom: 1px solid #edf0f4;
+    border-bottom: 1px solid #eef2f7;
 }
-
 
 .venue-meta span {
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 14px;
-
     font-weight: 600;
 }
-
 
 .venue-meta strong {
     color: #4f46e5;
 
-    font-size: 21px;
-
+    font-size: 19px;
     font-weight: 800;
 }
 
 
-/* =====================================================
-   VIEW SLOTS BUTTON
-===================================================== */
+/* =========================================================
+   VIEW TIME SLOTS BUTTON
+========================================================= */
 
 .view-slots-btn {
     width: 100%;
 
+    padding: 13px 18px;
+
     border: none;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
-    padding: 13px 16px;
-
-    background: #111827;
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #6366f1
+        );
 
     color: white;
 
     font-size: 14px;
-
     font-weight: 700;
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
-}
+    box-shadow:
+        0 7px 17px rgba(99, 102, 241, 0.23);
 
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
 
 .view-slots-btn:hover {
-    background: #4f46e5;
+    transform: translateY(-2px);
 
-    transform: translateY(-1px);
+    filter: brightness(1.07);
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.30);
+}
+
+.view-slots-btn:active {
+    transform: scale(0.98);
 }
 
 
-/* =====================================================
-   SLOT SECTION
-===================================================== */
+/* =========================================================
+   EMPTY VENUE STATE
+========================================================= */
 
-.slot-section {
-    width: 100%;
+.user-empty {
+    min-height: 380px;
 
-    margin-top: 45px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px;
+
+    text-align: center;
 
     background: white;
 
-    border: 1px solid #e5e7eb;
+    border: 1px dashed #cbd5e1;
 
-    border-radius: 18px;
+    border-radius: 20px;
+}
 
-    padding: 30px;
+.user-empty-icon {
+    width: 80px;
+    height: 80px;
 
-    box-shadow:
-        0 5px 20px rgba(15, 23, 42, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: #ede9fe;
+
+    font-size: 38px;
+}
+
+.user-empty h2 {
+    margin: 5px 0 8px;
+
+    color: #1e293b;
+}
+
+.user-empty p {
+    margin: 0;
+
+    color: #64748b;
 }
 
 
-/* =====================================================
-   SLOT HEADER
-===================================================== */
+/* =========================================================
+   TIME SLOT MODAL OVERLAY
+========================================================= */
 
-.slot-header {
+.slot-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(15, 23, 42, 0.65);
+
+    backdrop-filter: blur(7px);
+
+    animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SLOT MODAL
+========================================================= */
+
+.slot-modal {
+    width: 100%;
+
+    max-width: 850px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.25);
+
+    animation: modalSlideUp 0.25s ease;
+}
+
+@keyframes modalSlideUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.slot-modal-header {
     display: flex;
 
     align-items: flex-start;
-
     justify-content: space-between;
 
     gap: 20px;
 
-    padding-bottom: 25px;
+    padding: 25px 28px;
 
-    border-bottom: 1px solid #edf0f4;
-
-    margin-bottom: 25px;
+    border-bottom: 1px solid #eef2f7;
 }
 
+.slot-modal-label {
+    display: inline-block;
 
-.slot-header span {
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
+    margin-bottom: 7px;
 
     color: #6366f1;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
 }
 
-
-.slot-header h2 {
-    margin: 0 0 7px;
-
-    font-size: 28px;
+.slot-modal-header h2 {
+    margin: 0 0 6px;
 
     color: #111827;
+
+    font-size: 25px;
 }
 
-
-.slot-header p {
+.slot-modal-header p {
     margin: 0;
 
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 14px;
 }
 
 
-/* CLOSE BUTTON */
+/* =========================================================
+   CLOSE MODAL BUTTON
+========================================================= */
 
 .close-slot-btn {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
 
     border: none;
 
     border-radius: 50%;
 
-    background: #f3f4f6;
+    background: #f1f5f9;
 
-    color: #374151;
+    color: #475569;
 
-    font-size: 18px;
+    font-size: 17px;
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
-
 
 .close-slot-btn:hover {
     background: #fee2e2;
 
     color: #dc2626;
+
+    transform: rotate(90deg);
 }
 
 
-/* =====================================================
+/* =========================================================
    DATE SELECTOR
-===================================================== */
+========================================================= */
 
-.date-selector {
+.slot-date-section {
     display: flex;
 
     align-items: center;
+    justify-content: space-between;
 
     gap: 20px;
 
-    margin-bottom: 28px;
-
-    padding: 18px;
+    padding: 20px 28px;
 
     background: #f8fafc;
 
-    border-radius: 12px;
+    border-bottom: 1px solid #eef2f7;
 }
 
+.slot-date-section label {
+    color: #334155;
 
-.date-selector label {
     font-size: 14px;
-
     font-weight: 700;
-
-    color: #374151;
 }
 
+.slot-date-section input {
+    min-width: 190px;
 
-.date-selector input {
     padding: 11px 14px;
 
-    border: 1px solid #d1d5db;
+    border: 1px solid #cbd5e1;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
     background: white;
 
-    color: #111827;
+    color: #1e293b;
 
     font-size: 14px;
 
     outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+.slot-date-section input:hover {
+    border-color: #a5b4fc;
+}
 
-.date-selector input:focus {
+.slot-date-section input:focus {
     border-color: #6366f1;
 
     box-shadow:
@@ -663,61 +993,121 @@ body {
 }
 
 
-/* =====================================================
-   SLOT GRID
-===================================================== */
+/* =========================================================
+   POPUP SLOT CONTENT
+========================================================= */
 
-.slot-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(250px, 1fr));
-
-    gap: 18px;
+.popup-slots-section {
+    padding: 25px 28px;
 }
 
 
-/* =====================================================
-   SLOT CARD
-===================================================== */
+/* =========================================================
+   SLOT TITLE
+========================================================= */
 
-.slot-card {
+.slots-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.slots-title div {
+    color: #1e293b;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.slots-title span {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   POPUP SLOT GRID
+========================================================= */
+
+.popup-slot-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   POPUP SLOT CARD
+========================================================= */
+
+.popup-slot-card {
     display: flex;
 
     align-items: center;
 
     gap: 15px;
 
-    padding: 18px;
+    padding: 17px;
 
-    background: #f8fafc;
+    background: #ffffff;
 
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
 
-    border-radius: 13px;
+    border-radius: 14px;
 
-    transition: all 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
-
-.slot-card:hover {
-    border-color: #c7d2fe;
+.popup-slot-card:hover {
+    border-color: #818cf8;
 
     box-shadow:
-        0 5px 15px rgba(15, 23, 42, 0.06);
+        0 8px 20px rgba(99, 102, 241, 0.10);
+
+    transform: translateY(-2px);
 }
 
 
-/* SLOT ICON */
+/* =========================================================
+   SLOT TIME
+========================================================= */
 
-.slot-icon {
-    width: 45px;
-    height: 45px;
-
-    min-width: 45px;
+.popup-slot-time {
+    flex: 1;
 
     display: flex;
 
+    align-items: center;
+
+    gap: 10px;
+}
+
+.clock-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -725,203 +1115,249 @@ body {
 
     background: #eef2ff;
 
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.popup-slot-time div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+}
+
+.popup-slot-time strong {
+    color: #1e293b;
+
+    font-size: 14px;
+}
+
+.popup-slot-time span {
+    color: #94a3b8;
+
+    font-size: 12px;
 }
 
 
-/* SLOT INFO */
+/* =========================================================
+   SLOT STATUS
+========================================================= */
 
-.slot-info {
-    flex: 1;
+.popup-slot-status {
+    padding: 5px 8px;
 
-    min-width: 0;
-}
+    border-radius: 20px;
 
-
-.slot-info h3 {
-    margin: 0 0 6px;
-
-    font-size: 15px;
-
-    color: #111827;
-}
-
-
-.slot-info span {
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 800;
 
     letter-spacing: 0.5px;
 }
 
+.popup-slot-status.available {
+    background: #dcfce7;
 
-.status-available {
-    color: #059669;
+    color: #15803d;
+}
+
+.popup-slot-status.unavailable {
+    background: #fee2e2;
+
+    color: #b91c1c;
 }
 
 
-.status-unavailable {
-    color: #dc2626;
-}
+/* =========================================================
+   POPUP BOOK BUTTON
+========================================================= */
 
+.popup-book-btn {
+    padding: 9px 14px;
 
-/* =====================================================
-   BOOK SLOT BUTTON
-===================================================== */
-
-.book-slot-btn {
     border: none;
 
-    padding: 10px 14px;
+    border-radius: 9px;
 
-    border-radius: 8px;
-
-    background: #4f46e5;
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #6366f1
+        );
 
     color: white;
 
     font-size: 12px;
-
     font-weight: 700;
-
-    cursor: pointer;
 
     white-space: nowrap;
 
-    transition: all 0.2s ease;
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-
-.book-slot-btn:hover {
+.popup-book-btn:hover:not(:disabled) {
     background: #4338ca;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 14px rgba(99, 102, 241, 0.25);
 }
 
+.popup-book-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
 
-.book-slot-btn:disabled {
+.popup-book-btn:disabled {
+    background: #cbd5e1;
+
+    color: #64748b;
+
     cursor: not-allowed;
-
-    opacity: 0.65;
 }
 
 
-/* =====================================================
+/* =========================================================
    UNAVAILABLE SLOT
-===================================================== */
+========================================================= */
 
-.slot-card.slot-unavailable {
-    background: #fafafa;
-
-    border-color: #e5e7eb;
-
-    opacity: 0.8;
-}
-
-
-.slot-card.slot-unavailable .slot-icon {
-    background: #f3f4f6;
-
-    filter: grayscale(1);
-}
-
-
-.unavailable-btn {
-    background: #9ca3af !important;
-
-    color: white;
-
-    cursor: not-allowed !important;
-}
-
-
-/* =====================================================
-   NO SLOTS
-===================================================== */
-
-.no-slots {
-    text-align: center;
-
-    padding: 55px 20px;
-
+.popup-slot-unavailable {
     background: #f8fafc;
 
-    border-radius: 14px;
+    opacity: 0.72;
+}
 
-    border: 1px dashed #d1d5db;
+.popup-slot-unavailable:hover {
+    transform: none;
+
+    border-color: #e2e8f0;
+
+    box-shadow: none;
 }
 
 
-.no-slots > div {
+/* =========================================================
+   POPUP EMPTY
+========================================================= */
+
+.popup-empty {
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.popup-empty-icon {
+    margin-bottom: 10px;
+
     font-size: 42px;
-
-    margin-bottom: 12px;
 }
 
-
-.no-slots h3 {
+.popup-empty h3 {
     margin: 0 0 8px;
 
-    color: #374151;
+    color: #1e293b;
 
-    font-size: 19px;
+    font-size: 18px;
 }
 
-
-.no-slots p {
+.popup-empty p {
     margin: 0;
 
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 14px;
 }
 
 
-/* =====================================================
-   EMPTY STATE
-===================================================== */
+/* =========================================================
+   POPUP LOADING
+========================================================= */
 
-.user-empty {
-    width: 100%;
+.popup-loading {
+    min-height: 180px;
 
-    padding: 80px 20px;
+    display: flex;
 
-    text-align: center;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px;
+}
+
+.popup-loading p {
+    margin-top: 15px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.slot-modal-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 17px 28px;
+
+    border-top: 1px solid #eef2f7;
+
+    background: #fafafa;
+}
+
+.slot-modal-footer span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.modal-cancel-btn {
+    padding: 9px 16px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
 
     background: white;
 
-    border: 1px solid #e5e7eb;
+    color: #475569;
 
-    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.modal-cancel-btn:hover {
+    background: #f1f5f9;
+
+    border-color: #94a3b8;
 }
 
 
-.user-empty > div {
-    font-size: 55px;
+/* =========================================================
+   LOADING PAGE
+========================================================= */
 
-    margin-bottom: 15px;
-}
-
-
-.user-empty h2 {
-    margin: 0 0 10px;
-
-    font-size: 24px;
-}
-
-
-.user-empty p {
-    margin: 0;
-
-    color: #6b7280;
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.user-loading,
-.venues-loading {
+.user-loading {
     min-height: 100vh;
 
     display: flex;
@@ -929,188 +1365,279 @@ body {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
-    background: #f5f7fb;
+    background:
+        radial-gradient(
+            circle at center,
+            #eef2ff,
+            #f8fafc 60%
+        );
 
-    color: #374151;
+    color: #334155;
+}
+
+.user-loading h2 {
+    margin-top: 18px;
+
+    font-size: 18px;
 }
 
 
-.user-spinner,
-.venues-spinner {
-    width: 42px;
-    height: 42px;
+/* =========================================================
+   SPINNER
+========================================================= */
 
-    border: 4px solid #e5e7eb;
+.user-spinner {
+    width: 35px;
+    height: 35px;
 
-    border-top-color: #4f46e5;
+    border: 3px solid #e0e7ff;
+
+    border-top-color: #6366f1;
 
     border-radius: 50%;
 
     animation: spin 0.8s linear infinite;
-
-    margin-bottom: 15px;
 }
 
-
 @keyframes spin {
-
-    from {
-        transform: rotate(0deg);
-    }
 
     to {
         transform: rotate(360deg);
     }
-
 }
 
 
-/* =====================================================
-   DESKTOP - LARGE SCREEN
-===================================================== */
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
 
-@media (min-width: 1500px) {
+@media (max-width: 1100px) {
 
     .user-main {
-        padding-left: 70px;
-        padding-right: 70px;
+        padding: 30px;
     }
 
     .user-venue-grid {
         grid-template-columns:
-            repeat(3, minmax(300px, 1fr));
+            repeat(2, minmax(0, 1fr));
     }
 
 }
 
 
-/* =====================================================
-   LAPTOP
-===================================================== */
-
-@media (max-width: 1200px) {
-
-    .user-main {
-        padding: 40px;
-    }
-
-    .user-venue-grid {
-        grid-template-columns:
-            repeat(2, minmax(280px, 1fr));
-    }
-
-    .slot-grid {
-        grid-template-columns:
-            repeat(2, minmax(250px, 1fr));
-    }
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+========================================================= */
 
 @media (max-width: 850px) {
 
     .user-sidebar {
         width: 220px;
-        min-width: 220px;
     }
 
     .user-main {
-        margin-left: 220px;
-
         width: calc(100% - 220px);
 
-        padding: 30px;
+        margin-left: 220px;
+
+        padding: 25px;
     }
 
     .user-venue-grid {
         grid-template-columns: 1fr;
     }
 
-    .slot-grid {
+    .popup-slot-grid {
         grid-template-columns: 1fr;
     }
 
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     .user-layout {
         display: block;
     }
 
+
+    /* Sidebar */
+
     .user-sidebar {
         position: relative;
 
         width: 100%;
-        min-width: 100%;
 
         min-height: auto;
 
-        padding: 20px;
+        padding: 18px;
+    }
+
+    .user-logo {
+        font-size: 20px;
     }
 
     .user-role {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .user-sidebar nav {
-        gap: 5px;
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        padding-bottom: 5px;
     }
 
     .user-sidebar nav a {
-        padding: 11px 13px;
+        flex-shrink: 0;
+
+        font-size: 12px;
     }
 
-    .user-main {
-        margin-left: 0;
+    .user-sidebar nav a.active::before {
+        display: none;
+    }
 
+
+    /* Main */
+
+    .user-main {
         width: 100%;
+
+        margin-left: 0;
 
         padding: 25px 18px 50px;
     }
 
-    .user-page-header h1 {
-        font-size: 30px;
-    }
+
+    /* Venue */
 
     .user-venue-grid {
         grid-template-columns: 1fr;
 
-        gap: 20px;
+        gap: 18px;
     }
 
-    .slot-section {
+    .user-venue-card .venue-card-top {
+        height: 230px;
+    }
+
+
+    /* Modal */
+
+    .slot-modal-overlay {
+        padding: 12px;
+    }
+
+    .slot-modal {
+        max-height: 94vh;
+
+        border-radius: 17px;
+    }
+
+    .slot-modal-header {
         padding: 20px;
     }
 
-    .date-selector {
+    .slot-modal-header h2 {
+        font-size: 21px;
+    }
+
+    .slot-date-section {
         flex-direction: column;
 
-        align-items: flex-start;
+        align-items: stretch;
+
+        padding: 18px 20px;
     }
 
-    .date-selector input {
+    .slot-date-section input {
         width: 100%;
+
+        min-width: 0;
     }
 
-    .slot-card {
+    .popup-slots-section {
+        padding: 20px;
+    }
+
+    .popup-slot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popup-slot-card {
         flex-wrap: wrap;
     }
 
-    .book-slot-btn {
+    .popup-slot-time {
+        min-width: 150px;
+    }
+
+    .popup-book-btn {
         width: 100%;
+    }
+
+    .slot-modal-footer {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 15px 20px;
+    }
+
+    .modal-cancel-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .user-main {
+        padding: 20px 14px 40px;
+    }
+
+    .user-page-header {
+        margin-bottom: 18px;
+    }
+
+    .user-venue-card .venue-card-top {
+        height: 210px;
+    }
+
+    .venue-card-content {
+        padding: 17px;
+    }
+
+    .venue-card-content h2 {
+        font-size: 19px;
+    }
+
+    .popup-slot-card {
+        gap: 10px;
+    }
+
+    .clock-icon {
+        width: 35px;
+        height: 35px;
+
+        font-size: 16px;
+    }
+
+    .slot-modal-header {
+        gap: 10px;
     }
 
 }

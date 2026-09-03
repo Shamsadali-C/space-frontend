@@ -58,10 +58,6 @@ const holiday = async (venueId) => {
 };
 
 
-/* =========================================
-   DELETE VENUE
-========================================= */
-
 const deleteVenue = async (venueId) => {
 
     const response = await api.delete(
@@ -100,9 +96,6 @@ const approveBooking = async (bookingId) => {
 };
 
 
-/* =========================================
-   REJECT BOOKING
-========================================= */
 
 const rejectBooking = async (bookingId) => {
 
@@ -114,9 +107,6 @@ const rejectBooking = async (bookingId) => {
 };
 
 
-/* =========================================
-   CREATE TIME SLOT
-========================================= */
 
 const createTimeSlot = async (venueId, slot) => {
 
@@ -176,6 +166,19 @@ const deleteImage = async (id) => {
 
     return response.data;
 };
+const updateImage = async (imageId, file) => {
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    const response = await api.put(
+        `/owner/venue/images/${imageId}`,
+        formData
+    );
+
+    return response.data;
+};
 
 
 /* =========================================
@@ -200,6 +203,7 @@ export default {
 
     uploadImages,
     getImages,
+    updateImage,
     deleteImage
 };
 

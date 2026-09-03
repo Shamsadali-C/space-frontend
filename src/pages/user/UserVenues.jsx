@@ -1,15 +1,14 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../services/userService";
 import "../../styles/UserVenues.css";
+import VenueImageSlider from "../../components/VenueImageSlider";
 
 
 const UserVenues = () => {
 
     const [venues, setVenues] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const [error, setError] = useState("");
 
     const [selectedVenue, setSelectedVenue] =
@@ -18,7 +17,8 @@ const UserVenues = () => {
     const [selectedDate, setSelectedDate] =
         useState("");
 
-    const [slots, setSlots] = useState([]);
+    const [slots, setSlots] =
+        useState([]);
 
     const [loadingSlots, setLoadingSlots] =
         useState(false);
@@ -26,10 +26,13 @@ const UserVenues = () => {
     const [bookingLoading, setBookingLoading] =
         useState(null);
 
-    const [message, setMessage] = useState("");
+    const [message, setMessage] =
+        useState("");
 
 
-
+    /* =========================================
+       LOAD VENUES
+    ========================================= */
 
     useEffect(() => {
         loadVenues();
@@ -46,7 +49,10 @@ const UserVenues = () => {
             const data =
                 await userService.getVenues();
 
-            console.log("User venues:", data);
+            console.log(
+                "User venues:",
+                data
+            );
 
             setVenues(
                 Array.isArray(data)
@@ -61,6 +67,8 @@ const UserVenues = () => {
                 error
             );
 
+            setVenues([]);
+
             setError(
                 error.response?.data?.message ||
                 error.response?.data ||
@@ -74,26 +82,37 @@ const UserVenues = () => {
     };
 
 
-
+    /* =========================================
+       SELECT VENUE
+    ========================================= */
 
     const handleSelectVenue = (venue) => {
 
         setSelectedVenue(venue);
+
         setSelectedDate("");
+
         setSlots([]);
+
         setMessage("");
+
     };
 
 
-
+    /* =========================================
+       DATE CHANGE
+    ========================================= */
 
     const handleDateChange = async (e) => {
 
         const date = e.target.value;
 
         setSelectedDate(date);
+
         setSlots([]);
+
         setMessage("");
+
 
         if (!date || !selectedVenue) {
             return;
@@ -128,6 +147,8 @@ const UserVenues = () => {
                 error
             );
 
+            setSlots([]);
+
             setMessage(
                 error.response?.data?.message ||
                 error.response?.data ||
@@ -141,7 +162,9 @@ const UserVenues = () => {
     };
 
 
-
+    /* =========================================
+       BOOKING
+    ========================================= */
 
     const handleBooking = async (slotId) => {
 
@@ -149,6 +172,7 @@ const UserVenues = () => {
             window.confirm(
                 "Do you want to request this time slot?"
             );
+
 
         if (!confirmBooking) {
             return;
@@ -158,10 +182,13 @@ const UserVenues = () => {
         try {
 
             setBookingLoading(slotId);
+
             setMessage("");
 
-            await userService.createBooking(slotId);
 
+            await userService.createBooking(
+                slotId
+            );
 
 
             setMessage(
@@ -169,6 +196,9 @@ const UserVenues = () => {
             );
 
 
+            /*
+             * Reload slots after booking.
+             */
 
             if (
                 selectedDate &&
@@ -180,6 +210,7 @@ const UserVenues = () => {
                         selectedVenue.id,
                         selectedDate
                     );
+
 
                 setSlots(
                     Array.isArray(updatedSlots)
@@ -196,6 +227,7 @@ const UserVenues = () => {
                 error
             );
 
+
             setMessage(
                 error.response?.data?.message ||
                 error.response?.data ||
@@ -208,6 +240,27 @@ const UserVenues = () => {
         }
     };
 
+
+    /* =========================================
+       CLOSE SLOT SECTION
+    ========================================= */
+
+    const closeSlotSection = () => {
+
+        setSelectedVenue(null);
+
+        setSelectedDate("");
+
+        setSlots([]);
+
+        setMessage("");
+
+    };
+
+
+    /* =========================================
+       LOADING
+    ========================================= */
 
     if (loading) {
 
@@ -222,22 +275,30 @@ const UserVenues = () => {
                 </h2>
 
             </div>
+
         );
     }
 
 
-
+    /* =========================================
+       PAGE
+    ========================================= */
 
     return (
 
         <div className="user-layout">
 
 
+            {/* =====================================
+                SIDEBAR
+            ===================================== */}
+
             <aside className="user-sidebar">
 
                 <div className="user-logo">
                     Book My Space
                 </div>
+
 
                 <div className="user-role">
                     USER PANEL
@@ -250,6 +311,7 @@ const UserVenues = () => {
                         🏠 Dashboard
                     </Link>
 
+
                     <Link
                         to="/user/venues"
                         className="active"
@@ -257,13 +319,16 @@ const UserVenues = () => {
                         🏢 Find Venues
                     </Link>
 
+
                     <Link to="/user/bookings">
                         📅 My Bookings
                     </Link>
 
+
                     <Link to="/user/profile">
                         👤 Profile
                     </Link>
+
 
                     <Link to="/user/owner-request">
                         ⭐ Become an Owner
@@ -274,64 +339,103 @@ const UserVenues = () => {
             </aside>
 
 
+
+            {/* =====================================
+                MAIN
+            ===================================== */}
+
             <main className="user-main">
 
 
-                {/* PAGE HEADER */}
+                <div className="user-page-header">
 
-{/*                 <div className="user-page-header"> */}
+                    <div>
 
-{/*                     <div> */}
+                        <span className="user-page-label">
+                            FIND YOUR SPACE
+                        </span>
 
-{/*                         <span> */}
-{/*                             FIND YOUR SPACE */}
-{/*                         </span> */}
 
 {/*                         <h1> */}
 {/*                             Available Venues */}
 {/*                         </h1> */}
+
 
 {/*                         <p> */}
 {/*                             Discover the perfect venue */}
 {/*                             for your next event. */}
 {/*                         </p> */}
 
-{/*                     </div> */}
+                    </div>
 
-{/*                 </div> */}
+                </div>
 
 
+
+                {/* =================================
+                    ERROR
+                ================================= */}
 
                 {error && (
 
                     <div className="user-error">
-                        {error}
+
+                        <strong>
+                            Unable to load venues
+                        </strong>
+
+                        <p>
+                            {error}
+                        </p>
+
+
+                        <button
+                            type="button"
+                            onClick={loadVenues}
+                        >
+                            Try Again
+                        </button>
+
                     </div>
 
                 )}
 
 
+
+                {/* =================================
+                    MESSAGE
+                ================================= */}
 
                 {message && (
 
                     <div className="user-message">
+
                         ✓ {message}
+
                     </div>
 
                 )}
 
 
-                {venues.length === 0 ? (
+
+                {/* =================================
+                    NO VENUES
+                ================================= */}
+
+                {!error &&
+                venues.length === 0 ? (
 
                     <div className="user-empty">
 
-                        <div>
+                        <div className="user-empty-icon">
                             🏢
                         </div>
+
 
                         <h2>
                             No venues available
                         </h2>
+
 
                         <p>
                             There are currently no
@@ -342,17 +446,283 @@ const UserVenues = () => {
 
                 ) : (
 
-                    <div className="user-venue-grid">
 
-                        {venues.map((venue) => (
+                    /* =================================
+                       VENUE GRID
+                    ================================= */
 
-                            <VenueCard
-                                key={venue.id}
-                                venue={venue}
-                                onSelect={handleSelectVenue}
-                            />
+                    !error && (
 
-                        ))}
+                        <div className="user-venue-grid">
+
+                            {venues.map((venue) => (
+
+                                <VenueCard
+                                    key={venue.id}
+                                    venue={venue}
+                                    onSelect={
+                                        handleSelectVenue
+                                    }
+                                />
+
+                            ))}
+
+                        </div>
+
+                    )
+
+                )}
+
+
+
+
+                {selectedVenue && (
+
+                    <div className="slot-modal-overlay">
+
+                        <div className="slot-modal">
+
+
+
+                            <div className="slot-modal-header">
+
+                                <div>
+
+                                    <span className="slot-modal-label">
+                                        BOOK YOUR SPACE
+                                    </span>
+
+                                    <h2>
+                                        {selectedVenue.venueName}
+                                    </h2>
+
+                                    <p>
+                                        📍 {selectedVenue.location || "Location not specified"}
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className="close-slot-btn"
+                                    onClick={closeSlotSection}
+                                >
+                                    ✕
+                                </button>
+
+                            </div>
+
+
+                            {/* DATE */}
+
+                            <div className="slot-date-section">
+
+                                <label>
+                                    Select Booking Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    value={selectedDate}
+                                    min={
+                                        new Date()
+                                            .toISOString()
+                                            .split("T")[0]
+                                    }
+                                    onChange={handleDateChange}
+                                />
+
+                            </div>
+
+
+                            {/* SLOTS */}
+
+                            <div className="popup-slots-section">
+
+                                {!selectedDate ? (
+
+                                    <div className="popup-empty">
+
+                                        <div className="popup-empty-icon">
+                                            📅
+                                        </div>
+
+                                        <h3>
+                                            Select a date
+                                        </h3>
+
+                                        <p>
+                                            Choose a date to see available
+                                            time slots.
+                                        </p>
+
+                                    </div>
+
+                                ) : loadingSlots ? (
+
+                                    <div className="popup-loading">
+
+                                        <div className="user-spinner"></div>
+
+                                        <p>
+                                            Finding available slots...
+                                        </p>
+
+                                    </div>
+
+                                ) : slots.length === 0 ? (
+
+                                    <div className="popup-empty">
+
+                                        <div className="popup-empty-icon">
+                                            🕐
+                                        </div>
+
+                                        <h3>
+                                            No time slots available
+                                        </h3>
+
+                                        <p>
+                                            Try selecting another date.
+                                        </p>
+
+                                    </div>
+
+                                ) : (
+
+                                    <>
+
+                                        <div className="slots-title">
+
+                                            <div>
+                                                Available Time Slots
+                                            </div>
+
+                                            <span>
+                                                {slots.length} slots
+                                            </span>
+
+                                        </div>
+
+
+                                        <div className="popup-slot-grid">
+
+                                            {slots.map((slot) => {
+
+                                                const slotStatus =
+                                                    slot.status?.toUpperCase();
+
+                                                const isUnavailable =
+                                                    slotStatus === "UNAVAILABLE" ||
+                                                    slotStatus === "BOOKED" ||
+                                                    slotStatus === "PENDING";
+
+                                                return (
+
+                                                    <div
+                                                        key={slot.id}
+                                                        className={
+                                                            `popup-slot-card ${
+                                                                isUnavailable
+                                                                    ? "popup-slot-unavailable"
+                                                                    : ""
+                                                            }`
+                                                        }
+                                                    >
+
+                                                        <div className="popup-slot-time">
+
+                                                            <span className="clock-icon">
+                                                                🕐
+                                                            </span>
+
+                                                            <div>
+
+                                                                <strong>
+                                                                    {slot.startTime}
+                                                                </strong>
+
+                                                                <span>
+                                                                    to
+                                                                </span>
+
+                                                                <strong>
+                                                                    {slot.endTime}
+                                                                </strong>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <span
+                                                            className={
+                                                                isUnavailable
+                                                                    ? "popup-slot-status unavailable"
+                                                                    : "popup-slot-status available"
+                                                            }
+                                                        >
+                                                            {isUnavailable
+                                                                ? "UNAVAILABLE"
+                                                                : "AVAILABLE"}
+                                                        </span>
+
+
+                                                        <button
+                                                            type="button"
+                                                            className="popup-book-btn"
+                                                            onClick={() =>
+                                                                handleBooking(slot.id)
+                                                            }
+                                                            disabled={
+                                                                isUnavailable ||
+                                                                bookingLoading === slot.id
+                                                            }
+                                                        >
+
+                                                            {bookingLoading === slot.id
+                                                                ? "Sending..."
+                                                                : isUnavailable
+                                                                    ? "Unavailable"
+                                                                    : "Book Now"
+                                                            }
+
+                                                        </button>
+
+                                                    </div>
+
+                                                );
+
+                                            })}
+
+                                        </div>
+
+                                    </>
+
+                                )}
+
+                            </div>
+
+
+                            {/* FOOTER */}
+
+                            <div className="slot-modal-footer">
+
+                                <span>
+                                    🔒 Your booking request will be sent to the owner.
+                                </span>
+
+                                <button
+                                    type="button"
+                                    onClick={closeSlotSection}
+                                    className="modal-cancel-btn"
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -360,244 +730,48 @@ const UserVenues = () => {
 
 
 
-                {selectedVenue && (
-
-                    <section className="slot-section">
-
-
-
-                        <div className="slot-header">
-
-                            <div>
-
-                                <span>
-                                    BOOK YOUR SPACE
-                                </span>
-
-                                <h2>
-                                    {selectedVenue.venueName}
-                                </h2>
-
-                                <p>
-                                    📍{" "}
-                                    {selectedVenue.location}
-                                </p>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                className="close-slot-btn"
-                                onClick={() => {
-
-                                    setSelectedVenue(null);
-                                    setSlots([]);
-                                    setSelectedDate("");
-                                    setMessage("");
-
-                                }}
-                            >
-                                ✕
-                            </button>
-
-                        </div>
-
-
-
-
-                        <div className="date-selector">
-
-                            <label>
-                                Select Booking Date
-                            </label>
-
-                            <input
-                                type="date"
-                                value={selectedDate}
-                                min={
-                                    new Date()
-                                        .toISOString()
-                                        .split("T")[0]
-                                }
-                                onChange={
-                                    handleDateChange
-                                }
-                            />
-
-                        </div>
-
-
-
-
-                        {loadingSlots ? (
-
-                            <div className="slot-loading">
-
-                                <div className="user-spinner"></div>
-
-                                <p>
-                                    Loading available
-                                    time slots...
-                                </p>
-
-                            </div>
-
-
-                        ) : selectedDate &&
-                          slots.length === 0 ? (
-
-
-                            <div className="no-slots">
-
-                                <div>
-                                    🕐
-                                </div>
-
-                                <h3>
-                                    No time slots available
-                                </h3>
-
-                                <p>
-                                    There are no slots
-                                    available for this date.
-                                </p>
-
-                            </div>
-
-
-                        ) : (
-
-
-
-                            <div className="slot-grid">
-
-                                {slots.map((slot) => {
-
-
-                                    const slotStatus =
-                                        slot.status?.toUpperCase();
-
-
-                                    const isUnavailable =
-                                        slotStatus === "UNAVAILABLE" ||
-                                        slotStatus === "BOOKED" ||
-                                        slotStatus === "PENDING";
-
-
-                                    return (
-
-                                        <div
-                                            className={`slot-card ${
-                                                isUnavailable
-                                                    ? "slot-unavailable"
-                                                    : ""
-                                            }`}
-                                            key={slot.id}
-                                        >
-
-
-
-                                            <div className="slot-icon">
-                                                🕐
-                                            </div>
-
-
-
-                                            <div className="slot-info">
-
-                                                <h3>
-                                                    {slot.startTime}
-                                                    {" - "}
-                                                    {slot.endTime}
-                                                </h3>
-
-
-                                                <span
-                                                    className={
-                                                        isUnavailable
-                                                            ? "status-unavailable"
-                                                            : "status-available"
-                                                    }
-                                                >
-                                                    {isUnavailable
-                                                        ? "UNAVAILABLE"
-                                                        : "AVAILABLE"}
-                                                </span>
-
-                                            </div>
-
-
-
-                                            <button
-                                                type="button"
-                                                className={`book-slot-btn ${
-                                                    isUnavailable
-                                                        ? "unavailable-btn"
-                                                        : ""
-                                                }`}
-                                                onClick={() =>
-                                                    handleBooking(
-                                                        slot.id
-                                                    )
-                                                }
-                                                disabled={
-                                                    isUnavailable ||
-                                                    bookingLoading ===
-                                                        slot.id
-                                                }
-                                            >
-
-                                                {bookingLoading ===
-                                                slot.id
-
-                                                    ? "Booking..."
-
-                                                    : isUnavailable
-
-                                                        ? "Unavailable"
-
-                                                        : "Book Now"}
-
-                                            </button>
-
-                                        </div>
-
-                                    );
-
-                                })}
-
-                            </div>
-
-                        )}
-
-                    </section>
-
-                )}
-
             </main>
 
         </div>
+
     );
 };
 
 
-const VenueCard = ({venue,onSelect}) => {
 
-    const [image, setImage] =
-        useState(null);
+/* =====================================================
+   VENUE CARD
+===================================================== */
 
+const VenueCard = ({
+    venue,
+    onSelect
+}) => {
+
+    const [venueImages, setVenueImages] =
+        useState([]);
+
+    const [imagesLoading, setImagesLoading] =
+        useState(true);
+
+
+    /* =========================================
+       LOAD VENUE IMAGES
+    ========================================= */
 
     useEffect(() => {
 
-        loadImage();
+        loadImages();
 
     }, [venue.id]);
 
 
-    const loadImage = async () => {
+    const loadImages = async () => {
 
         try {
+
+            setImagesLoading(true);
+
 
             const images =
                 await userService.getVenueImages(
@@ -605,94 +779,163 @@ const VenueCard = ({venue,onSelect}) => {
                 );
 
 
-            if (
-                Array.isArray(images) &&
-                images.length > 0
-            ) {
+            console.log(
+                `Images for venue ${venue.id}:`,
+                images
+            );
 
-                setImage(
-                    images[0].imageUrl ||
-                    images[0].imagePath ||
-                    images[0].url ||
-                    null
-                );
+
+            if (Array.isArray(images)) {
+
+                setVenueImages(images);
+
+            } else {
+
+                setVenueImages([]);
+
             }
 
         } catch (error) {
 
             console.error(
-                "Failed to load venue image:",
+                `Failed to load images for venue ${venue.id}:`,
                 error
             );
+
+
+            setVenueImages([]);
+
+        } finally {
+
+            setImagesLoading(false);
         }
     };
 
+
+    /* =========================================
+       CARD
+    ========================================= */
 
     return (
 
         <div className="user-venue-card">
 
 
+            {/* =================================
+                IMAGE + STATUS
+            ================================= */}
 
-            <div className="venue-image">
+            <div className="venue-card-top">
 
-                {image ? (
 
-                    <img
-                        src={image}
-                        alt={venue.venueName}
+                {/* IMAGE */}
+
+                {imagesLoading ? (
+
+                    <div className="venue-image-placeholder">
+
+                        <div className="user-spinner"></div>
+
+                    </div>
+
+                ) : venueImages.length > 0 ? (
+
+                    <VenueImageSlider
+                        images={venueImages}
+                        venueName={
+                            venue.venueName
+                        }
                     />
 
                 ) : (
 
                     <div className="venue-image-placeholder">
+
                         🏢
+
                     </div>
 
                 )}
+
+
+
+                {/* STATUS */}
+
+{/*                 <span className="venue-available"> */}
+
+{/*                     { */}
+{/*                         venue.venueStatus || */}
+{/*                         venue.status || */}
+{/*                         "AVAILABLE" */}
+{/*                     } */}
+
+{/*                 </span> */}
 
             </div>
 
 
 
+            {/* =================================
+                CONTENT
+            ================================= */}
+
             <div className="venue-card-content">
 
 
-                <div className="venue-card-top">
-
-                    <span className="venue-available">
-
-                        {venue.venueStatus ||
-                            venue.status ||
-                            "AVAILABLE"}
-
-                    </span>
-
-                </div>
-
+                {/* NAME */}
 
                 <h2>
                     {venue.venueName}
                 </h2>
 
 
+
+                {/* LOCATION */}
+
                 <p className="venue-location">
-                    📍 {venue.location}
+
+                    📍{" "}
+
+                    {
+                        venue.location ||
+                        "Location not specified"
+                    }
+
                 </p>
 
+
+
+                {/* META */}
 
                 <div className="venue-meta">
 
                     <span>
-                        👥 {venue.capacity}
+
+                        👥{" "}
+
+                        {
+                            venue.capacity ||
+                            "N/A"
+                        }
+
                     </span>
 
+
                     <strong>
-                        ₹{venue.price}
+
+                        ₹
+                        {
+                            venue.price ||
+                            0
+                        }
+
                     </strong>
 
                 </div>
 
+
+
+                {/* BUTTON */}
 
                 <button
                     type="button"
@@ -707,6 +950,7 @@ const VenueCard = ({venue,onSelect}) => {
             </div>
 
         </div>
+
     );
 };
 

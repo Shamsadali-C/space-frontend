@@ -395,11 +395,6 @@ const AddVenue = () => {
     };
 
 
-    // =========================================
-    // HANDLE IMAGE SELECTION
-    // MAXIMUM 3 IMAGES
-    // =========================================
-
     const handleFileChange = (e) => {
 
         const selectedFiles = Array.from(
@@ -447,11 +442,6 @@ const AddVenue = () => {
 
         setFiles(selectedFiles);
     };
-
-
-    // =========================================
-    // SUBMIT
-    // =========================================
 
     const handleSubmit = async (e) => {
 
@@ -506,23 +496,6 @@ const AddVenue = () => {
             );
 
 
-            // =================================
-            // 2. GET CREATED VENUE ID
-            // =================================
-
-            /*
-             * IMPORTANT:
-             *
-             * ownerService.addVenue()
-             * already returns response.data.
-             *
-             * Therefore:
-             *
-             * createdVenue.id       ✅
-             *
-             * createdVenue.data.id  ❌
-             */
-
             const venueId =
                 createdVenue?.id;
 
@@ -547,10 +520,19 @@ const AddVenue = () => {
 
             if (files.length > 0) {
 
-                console.log(
-                    "Uploading images:",
-                    files
-                );
+               console.log(
+                   "Number of selected images:",
+                   files.length
+               );
+
+               files.forEach((file, index) => {
+                   console.log(
+                       `Image ${index + 1}:`,
+                       file.name,
+                       file.type,
+                       file.size
+                   );
+               });
 
 
                 await ownerService.uploadImages(

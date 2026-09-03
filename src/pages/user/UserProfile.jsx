@@ -233,18 +233,15 @@ const UserProfile = () => {
 
                 <div className="profile-header">
 
-                    <span>
-                        ACCOUNT SETTINGS
-                    </span>
+{/*                     <span> */}
+{/*                         ACCOUNT SETTINGS */}
+{/*                     </span> */}
 
                     <h1>
                         My Profile
                     </h1>
 
-                    <p>
-                        View and manage your account
-                        information.
-                    </p>
+
 
                 </div>
 
@@ -290,9 +287,9 @@ const UserProfile = () => {
                                     {user.username}
                                 </h2>
 
-                                <span>
-                                    {user.role || "USER"}
-                                </span>
+{/*                                 <span> */}
+{/*                                     {user.role || "USER"} */}
+{/*                                 </span> */}
 
                             </div>
 
@@ -366,25 +363,25 @@ const UserProfile = () => {
                                 </div>
 
 
-                                <div className="profile-info-item">
+{/*                                 <div className="profile-info-item"> */}
 
-                                    <span className="info-icon">
-                                        🛡️
-                                    </span>
+{/*                                     <span className="info-icon"> */}
+{/*                                         🛡️ */}
+{/*                                     </span> */}
 
-                                    <div>
+{/*                                     <div> */}
 
-                                        <small>
-                                            Account Role
-                                        </small>
+{/*                                         <small> */}
+{/*                                             Account Role */}
+{/*                                         </small> */}
 
-                                        <strong className="role-value">
-                                            {user.role || "USER"}
-                                        </strong>
+{/*                                         <strong className="role-value"> */}
+{/*                                             {user.role || "USER"} */}
+{/*                                         </strong> */}
 
-                                    </div>
+{/*                                     </div> */}
 
-                                </div>
+{/*                                 </div> */}
 
 
 {/*                                 <div className="profile-info-item"> */}

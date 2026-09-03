@@ -1,0 +1,250 @@
+/* =========================================
+   VENUE IMAGE SLIDER
+========================================= */
+
+.venue-slider {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    background: #e5e7eb;
+    border-radius: 16px 16px 0 0;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.venue-slider-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.4s ease;
+}
+
+
+/* Slight zoom when hovering */
+
+.venue-slider:hover .venue-slider-image {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.venue-slider-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 40px;
+
+    color: #64748b;
+    background: #e2e8f0;
+}
+
+.venue-slider-placeholder span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   IMAGE COUNTER
+========================================= */
+
+.venue-image-counter {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(15, 23, 42, 0.75);
+    color: white;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* =========================================
+   SLIDER BUTTONS
+========================================= */
+
+.slider-btn {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(15, 23, 42, 0.72);
+    color: white;
+
+    font-size: 30px;
+    line-height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: 5;
+}
+
+
+/* Show buttons when hovering */
+
+.venue-slider:hover .slider-btn {
+    opacity: 1;
+}
+
+
+/* Previous */
+
+.slider-prev {
+    left: 12px;
+}
+
+
+/* Next */
+
+.slider-next {
+    right: 12px;
+}
+
+
+/* Hover */
+
+.slider-btn:hover {
+    background: rgba(15, 23, 42, 0.95);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+
+/* =========================================
+   DOTS
+========================================= */
+
+.slider-dots {
+    position: absolute;
+
+    bottom: 12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 5;
+}
+
+
+/* Dot */
+
+.slider-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    cursor: pointer;
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Active dot */
+
+.slider-dot.active {
+    width: 20px;
+
+    border-radius: 10px;
+
+    background: white;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .venue-slider {
+        height: 200px;
+    }
+
+    .slider-btn {
+        opacity: 1;
+
+        width: 34px;
+        height: 34px;
+
+        font-size: 26px;
+    }
+
+    .slider-prev {
+        left: 8px;
+    }
+
+    .slider-next {
+        right: 8px;
+    }
+
+}
