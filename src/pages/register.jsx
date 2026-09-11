@@ -36,7 +36,7 @@ function Register() {
 
             const response = await register(formData);
 
-            console.log("Register response:", response.data);
+            console.log("Register response:", response);
 
             alert("Registration successful!");
 
@@ -44,16 +44,14 @@ function Register() {
 
         } catch (error) {
 
-            console.log(error);
+            console.log("Registration error:", error);
 
-            if (error.response) {
-                setError(
-                    error.response.data ||
-                    "Registration failed"
-                );
-            } else {
-                setError("Cannot connect to server");
-            }
+            const message =
+                error.response?.data?.message ||
+                error.response?.data?.error ||
+                "Registration failed";
+
+            setError(message);
 
         } finally {
 
@@ -72,7 +70,7 @@ function Register() {
                 <p>Register for Book My Space</p>
 
                 {error && (
-                    <div className="error">
+                    <div className="error-message">
                         {error}
                     </div>
                 )}
@@ -129,7 +127,9 @@ function Register() {
                         Login
                     </Link>
                 </p>
+
             </div>
+
         </div>
     );
 }
