@@ -1,6 +1,6 @@
 /* =========================================================
-   USER VENUES - MODERN BOOKING UI
-========================================================= */
+   USER VENUES PAGE
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -9,912 +9,80 @@
 .user-layout {
     min-height: 100vh;
     display: flex;
-
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(91, 76, 255, 0.10),
-            transparent 30%
-        ),
-        #f5f7fc;
-
-    font-family: "Inter", "Segoe UI", sans-serif;
-    color: #1e293b;
+    background: #f5f7fb;
+    color: #1f2937;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 }
 
 
 /* =========================================================
    SIDEBAR
-========================================================= */
+   ========================================================= */
 
 .user-sidebar {
-    width: 255px;
-    min-height: 100vh;
-
     position: fixed;
     left: 0;
     top: 0;
+    width: 250px;
+    height: 100vh;
+
+    background: #111827;
+    color: white;
 
     padding: 30px 18px;
 
-    background:
-        linear-gradient(
-            180deg,
-            #151a35 0%,
-            #202657 55%,
-            #171c3c 100%
-        );
-
-    color: white;
-
-    box-shadow:
-        8px 0 30px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
 
     z-index: 100;
 }
 
 
-/* =========================================================
-   LOGO
-========================================================= */
-
 .user-logo {
-    padding: 5px 12px;
-
     font-size: 23px;
     font-weight: 800;
+    letter-spacing: -0.5px;
 
-    letter-spacing: -0.6px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #aeb8ff
-        );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    padding: 0 12px;
 }
 
-
-/* =========================================================
-   ROLE
-========================================================= */
 
 .user-role {
-    margin: 7px 12px 35px;
-
-    color: #8994d8;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.user-sidebar nav {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.user-sidebar nav a {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    padding: 13px 15px;
-
-    border-radius: 11px;
-
-    color: #b7bfdf;
-
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.user-sidebar nav a:hover {
-    background: rgba(255, 255, 255, 0.08);
-
-    color: white;
-
-    transform: translateX(4px);
-}
-
-.user-sidebar nav a.active {
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #7c3aed
-        );
-
-    box-shadow:
-        0 8px 22px rgba(99, 102, 241, 0.28);
-}
-
-.user-sidebar nav a.active::before {
-    content: "";
-
-    position: absolute;
-
-    left: -18px;
-
-    width: 4px;
-    height: 28px;
-
-    border-radius: 0 5px 5px 0;
-
-    background: #8b5cf6;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.user-main {
-    width: calc(100% - 255px);
-
-    margin-left: 255px;
-
-    padding: 40px 45px 70px;
-
-    min-height: 100vh;
-}
-
-
-/* =========================================================
-   PAGE HEADER
-========================================================= */
-
-.user-page-header {
-    margin-bottom: 25px;
-}
-
-.user-page-label {
-    display: inline-block;
-
-    padding: 7px 13px;
-
-    border-radius: 30px;
-
-    background: #ede9fe;
-
-    color: #6d28d9;
+    margin: 8px 12px 35px;
 
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 700;
+
+    color: #9ca3af;
 
     letter-spacing: 1.5px;
 }
 
 
-/* =========================================================
-   ERROR
-========================================================= */
+/* Navigation */
 
-.user-error {
-    margin-bottom: 25px;
-
-    padding: 18px 22px;
-
-    border: 1px solid #fecaca;
-
-    border-radius: 14px;
-
-    background: #fff1f2;
-
-    color: #991b1b;
-
-    box-shadow:
-        0 5px 18px rgba(239, 68, 68, 0.08);
-}
-
-.user-error strong {
-    display: block;
-
-    margin-bottom: 5px;
-}
-
-.user-error p {
-    margin: 4px 0 12px;
-}
-
-.user-error button {
-    border: none;
-
-    padding: 9px 16px;
-
-    border-radius: 8px;
-
-    background: #dc2626;
-
-    color: white;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.user-error button:hover {
-    background: #b91c1c;
-
-    transform: translateY(-1px);
-}
-
-
-/* =========================================================
-   SUCCESS MESSAGE
-========================================================= */
-
-.user-message {
-    margin-bottom: 22px;
-
-    padding: 14px 18px;
-
-    border: 1px solid #a7f3d0;
-
-    border-radius: 12px;
-
-    background: #ecfdf5;
-
-    color: #047857;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    animation: messageSlide 0.35s ease;
-}
-
-@keyframes messageSlide {
-
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================================================
-   VENUE GRID
-========================================================= */
-
-.user-venue-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 24px;
-
-    padding: 10px 0 40px;
-}
-
-
-/* =========================================================
-   VENUE CARD
-========================================================= */
-
-.user-venue-card {
-    position: relative;
-
-    overflow: hidden;
-
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 8px 25px rgba(15, 23, 42, 0.07);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-
-    animation: cardAppear 0.5s ease both;
-}
-
-.user-venue-card:hover {
-    transform: translateY(-7px);
-
-    border-color: #818cf8;
-
-    box-shadow:
-        0 20px 45px rgba(76, 61, 160, 0.15);
-}
-
-@keyframes cardAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================================================
-   CARD IMAGE AREA
-========================================================= */
-
-.user-venue-card .venue-card-top {
-    position: relative;
-
-    height: 220px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e0e7ff,
-            #ede9fe
-        );
-}
-
-
-/* =========================================================
-   IMAGE SLIDER
-========================================================= */
-
-.venue-image-slider {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-}
-
-.venue-image-slider img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform 0.6s ease,
-        filter 0.4s ease;
-}
-
-.user-venue-card:hover
-.venue-image-slider img {
-    transform: scale(1.06);
-
-    filter: brightness(1.04);
-}
-
-
-/* =========================================================
-   SLIDER BUTTONS
-========================================================= */
-
-.venue-image-slider button {
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 34px;
-    height: 34px;
-
+.user-sidebar nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(15, 23, 42, 0.55);
-
-    color: white;
-
-    cursor: pointer;
-
-    z-index: 5;
-
-    backdrop-filter: blur(5px);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-.venue-image-slider button:hover {
-    background:
-        rgba(15, 23, 42, 0.85);
-
-    transform:
-        translateY(-50%) scale(1.08);
-}
-
-.venue-image-slider button:first-of-type {
-    left: 10px;
-}
-
-.venue-image-slider button:last-of-type {
-    right: 10px;
+    flex-direction: column;
+    gap: 7px;
 }
 
 
-/* =========================================================
-   SLIDER DOTS
-========================================================= */
+.user-sidebar nav a {
+    text-decoration: none;
+    color: #cbd5e1;
 
-.venue-image-slider .slider-dots {
-    position: absolute;
-
-    left: 50%;
-    bottom: 12px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 5px;
-
-    z-index: 10;
-}
-
-.venue-image-slider .slider-dot {
-    width: 7px;
-    height: 7px;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.55);
-
-    cursor: pointer;
-
-    transition:
-        width 0.2s ease,
-        background 0.2s ease;
-}
-
-.venue-image-slider .slider-dot.active {
-    width: 18px;
+    padding: 13px 14px;
 
     border-radius: 10px;
 
-    background: white;
-}
-
-
-/* =========================================================
-   IMAGE OVERLAY
-========================================================= */
-
-.user-venue-card .venue-card-top::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 80px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(15, 23, 42, 0.38)
-        );
-
-    pointer-events: none;
-
-    z-index: 2;
-}
-
-
-/*
-   Keep slider controls above overlay
-*/
-
-.venue-image-slider button,
-.venue-image-slider .slider-dots {
-    z-index: 10;
-}
-
-
-/* =========================================================
-   IMAGE PLACEHOLDER
-========================================================= */
-
-.venue-image-placeholder {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eef2ff,
-            #f3e8ff
-        );
-
-    color: #6366f1;
-
-    font-size: 48px;
-}
-
-
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-
-.venue-card-content {
-    padding: 20px;
-}
-
-.venue-card-content h2 {
-    margin: 0 0 10px;
-
-    color: #111827;
-
-    font-size: 21px;
-    font-weight: 750;
-
-    letter-spacing: -0.4px;
-}
-
-.venue-location {
-    margin: 0 0 18px;
-
-    color: #64748b;
-
     font-size: 14px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-
-/* =========================================================
-   VENUE META
-========================================================= */
-
-.venue-meta {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 17px;
-
-    padding: 13px 0;
-
-    border-top: 1px solid #eef2f7;
-
-    border-bottom: 1px solid #eef2f7;
-}
-
-.venue-meta span {
-    color: #64748b;
-
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.venue-meta strong {
-    color: #4f46e5;
-
-    font-size: 19px;
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   VIEW TIME SLOTS BUTTON
-========================================================= */
-
-.view-slots-btn {
-    width: 100%;
-
-    padding: 13px 18px;
-
-    border: none;
-
-    border-radius: 11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #4f46e5,
-            #6366f1
-        );
-
-    color: white;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 7px 17px rgba(99, 102, 241, 0.23);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
-}
-
-.view-slots-btn:hover {
-    transform: translateY(-2px);
-
-    filter: brightness(1.07);
-
-    box-shadow:
-        0 10px 25px rgba(99, 102, 241, 0.30);
-}
-
-.view-slots-btn:active {
-    transform: scale(0.98);
-}
-
-
-/* =========================================================
-   EMPTY VENUE STATE
-========================================================= */
-
-.user-empty {
-    min-height: 380px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 45px;
-
-    text-align: center;
-
-    background: white;
-
-    border: 1px dashed #cbd5e1;
-
-    border-radius: 20px;
-}
-
-.user-empty-icon {
-    width: 80px;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 15px;
-
-    border-radius: 50%;
-
-    background: #ede9fe;
-
-    font-size: 38px;
-}
-
-.user-empty h2 {
-    margin: 5px 0 8px;
-
-    color: #1e293b;
-}
-
-.user-empty p {
-    margin: 0;
-
-    color: #64748b;
-}
-
-
-/* =========================================================
-   TIME SLOT MODAL OVERLAY
-========================================================= */
-
-.slot-modal-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background:
-        rgba(15, 23, 42, 0.65);
-
-    backdrop-filter: blur(7px);
-
-    animation: modalFadeIn 0.2s ease;
-}
-
-@keyframes modalFadeIn {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   SLOT MODAL
-========================================================= */
-
-.slot-modal {
-    width: 100%;
-
-    max-width: 850px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    background: #ffffff;
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.25);
-
-    animation: modalSlideUp 0.25s ease;
-}
-
-@keyframes modalSlideUp {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   MODAL HEADER
-========================================================= */
-
-.slot-modal-header {
-    display: flex;
-
-    align-items: flex-start;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding: 25px 28px;
-
-    border-bottom: 1px solid #eef2f7;
-}
-
-.slot-modal-label {
-    display: inline-block;
-
-    margin-bottom: 7px;
-
-    color: #6366f1;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 1.4px;
-}
-
-.slot-modal-header h2 {
-    margin: 0 0 6px;
-
-    color: #111827;
-
-    font-size: 25px;
-}
-
-.slot-modal-header p {
-    margin: 0;
-
-    color: #64748b;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   CLOSE MODAL BUTTON
-========================================================= */
-
-.close-slot-btn {
-    width: 38px;
-    height: 38px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #f1f5f9;
-
-    color: #475569;
-
-    font-size: 17px;
-
-    cursor: pointer;
+    font-weight: 500;
 
     transition:
         background 0.2s ease,
@@ -922,300 +90,383 @@
         transform 0.2s ease;
 }
 
-.close-slot-btn:hover {
-    background: #fee2e2;
 
-    color: #dc2626;
-
-    transform: rotate(90deg);
+.user-sidebar nav a:hover {
+    background: #1f2937;
+    color: white;
+    transform: translateX(2px);
 }
 
 
-/* =========================================================
-   DATE SELECTOR
-========================================================= */
-
-.slot-date-section {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding: 20px 28px;
-
-    background: #f8fafc;
-
-    border-bottom: 1px solid #eef2f7;
-}
-
-.slot-date-section label {
-    color: #334155;
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.slot-date-section input {
-    min-width: 190px;
-
-    padding: 11px 14px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 10px;
-
-    background: white;
-
-    color: #1e293b;
-
-    font-size: 14px;
-
-    outline: none;
-
-    cursor: pointer;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.slot-date-section input:hover {
-    border-color: #a5b4fc;
-}
-
-.slot-date-section input:focus {
-    border-color: #6366f1;
-
-    box-shadow:
-        0 0 0 3px rgba(99, 102, 241, 0.12);
-}
-
-
-/* =========================================================
-   POPUP SLOT CONTENT
-========================================================= */
-
-.popup-slots-section {
-    padding: 25px 28px;
-}
-
-
-/* =========================================================
-   SLOT TITLE
-========================================================= */
-
-.slots-title {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 18px;
-}
-
-.slots-title div {
-    color: #1e293b;
-
-    font-size: 17px;
-    font-weight: 700;
-}
-
-.slots-title span {
-    padding: 5px 10px;
-
-    border-radius: 20px;
-
-    background: #eef2ff;
-
-    color: #4f46e5;
-
-    font-size: 12px;
+.user-sidebar nav a.active {
+    background: #2563eb;
+    color: white;
     font-weight: 700;
 }
 
 
 /* =========================================================
-   POPUP SLOT GRID
-========================================================= */
+   MAIN CONTENT
+   ========================================================= */
 
-.popup-slot-grid {
-    display: grid;
+.user-main {
+    width: calc(100% - 250px);
+    margin-left: 250px;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+    min-height: 100vh;
 
-    gap: 14px;
+    padding: 38px 42px;
 }
 
 
 /* =========================================================
-   POPUP SLOT CARD
-========================================================= */
+   PAGE HEADER
+   ========================================================= */
 
-.popup-slot-card {
-    display: flex;
+.user-page-header {
+    margin-bottom: 28px;
+}
 
-    align-items: center;
 
-    gap: 15px;
+.user-page-label {
+    display: inline-block;
 
-    padding: 17px;
+    font-size: 13px;
+    font-weight: 800;
 
-    background: #ffffff;
+    letter-spacing: 1.8px;
 
-    border: 1px solid #e2e8f0;
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.user-error {
+    background: #fff1f2;
+
+    border: 1px solid #fecdd3;
 
     border-radius: 14px;
 
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
+    padding: 20px 22px;
+
+    margin-bottom: 25px;
+
+    color: #9f1239;
 }
 
-.popup-slot-card:hover {
-    border-color: #818cf8;
 
-    box-shadow:
-        0 8px 20px rgba(99, 102, 241, 0.10);
+.user-error strong {
+    display: block;
 
-    transform: translateY(-2px);
+    font-size: 16px;
+
+    margin-bottom: 6px;
+}
+
+
+.user-error p {
+    margin: 0 0 14px;
+
+    font-size: 14px;
+}
+
+
+.user-error button {
+    border: none;
+
+    background: #e11d48;
+    color: white;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.user-error button:hover {
+    background: #be123c;
 }
 
 
 /* =========================================================
-   SLOT TIME
-========================================================= */
+   MESSAGE
+   ========================================================= */
 
-.popup-slot-time {
-    flex: 1;
+.user-message {
+    background: #eff6ff;
 
-    display: flex;
+    border: 1px solid #bfdbfe;
 
-    align-items: center;
+    color: #1d4ed8;
 
-    gap: 10px;
+    padding: 13px 17px;
+
+    border-radius: 10px;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.clock-icon {
-    width: 38px;
-    height: 38px;
 
-    flex-shrink: 0;
+/* =========================================================
+   VENUE GRID
+   ========================================================= */
+
+.user-venue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================================
+   VENUE CARD
+   ========================================================= */
+
+.user-venue-card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.user-venue-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.11);
+}
+
+
+/* =========================================================
+   VENUE IMAGE
+   ========================================================= */
+
+.venue-card-top {
+    height: 205px;
+
+    position: relative;
+
+    background: #eef2f7;
+
+    overflow: hidden;
+}
+
+
+.venue-image-placeholder {
+    height: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 10px;
+    font-size: 52px;
 
-    background: #eef2ff;
-
-    font-size: 18px;
-}
-
-.popup-slot-time div {
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    flex-wrap: wrap;
-}
-
-.popup-slot-time strong {
-    color: #1e293b;
-
-    font-size: 14px;
-}
-
-.popup-slot-time span {
     color: #94a3b8;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   SLOT STATUS
-========================================================= */
-
-.popup-slot-status {
-    padding: 5px 8px;
-
-    border-radius: 20px;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-}
-
-.popup-slot-status.available {
-    background: #dcfce7;
-
-    color: #15803d;
-}
-
-.popup-slot-status.unavailable {
-    background: #fee2e2;
-
-    color: #b91c1c;
-}
-
-
-/* =========================================================
-   POPUP BOOK BUTTON
-========================================================= */
-
-.popup-book-btn {
-    padding: 9px 14px;
-
-    border: none;
-
-    border-radius: 9px;
 
     background:
         linear-gradient(
             135deg,
-            #4f46e5,
-            #6366f1
+            #eef2f7,
+            #e2e8f0
         );
+}
 
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+}
+
+.venue-status-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    z-index: 50;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    color: #ffffff !important;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* AVAILABLE */
+.venue-status-badge.available {
+    background: #16a34a !important;
+    color: #ffffff !important;
+}
+
+/* MAINTENANCE */
+.venue-status-badge.maintenance {
+    background: #f59e0b !important;
+    color: #ffffff !important;
+}
+
+/* HOLIDAY */
+.venue-status-badge.holiday {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   VENUE CARD CONTENT
+   ========================================================= */
+
+.venue-card-content {
+    padding: 21px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+
+.venue-card-content h2 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 750;
+
+    color: #111827;
+}
+
+
+.venue-location {
+    margin: 0 0 18px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    min-height: 20px;
+}
+
+
+/* =========================================================
+   VENUE META
+   ========================================================= */
+
+.venue-meta {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 0;
+
+    margin-bottom: 14px;
+
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+
+.venue-meta span {
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.venue-meta strong {
+    color: #2563eb;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+.venue-meta small {
+    font-size: 11px;
+
+    color: #64748b;
+
+    font-weight: 500;
+
+    margin-left: 3px;
+}
+
+
+/* =========================================================
+   VIEW SLOTS BUTTON
+   ========================================================= */
+
+.view-slots-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #2563eb;
     color: white;
 
-    font-size: 12px;
-    font-weight: 700;
+    padding: 12px 16px;
 
-    white-space: nowrap;
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 700;
 
     cursor: pointer;
 
     transition:
         background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.2s ease;
 }
 
-.popup-book-btn:hover:not(:disabled) {
-    background: #4338ca;
+
+.view-slots-btn:hover {
+    background: #1d4ed8;
 
     transform: translateY(-1px);
-
-    box-shadow:
-        0 5px 14px rgba(99, 102, 241, 0.25);
 }
 
-.popup-book-btn:active:not(:disabled) {
-    transform: scale(0.97);
+
+.view-slots-btn:active {
+    transform: translateY(0);
 }
 
-.popup-book-btn:disabled {
+
+.view-slots-btn.venue-unavailable-btn {
     background: #cbd5e1;
 
     color: #64748b;
@@ -1224,50 +475,66 @@
 }
 
 
-/* =========================================================
-   UNAVAILABLE SLOT
-========================================================= */
-
-.popup-slot-unavailable {
-    background: #f8fafc;
-
-    opacity: 0.72;
-}
-
-.popup-slot-unavailable:hover {
+.view-slots-btn.venue-unavailable-btn:hover {
     transform: none;
-
-    border-color: #e2e8f0;
-
-    box-shadow: none;
 }
 
 
 /* =========================================================
-   POPUP EMPTY
-========================================================= */
+   EMPTY STATE
+   ========================================================= */
 
-.popup-empty {
-    padding: 45px 20px;
+.user-empty {
+    min-height: 400px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
+
+    padding: 40px;
 }
 
-.popup-empty-icon {
-    margin-bottom: 10px;
 
-    font-size: 42px;
+.user-empty-icon {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+
+    margin-bottom: 18px;
 }
 
-.popup-empty h3 {
+
+.user-empty h2 {
     margin: 0 0 8px;
 
     color: #1e293b;
 
-    font-size: 18px;
+    font-size: 21px;
 }
 
-.popup-empty p {
+
+.user-empty p {
     margin: 0;
 
     color: #64748b;
@@ -1277,85 +544,8 @@
 
 
 /* =========================================================
-   POPUP LOADING
-========================================================= */
-
-.popup-loading {
-    min-height: 180px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 50px;
-}
-
-.popup-loading p {
-    margin-top: 15px;
-
-    color: #64748b;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   MODAL FOOTER
-========================================================= */
-
-.slot-modal-footer {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 17px 28px;
-
-    border-top: 1px solid #eef2f7;
-
-    background: #fafafa;
-}
-
-.slot-modal-footer span {
-    color: #64748b;
-
-    font-size: 12px;
-}
-
-.modal-cancel-btn {
-    padding: 9px 16px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 9px;
-
-    background: white;
-
-    color: #475569;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.modal-cancel-btn:hover {
-    background: #f1f5f9;
-
-    border-color: #94a3b8;
-}
-
-
-/* =========================================================
-   LOADING PAGE
-========================================================= */
+   LOADING
+   ========================================================= */
 
 .user-loading {
     min-height: 100vh;
@@ -1367,42 +557,35 @@
     align-items: center;
     justify-content: center;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #eef2ff,
-            #f8fafc 60%
-        );
-
-    color: #334155;
+    background: #f5f7fb;
 }
+
 
 .user-loading h2 {
     margin-top: 18px;
 
-    font-size: 18px;
+    color: #475569;
+
+    font-size: 17px;
+    font-weight: 600;
 }
 
 
-/* =========================================================
-   SPINNER
-========================================================= */
-
 .user-spinner {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
 
-    border: 3px solid #e0e7ff;
+    border: 4px solid #dbeafe;
 
-    border-top-color: #6366f1;
+    border-top-color: #2563eb;
 
     border-radius: 50%;
 
-    animation: spin 0.8s linear infinite;
+    animation: userSpin 0.8s linear infinite;
 }
 
-@keyframes spin {
 
+@keyframes userSpin {
     to {
         transform: rotate(360deg);
     }
@@ -1410,234 +593,1199 @@
 
 
 /* =========================================================
-   RESPONSIVE - TABLET
-========================================================= */
+   SLOT MODAL OVERLAY
+   ========================================================= */
 
-@media (max-width: 1100px) {
+.slot-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.65);
+
+    backdrop-filter: blur(4px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    z-index: 1000;
+
+    animation: modalFadeIn 0.2s ease;
+}
+
+
+.slot-modal {
+    width: 100%;
+    max-width: 850px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    animation: modalSlideUp 0.25s ease;
+}
+
+
+/* =========================================================
+   SLOT MODAL HEADER
+   ========================================================= */
+
+.slot-modal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 27px;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+.slot-modal-label {
+    display: block;
+
+    color: #2563eb;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.slot-modal-header h2 {
+    margin: 0 0 7px;
+
+    font-size: 24px;
+
+    color: #111827;
+}
+
+
+.slot-modal-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.close-slot-btn {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.close-slot-btn:hover {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* =========================================================
+   DATE SECTION
+   ========================================================= */
+
+.slot-date-section {
+    padding: 22px 27px;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+.slot-date-section label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #334155;
+}
+
+
+.slot-date-section input {
+    width: 100%;
+    max-width: 300px;
+
+    padding: 12px 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #1e293b;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+
+.slot-date-section input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================================================
+   SLOTS SECTION
+   ========================================================= */
+
+.popup-slots-section {
+    padding: 25px 27px;
+}
+
+
+.slots-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 17px;
+}
+
+
+.slots-title div {
+    font-size: 16px;
+
+    font-weight: 750;
+
+    color: #1e293b;
+}
+
+
+.slots-title span {
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SLOT GRID
+   ========================================================= */
+
+.popup-slot-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 13px;
+}
+
+
+.popup-slot-card {
+    position: relative;
+
+    padding: 17px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 13px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.popup-slot-card:hover {
+    border-color: #93c5fd;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   SLOT TIME
+   ========================================================= */
+
+.popup-slot-time {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 13px;
+}
+
+
+.clock-icon {
+    font-size: 21px;
+}
+
+
+.popup-slot-time > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.popup-slot-time strong {
+    font-size: 14px;
+
+    color: #1e293b;
+}
+
+
+.popup-slot-time span {
+    font-size: 12px;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   SLOT STATUS
+   ========================================================= */
+
+.popup-slot-status {
+    display: inline-block;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 13px;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+}
+
+
+.popup-slot-status.available {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+.popup-slot-status.selected {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+
+.popup-slot-status.unavailable {
+    background: #f1f5f9;
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   SLOT SELECTED
+   ========================================================= */
+
+.popup-slot-card.popup-slot-selected {
+    border: 2px solid #2563eb;
+
+    background: #eff6ff;
+
+    box-shadow:
+        0 5px 15px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   SLOT UNAVAILABLE
+   ========================================================= */
+
+.popup-slot-card.popup-slot-unavailable {
+    background: #f8fafc;
+
+    border-color: #e2e8f0;
+
+    cursor: not-allowed;
+
+    opacity: 0.65;
+}
+
+
+.popup-slot-card.popup-slot-unavailable:hover {
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   SLOT BUTTON
+   ========================================================= */
+
+.popup-book-btn {
+    width: 100%;
+
+    padding: 9px 12px;
+
+    border: 1px solid #bfdbfe;
+
+    background: white;
+
+    color: #2563eb;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.popup-book-btn:hover {
+    background: #eff6ff;
+}
+
+
+.popup-book-btn.selected {
+    background: #2563eb;
+
+    border-color: #2563eb;
+
+    color: white;
+}
+
+
+.popup-book-btn:disabled {
+    cursor: not-allowed;
+
+    background: #e2e8f0;
+
+    border-color: #e2e8f0;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   SELECTED BOOKING SUMMARY
+   ========================================================= */
+
+.selected-booking-summary {
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f8fafc
+        );
+
+    border: 1px solid #bfdbfe;
+}
+
+
+.selected-summary-title {
+    color: #64748b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 7px;
+}
+
+
+.selected-summary-time {
+    color: #1d4ed8;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+
+.selected-summary-duration {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   MAIN BOOK BUTTON
+   ========================================================= */
+
+.popup-main-book-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.popup-main-book-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SLOT EMPTY
+   ========================================================= */
+
+.popup-empty {
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #64748b;
+}
+
+
+.popup-empty-icon {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 27px;
+
+    margin-bottom: 13px;
+}
+
+
+.popup-empty h3 {
+    margin: 0 0 6px;
+
+    color: #334155;
+
+    font-size: 16px;
+}
+
+
+.popup-empty p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SLOT LOADING
+   ========================================================= */
+
+.popup-loading {
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.popup-loading p {
+    margin-top: 13px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+   ========================================================= */
+
+.slot-modal-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 18px 27px;
+
+    border-top: 1px solid #eef2f7;
+
+    background: #fafafa;
+}
+
+
+.slot-modal-footer span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.modal-cancel-btn {
+    border: 1px solid #cbd5e1;
+
+    background: white;
+
+    color: #475569;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+
+.modal-cancel-btn:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   PAYMENT MODAL
+   ========================================================= */
+
+.payment-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1100;
+
+    background: rgba(15, 23, 42, 0.72);
+
+    backdrop-filter: blur(5px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    animation: modalFadeIn 0.2s ease;
+}
+
+
+.payment-modal {
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.3);
+
+    animation: modalSlideUp 0.25s ease;
+}
+
+
+/* =========================================================
+   PAYMENT HEADER
+   ========================================================= */
+
+.payment-modal-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    padding: 23px 25px;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+.payment-modal-header span {
+    color: #2563eb;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+
+.payment-modal-header h2 {
+    margin: 6px 0 0;
+
+    color: #111827;
+
+    font-size: 22px;
+}
+
+
+.payment-modal-header button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+
+.payment-modal-header button:hover {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* =========================================================
+   PAYMENT VENUE
+   ========================================================= */
+
+.payment-venue {
+    margin: 20px 25px;
+
+    padding: 17px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+.payment-venue h3 {
+    margin: 0 0 5px;
+
+    color: #1e293b;
+
+    font-size: 17px;
+}
+
+
+.payment-venue p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PAYMENT DETAILS
+   ========================================================= */
+
+.payment-details {
+    padding: 0 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+
+.payment-detail-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    font-size: 13px;
+}
+
+
+.payment-detail-row span {
+    color: #64748b;
+}
+
+
+.payment-detail-row strong {
+    color: #1e293b;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   PAYMENT PRICE
+   ========================================================= */
+
+.payment-price-section {
+    margin: 22px 25px 0;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+.payment-price-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 8px 0;
+
+    font-size: 13px;
+}
+
+
+.payment-price-row span {
+    color: #64748b;
+}
+
+
+.payment-price-row strong {
+    color: #334155;
+}
+
+
+.payment-price-row.total {
+    margin-top: 8px;
+
+    padding-top: 14px;
+
+    border-top: 1px dashed #cbd5e1;
+
+    font-size: 15px;
+}
+
+
+.payment-price-row.total strong {
+    color: #1e293b;
+
+    font-size: 18px;
+}
+
+
+.payment-price-row.advance {
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+.payment-price-row.advance span {
+    color: #166534;
+
+    font-weight: 650;
+}
+
+
+.payment-price-row.advance strong {
+    color: #15803d;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   PAYMENT ACTION
+   ========================================================= */
+
+.payment-action {
+    padding: 20px 25px 25px;
+}
+
+
+.payment-action p {
+    margin: 0 0 13px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+.pay-now-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 14px 18px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.pay-now-btn:hover {
+    background: #15803d;
+
+    transform: translateY(-1px);
+}
+
+
+.pay-now-btn:disabled {
+    background: #94a3b8;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   BOOKING SUCCESS POPUP
+   ========================================================= */
+
+.booking-success-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    background: rgba(15, 23, 42, 0.65);
+
+    backdrop-filter: blur(5px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    animation: modalFadeIn 0.2s ease;
+}
+
+
+.booking-success-popup {
+    width: 100%;
+
+    max-width: 400px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.3);
+
+    animation: successPopup 0.35s ease;
+}
+
+
+.booking-success-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+
+    color: #16a34a;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    animation: successIcon 0.45s ease;
+}
+
+
+.booking-success-popup h2 {
+    margin: 0 0 9px;
+
+    color: #166534;
+
+    font-size: 24px;
+}
+
+
+.booking-success-popup p {
+    margin: 0 0 13px;
+
+    color: #475569;
+
+    font-size: 14px;
+}
+
+
+.booking-success-popup span {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes successPopup {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes successIcon {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.slot-modal::-webkit-scrollbar,
+.payment-modal::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.slot-modal::-webkit-scrollbar-track,
+.payment-modal::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+
+
+.slot-modal::-webkit-scrollbar-thumb,
+.payment-modal::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .user-sidebar {
+        width: 210px;
+    }
+
 
     .user-main {
-        padding: 30px;
+        width: calc(100% - 210px);
+
+        margin-left: 210px;
+
+        padding: 30px 25px;
     }
+
 
     .user-venue-grid {
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            repeat(auto-fill, minmax(250px, 1fr));
     }
 
 }
 
-
-/* =========================================================
-   RESPONSIVE - SMALL TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-    .user-sidebar {
-        width: 220px;
-    }
-
-    .user-main {
-        width: calc(100% - 220px);
-
-        margin-left: 220px;
-
-        padding: 25px;
-    }
-
-    .user-venue-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .popup-slot-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE - MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .user-layout {
-        display: block;
-    }
-
-
-    /* Sidebar */
-
-    .user-sidebar {
-        position: relative;
-
-        width: 100%;
-
-        min-height: auto;
-
-        padding: 18px;
-    }
-
-    .user-logo {
-        font-size: 20px;
-    }
-
-    .user-role {
-        margin-bottom: 15px;
-    }
-
-    .user-sidebar nav {
-        flex-direction: row;
-
-        overflow-x: auto;
-
-        padding-bottom: 5px;
-    }
-
-    .user-sidebar nav a {
-        flex-shrink: 0;
-
-        font-size: 12px;
-    }
-
-    .user-sidebar nav a.active::before {
-        display: none;
-    }
-
-
-    /* Main */
-
-    .user-main {
-        width: 100%;
-
-        margin-left: 0;
-
-        padding: 25px 18px 50px;
-    }
-
-
-    /* Venue */
-
-    .user-venue-grid {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-    .user-venue-card .venue-card-top {
-        height: 230px;
-    }
-
-
-    /* Modal */
-
-    .slot-modal-overlay {
-        padding: 12px;
-    }
-
-    .slot-modal {
-        max-height: 94vh;
-
-        border-radius: 17px;
-    }
-
-    .slot-modal-header {
-        padding: 20px;
-    }
-
-    .slot-modal-header h2 {
-        font-size: 21px;
-    }
-
-    .slot-date-section {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 18px 20px;
-    }
-
-    .slot-date-section input {
-        width: 100%;
-
-        min-width: 0;
-    }
-
-    .popup-slots-section {
-        padding: 20px;
-    }
-
-    .popup-slot-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .popup-slot-card {
-        flex-wrap: wrap;
-    }
-
-    .popup-slot-time {
-        min-width: 150px;
-    }
-
-    .popup-book-btn {
-        width: 100%;
-    }
-
-    .slot-modal-footer {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 15px 20px;
-    }
-
-    .modal-cancel-btn {
-        width: 100%;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE - VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .user-main {
-        padding: 20px 14px 40px;
-    }
-
-    .user-page-header {
-        margin-bottom: 18px;
-    }
-
-    .user-venue-card .venue-card-top {
-        height: 210px;
-    }
-
-    .venue-card-content {
-        padding: 17px;
-    }
-
-    .venue-card-content h2 {
-        font-size: 19px;
-    }
-
-    .popup-slot-card {
-        gap: 10px;
-    }
-
-    .clock-icon {
-        width: 35px;
-        height: 35px;
-
-        font-size: 16px;
-    }
-
-    .slot-modal-header {
-        gap: 10px;
-    }
-
-}

@@ -464,4 +464,23 @@
     }
 
 }
-```
+.hourly-info {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    font-size: 13px;
+    color: #475569;
+}
+
+.slot-preview small {
+    display: block;
+    margin-top: 5px;
+
+    font-size: 13px;
+    color: #64748b;
+}

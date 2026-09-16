@@ -11,23 +11,27 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const [error, setError] = useState("");
+    const [usernameError, setUsernameError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [generalError, setGeneralError] = useState("");
+
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
-        setError("");
+        setUsernameError("");
+        setPasswordError("");
+        setGeneralError("");
+
         setLoading(true);
 
         try {
 
-            // Login
             const response = await login(username, password);
 
             console.log("Login response:", response);
-
 
             const token = response;
 
@@ -35,9 +39,7 @@ function Login() {
                 throw new Error("Token not received");
             }
 
-
             localStorage.setItem("token", token);
-
 
             const role = getRoleFromToken(token);
 
@@ -57,7 +59,7 @@ function Login() {
 
             } else {
 
-                setError("Unknown user role");
+                setGeneralError("Unknown user role");
 
                 localStorage.removeItem("token");
             }
@@ -68,16 +70,32 @@ function Login() {
 
             if (error.response) {
 
-                setError(
+                const message =
+                    error.response.data?.message ||
+                    error.response.data?.error ||
                     error.response.data ||
-                    "Invalid username or password"
-                );
+                    "Login failed";
+
+                if (
+                    message.toLowerCase().includes("username")
+                ) {
+
+                    setUsernameError(message);
+
+                } else if (
+                    message.toLowerCase().includes("password")
+                ) {
+
+                    setPasswordError(message);
+
+                } else {
+
+                    setGeneralError(message);
+                }
 
             } else {
 
-                setError(
-                    "Cannot connect to server"
-                );
+                setGeneralError("Cannot connect to server");
             }
 
         } finally {
@@ -85,7 +103,6 @@ function Login() {
             setLoading(false);
         }
     };
-
 
     return (
 
@@ -99,15 +116,15 @@ function Login() {
                     Login to Book My Space
                 </p>
 
-
-                {error && (
-                    <div className="error">
-                        {error}
+                {generalError && (
+                    <div className="general-error">
+                        ⚠ {generalError}
                     </div>
                 )}
 
-
                 <form onSubmit={handleSubmit}>
+
+                    {/* USERNAME */}
 
                     <label>
                         Username
@@ -117,12 +134,21 @@ function Login() {
                         type="text"
                         placeholder="Enter username"
                         value={username}
-                        onChange={(e) =>
-                            setUsername(e.target.value)
-                        }
+                        onChange={(e) => {
+                            setUsername(e.target.value);
+                            setUsernameError("");
+                        }}
                         required
                     />
 
+                    {usernameError && (
+                        <div className="field-error">
+                            ⚠ {usernameError}
+                        </div>
+                    )}
+
+
+                    {/* PASSWORD */}
 
                     <label>
                         Password
@@ -132,26 +158,32 @@ function Login() {
                         type="password"
                         placeholder="Enter password"
                         value={password}
-                        onChange={(e) =>
-                            setPassword(e.target.value)
-                        }
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setPasswordError("");
+                        }}
                         required
                     />
 
+                    {passwordError && (
+                        <div className="field-error">
+                            ⚠ {passwordError}
+                        </div>
+                    )}
+
+
+                    {/* LOGIN BUTTON */}
 
                     <button
                         type="submit"
                         disabled={loading}
                     >
-
                         {loading
                             ? "Logging in..."
                             : "Login"}
-
                     </button>
 
                 </form>
-
 
                 <p>
                     Don't have an account?{" "}

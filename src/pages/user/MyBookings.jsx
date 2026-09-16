@@ -1,52 +1,32 @@
-
-
-import React, {  useEffect,  useState} from "react";
-import {  Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import userService from "../../services/userService";
 import "../../styles/MyBookings.css";
-
 
 const MyBookings = () => {
 
     const [bookings, setBookings] = useState([]);
-
     const [loading, setLoading] = useState(true);
-
     const [error, setError] = useState("");
 
-
     useEffect(() => {
-
         loadBookings();
-
     }, []);
-
 
     const loadBookings = async () => {
 
         try {
 
             setLoading(true);
-
             setError("");
 
+            const data = await userService.getMyBookings();
 
-            const data =
-                await userService.getMyBookings();
-
-
-            console.log(
-                "My bookings:",
-                data
-            );
-
+            console.log("My bookings:", data);
 
             setBookings(
-                Array.isArray(data)
-                    ? data
-                    : []
+                Array.isArray(data) ? data : []
             );
-
 
         } catch (error) {
 
@@ -54,7 +34,6 @@ const MyBookings = () => {
                 "Failed to load bookings:",
                 error
             );
-
 
             setError(
                 error.response?.data?.message ||
@@ -65,9 +44,56 @@ const MyBookings = () => {
         } finally {
 
             setLoading(false);
+
         }
     };
 
+    const formatDate = (date) => {
+
+        if (!date) return "N/A";
+
+        return new Date(date).toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+    };
+
+    const formatTime = (time) => {
+
+        if (!time) return "N/A";
+
+        const [hours, minutes] =
+            time.split(":");
+
+        const date = new Date();
+
+        date.setHours(
+            Number(hours),
+            Number(minutes)
+        );
+
+        return date.toLocaleTimeString(
+            "en-IN",
+            {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true
+            }
+        );
+    };
+
+    const formatCurrency = (amount) => {
+
+        if (amount === null || amount === undefined) {
+            return "₹0";
+        }
+
+        return `₹${Number(amount).toLocaleString("en-IN")}`;
+    };
 
     if (loading) {
 
@@ -85,11 +111,9 @@ const MyBookings = () => {
         );
     }
 
-
     return (
 
         <div className="user-layout">
-
 
             {/* SIDEBAR */}
 
@@ -103,30 +127,29 @@ const MyBookings = () => {
                     USER PANEL
                 </div>
 
-
                 <nav>
 
                     <Link to="/user">
-                        🏠 Dashboard
+                         Dashboard
                     </Link>
 
                     <Link to="/user/venues">
-                        🏢 Find Venues
+                        Find Venues
                     </Link>
 
                     <Link
                         to="/user/bookings"
                         className="active"
                     >
-                        📅 My Bookings
+                         My Bookings
                     </Link>
 
                     <Link to="/user/profile">
-                        👤 Profile
+                         Profile
                     </Link>
 
                     <Link to="/user/owner-request">
-                        ⭐ Become an Owner
+                         Become an Owner
                     </Link>
 
                 </nav>
@@ -134,26 +157,29 @@ const MyBookings = () => {
             </aside>
 
 
+            {/* MAIN CONTENT */}
 
             <main className="user-main">
 
                 <div className="user-page-header">
 
-                    <span>
-                        BOOKING MANAGEMENT
-                    </span>
+{/*                     <span> */}
+{/*                         BOOKING MANAGEMENT */}
+{/*                     </span> */}
 
                     <h1>
-                        My Bookings
+                         Booking Details:
                     </h1>
 
-                    <p>
-                        Track all your venue booking
-                        requests.
-                    </p>
+{/*                     <p> */}
+{/*                         View and manage all your venue */}
+{/*                         bookings. */}
+{/*                     </p> */}
 
                 </div>
 
+
+                {/* ERROR */}
 
                 {error && (
 
@@ -164,11 +190,13 @@ const MyBookings = () => {
                 )}
 
 
+                {/* EMPTY */}
+
                 {bookings.length === 0 ? (
 
                     <div className="user-empty">
 
-                        <div>
+                        <div className="empty-icon">
                             📅
                         </div>
 
@@ -178,7 +206,7 @@ const MyBookings = () => {
 
                         <p>
                             You haven't made any
-                            booking requests.
+                            venue bookings yet.
                         </p>
 
                         <Link
@@ -199,16 +227,16 @@ const MyBookings = () => {
 
                                 <div
                                     className="booking-card"
-                                    key={
-                                        booking.id
-                                    }
+                                    key={booking.id}
                                 >
+
+                                    {/* TOP */}
 
                                     <div className="booking-top">
 
                                         <div>
 
-                                            <span>
+                                            <span className="booking-number">
                                                 BOOKING #
                                                 {booking.id}
                                             </span>
@@ -221,7 +249,6 @@ const MyBookings = () => {
 
                                         </div>
 
-
                                         <span
                                             className={
                                                 `booking-status ${
@@ -230,50 +257,159 @@ const MyBookings = () => {
                                                 }`
                                             }
                                         >
-                                            {
-                                                booking.bookingStatus ||
-                                                "PENDING"
-                                            }
+                                            {booking.bookingStatus ||
+                                                "PENDING"}
                                         </span>
 
                                     </div>
 
 
-                                    <div className="booking-details">
+                                    {/* VENUE */}
 
-                                        <p>
-                                            📍{" "}
+                                    <div className="booking-location">
+
+                                        📍
+
+                                        <span>
                                             {booking.venue
                                                 ?.location ||
-                                                "N/A"}
-                                        </p>
+                                                "Location unavailable"}
+                                        </span>
+
+                                    </div>
 
 
-                                        <p>
-                                            📅{" "}
-                                            {booking.timeSlot
-                                                ?.slotDate ||
-                                                booking.bookingDate ||
-                                                "N/A"}
-                                        </p>
+                                    {/* BOOKING INFORMATION */}
+
+                                    <div className="booking-info-grid">
+
+                                        <div className="booking-info">
+
+                                            <span>
+                                                DATE
+                                            </span>
+
+                                            <strong>
+                                                📅{" "}
+                                                {formatDate(
+                                                    booking.bookingDate
+                                                )}
+                                            </strong>
+
+                                        </div>
 
 
-                                        <p>
-                                            🕐{" "}
+                                        <div className="booking-info">
 
-                                            {booking.timeSlot
-                                                ?.startTime ||
-                                                booking.startTime ||
-                                                "N/A"}
+                                            <span>
+                                                TIME
+                                            </span>
 
-                                            {" - "}
+                                            <strong>
+                                                🕐{" "}
+                                                {formatTime(
+                                                    booking.startTime
+                                                )}
 
-                                            {booking.timeSlot
-                                                ?.endTime ||
-                                                booking.endTime ||
-                                                "N/A"}
+                                                {" - "}
 
-                                        </p>
+                                                {formatTime(
+                                                    booking.endTime
+                                                )}
+                                            </strong>
+
+                                        </div>
+
+
+                                        <div className="booking-info">
+
+                                            <span>
+                                                DURATION
+                                            </span>
+
+                                            <strong>
+                                                ⏱️{" "}
+                                                {booking.durationHours ||
+                                                    0}{" "}
+                                                hour
+                                                {booking.durationHours > 1
+                                                    ? "s"
+                                                    : ""}
+                                            </strong>
+
+                                        </div>
+
+
+                                        <div className="booking-info">
+
+                                            <span>
+                                                HOURLY PRICE
+                                            </span>
+
+                                            <strong>
+                                                {formatCurrency(
+                                                    booking.hourlyPrice
+                                                )}
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* PAYMENT */}
+
+                                    <div className="booking-payment">
+
+                                        <div>
+
+                                            <span>
+                                                TOTAL PRICE
+                                            </span>
+
+                                            <strong>
+                                                {formatCurrency(
+                                                    booking.totalPrice
+                                                )}
+                                            </strong>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>
+                                                ADVANCE PAID
+                                            </span>
+
+                                            <strong className="advance-price">
+                                                {formatCurrency(
+                                                    booking.advanceAmount
+                                                )}
+                                            </strong>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>
+                                                PAYMENT
+                                            </span>
+
+                                            <strong
+                                                className={
+                                                    `payment-status ${
+                                                        booking.paymentStatus
+                                                            ?.toLowerCase()
+                                                    }`
+                                                }
+                                            >
+                                                {booking.paymentStatus ||
+                                                    "N/A"}
+                                            </strong>
+
+                                        </div>
 
                                     </div>
 
@@ -291,6 +427,5 @@ const MyBookings = () => {
         </div>
     );
 };
-
 
 export default MyBookings;

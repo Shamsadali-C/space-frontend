@@ -31,7 +31,7 @@ const OwnerDashboard = () => {
 
                 <nav>
 
-                    <Link to="/owner">
+                    <Link to="/owner" className="active">
                         Dashboard
                     </Link>
 
@@ -43,9 +43,7 @@ const OwnerDashboard = () => {
                         Bookings
                     </Link>
                     <Link
-                            to="/owner/create-slot"
-                            className="active"
-                        >
+                            to="/owner/create-slot">
                             Create Time Slot
                         </Link>
 
@@ -131,16 +129,16 @@ const OwnerDashboard = () => {
                         </p>
 
                     </Link>
-                    
+
                       {/* CREATE TIME SLOT */}
 
-                        <div className="owner-dashboard-card slot-card">
+                      <Link
+                             to="/owner/create-slot"
+                             className="owner-card" >
 
-                            <div className="dashboard-card-icon">
+                            <div className="owner-card-icon">
                                 🕐
                             </div>
-
-                            <div className="dashboard-card-content">
 
                                 <h3>
                                     Create Time Slot
@@ -151,17 +149,10 @@ const OwnerDashboard = () => {
                                     slots for your venues.
                                 </p>
 
-                                <Link
-                                    to="/owner/create-slot"
-                                    className="dashboard-card-btn"
-                                >
-                                    Create Slot →
-                                </Link>
 
-                            </div>
 
-                        </div>
 
+                      </Link>
 
                     {/* ADD VENUE */}
 
@@ -195,7 +186,6 @@ const OwnerDashboard = () => {
 };
 
 export default OwnerDashboard;
-//
 // import React, { useEffect, useState } from "react";
 // import ownerService from "../../services/ownerService";
 //

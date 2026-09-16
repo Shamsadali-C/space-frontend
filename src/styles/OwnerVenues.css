@@ -1,12 +1,17 @@
+```css
 /* =========================================================
-   OWNER VENUES - PURPLE / DARK THEME
+   OWNER VENUES PAGE
 ========================================================= */
 
+* {
+  box-sizing: border-box;
+}
+
 .owner-layout {
-    min-height: 100vh;
-    display: flex;
-    background: #f7f5fb;
-    font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7fb;
+  color: #1f2937;
 }
 
 
@@ -15,95 +20,89 @@
 ========================================================= */
 
 .owner-sidebar {
-    width: 250px;
-    min-height: 100vh;
+  width: 250px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
 
-    background: #181521;
-    color: white;
+  background: #111827;
+  color: white;
 
-    padding: 28px 18px;
+  padding: 28px 18px;
 
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    z-index: 20;
-
-    box-shadow: 5px 0 25px rgba(24, 21, 33, 0.08);
+  z-index: 100;
 }
 
 .owner-logo {
-    font-size: 23px;
-    font-weight: 700;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 
-    padding: 0 12px;
-    margin-bottom: 8px;
-
-    color: #ffffff;
+  padding: 0 12px;
+  margin-bottom: 8px;
 }
 
 .owner-role {
-    color: #a8a1b5;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 
-    font-size: 11px;
-    font-weight: 700;
+  color: #9ca3af;
 
-    letter-spacing: 1.5px;
-
-    padding: 0 12px;
-    margin-bottom: 35px;
+  padding: 0 12px;
+  margin-bottom: 30px;
 }
 
 .owner-sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .owner-sidebar nav a {
-    text-decoration: none;
+  display: flex;
+  align-items: center;
 
-    color: #c8c2d1;
+  min-height: 45px;
 
-    padding: 13px 14px;
+  padding: 0 14px;
 
-    border-radius: 9px;
+  border-radius: 9px;
 
-    font-size: 14px;
-    font-weight: 500;
+  color: #d1d5db;
+  text-decoration: none;
 
-    transition: all 0.25s ease;
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
 }
 
 .owner-sidebar nav a:hover {
-    background: #282332;
-    color: #ffffff;
-
-    transform: translateX(3px);
+  background: #1f2937;
+  color: white;
 }
 
 .owner-sidebar nav a.active {
-    background: #7c3aed;
-    color: white;
-
-    box-shadow:
-        0 7px 20px rgba(124, 58, 237, 0.30);
+  background: #374151;
+  color: white;
+  font-weight: 600;
 }
 
 
 /* =========================================================
-   MAIN
+   MAIN CONTENT
 ========================================================= */
 
 .owner-main {
-    margin-left: 250px;
+  margin-left: 250px;
 
-    width: calc(100% - 250px);
+  width: calc(100% - 250px);
 
-    padding: 40px;
+  min-height: 100vh;
 
-    min-height: 100vh;
+  padding: 38px 42px;
 }
 
 
@@ -112,74 +111,76 @@
 ========================================================= */
 
 .owner-page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 
-    gap: 20px;
+  gap: 25px;
 
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 }
 
 .owner-page-label {
-    display: inline-block;
+  display: inline-block;
 
-    color: #7c3aed;
+  margin-bottom: 7px;
 
-    font-size: 11px;
-    font-weight: 700;
+  font-size: 11px;
+  font-weight: 700;
 
-    letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
 
-    margin-bottom: 8px;
+  color: #6b7280;
 }
 
 .owner-page-header h1 {
-    margin: 0;
+  margin: 0;
 
-    font-size: 34px;
+  font-size: 32px;
+  line-height: 1.2;
 
-    color: #211c2b;
+  font-weight: 750;
+
+  color: #111827;
 }
 
 .owner-page-header p {
-    margin-top: 8px;
+  margin: 9px 0 0;
 
-    color: #766f80;
+  font-size: 14px;
 
-    font-size: 15px;
+  color: #6b7280;
 }
 
-
-/* =========================================================
-   ADD VENUE
-========================================================= */
-
 .add-venue-btn {
-    text-decoration: none;
+  display: inline-flex;
 
-    background: #7c3aed;
-    color: white;
+  align-items: center;
+  justify-content: center;
 
-    padding: 13px 20px;
+  min-height: 44px;
 
-    border-radius: 9px;
+  padding: 0 19px;
 
-    font-weight: 600;
-    font-size: 14px;
+  border-radius: 9px;
 
-    white-space: nowrap;
+  background: #111827;
+  color: white;
 
-    transition: all 0.25s ease;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: 0.2s ease;
 }
 
 .add-venue-btn:hover {
-    background: #6d28d9;
+  background: #1f2937;
 
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 20px rgba(124, 58, 237, 0.25);
+  transform: translateY(-1px);
 }
 
 
@@ -188,12 +189,14 @@
 ========================================================= */
 
 .venue-grid {
-    display: grid;
+  display: grid;
 
-    grid-template-columns:
-        repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns:
+    repeat(auto-fill, minmax(320px, 1fr));
 
-    gap: 25px;
+  gap: 24px;
+
+  width: 100%;
 }
 
 
@@ -202,237 +205,243 @@
 ========================================================= */
 
 .venue-card {
-    background: #ffffff;
+  position: relative;
 
-    border-radius: 16px;
+  background: #ffffff;
 
-    overflow: hidden;
+  border: 1px solid #e5e7eb;
 
-    border: 1px solid #ebe7f1;
+  border-radius: 16px;
 
-    box-shadow:
-        0 5px 20px rgba(40, 30, 60, 0.05);
+  overflow: hidden;
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  padding-bottom: 18px;
 }
 
 .venue-card:hover {
-    transform: translateY(-6px);
+  transform: translateY(-3px);
 
-    box-shadow:
-        0 18px 38px rgba(40, 30, 60, 0.11);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.09);
 }
 
 
 /* =========================================================
-   IMAGE
+   VENUE IMAGE TOP
 ========================================================= */
+
 .venue-card-top {
-    position: relative;
-    width: 100%;
+  position: relative;
+
+  width: 100%;
+  height: 210px;
+
+  background: #eef1f5;
+
+  overflow: hidden;
 }
 
 /*
-.venue-image {
-    width: 100%;
-    height: 210px;
+  This allows VenueImageSlider to fill
+  the entire card image area.
 
-    overflow: hidden;
 
-    background: #eeeaf5;
-}
 
-.venue-image img {
-    width: 100%;
-    height: 100%;
 
-    object-fit: cover;
-
-    display: block;
-
-    transition: transform 0.45s ease;
-}
-
-.venue-card:hover .venue-image img {
-    transform: scale(1.06);
-}
-
-.venue-image-placeholder {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eeeaf5,
-            #f7f5fb
-        );
-
-    color: #a59db2;
-
-    font-size: 45px;
-}
-
-*/
 /* =========================================================
-   STATUS
+   SMALL VENUE STATUS - UPPER LEFT
 ========================================================= */
 
 .venue-status {
-    position: absolute;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: auto;
+  z-index: 10;
 
-    top: 14px;
-    right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 6px 11px;
+  min-height: 23px;
+  padding: 0 8px;
 
-    border-radius: 20px;
+  border-radius: 5px;
 
-    font-size: 11px;
-    font-weight: 700;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
 
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.12);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  color: #374151;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
+
+/* AVAILABLE */
 
 .venue-status.available {
-    color: #15803d;
-    background: #dcfce7;
+  color: #047857;
+  background: rgba(236, 253, 245, 0.95);
 }
+
+
+/* MAINTENANCE */
 
 .venue-status.maintenance {
-    color: #b45309;
-    background: #fef3c7;
+  color: #b45309;
+  background: rgba(255, 251, 235, 0.95);
 }
+
+
+/* HOLIDAY */
 
 .venue-status.holiday {
-    color: #b91c1c;
-    background: #fee2e2;
+  color: #6d28d9;
+  background: rgba(245, 243, 255, 0.95);
 }
-
+```
 
 /* =========================================================
    VENUE NAME
 ========================================================= */
 
 .venue-card > h2 {
-    font-size: 21px;
+  margin: 20px 20px 16px;
 
-    color: #211c2b;
+  font-size: 20px;
 
-    margin:
-        20px 20px 15px;
+  line-height: 1.3;
+
+  color: #111827;
+
+  font-weight: 700;
 }
 
 
 /* =========================================================
-   DETAILS
+   VENUE DETAILS
 ========================================================= */
 
 .venue-details {
-    padding: 0 20px;
+  display: flex;
 
-    display: flex;
-    flex-direction: column;
+  flex-direction: column;
 
-    gap: 13px;
+  gap: 13px;
+
+  padding: 0 20px;
+
+  margin-bottom: 20px;
 }
 
 .detail-item {
-    display: flex;
+  display: flex;
 
-    align-items: flex-start;
+  align-items: flex-start;
 
-    gap: 12px;
+  gap: 12px;
 }
 
 .detail-item > span {
-    width: 32px;
-    height: 32px;
+  width: 30px;
+  height: 30px;
 
-    flex-shrink: 0;
+  flex-shrink: 0;
 
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    background: #f3e8ff;
+  border-radius: 8px;
 
-    color: #7c3aed;
+  background: #f3f4f6;
 
-    border-radius: 8px;
-
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .detail-item small {
-    display: block;
+  display: block;
 
-    color: #9a92a5;
+  margin-bottom: 2px;
 
-    font-size: 11px;
+  font-size: 11px;
 
-    margin-bottom: 3px;
+  color: #9ca3af;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
 }
 
 .detail-item p {
-    margin: 0;
+  margin: 0;
 
-    color: #40394a;
+  font-size: 13px;
 
-    font-size: 14px;
+  color: #374151;
 
-    font-weight: 500;
+  font-weight: 500;
+
+  line-height: 1.4;
 }
 
 
 /* =========================================================
-   ACTIONS
+   VENUE ACTIONS
 ========================================================= */
 
 .venue-actions {
-    display: flex;
+  display: grid;
 
-    flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
 
-    gap: 8px;
+  gap: 9px;
 
-    padding: 20px;
-
-    margin-top: 10px;
+  padding: 0 20px;
 }
 
 .venue-actions button {
-    border: none;
+  min-height: 40px;
 
-    border-radius: 8px;
+  border: none;
 
-    padding: 9px 12px;
+  border-radius: 8px;
 
-    font-size: 12px;
-    font-weight: 600;
+  padding: 0 10px;
 
-    cursor: pointer;
+  font-size: 12px;
 
-    transition: all 0.2s ease;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
 }
 
 .venue-actions button:hover:not(:disabled) {
-    transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .venue-actions button:disabled {
-    opacity: 0.45;
+  cursor: not-allowed;
 
-    cursor: not-allowed;
+  opacity: 0.45;
 }
 
 
@@ -441,20 +450,15 @@
 ========================================================= */
 
 .manage-images-btn {
-    width: 100%;
+  grid-column: 1 / -1;
 
-    background: #f3e8ff;
+  background: #eef2ff;
 
-    color: #7c3aed;
-
-    border: 1px solid #ddd6fe !important;
+  color: #4338ca;
 }
 
 .manage-images-btn:hover {
-    background: #ede9fe;
-
-    box-shadow:
-        0 6px 15px rgba(124, 58, 237, 0.15);
+  background: #e0e7ff;
 }
 
 
@@ -463,13 +467,13 @@
 ========================================================= */
 
 .maintenance-btn {
-    background: #fff7ed;
+  background: #fff7ed;
 
-    color: #c2410c;
+  color: #c2410c;
 }
 
 .maintenance-btn:hover:not(:disabled) {
-    background: #ffedd5;
+  background: #ffedd5;
 }
 
 
@@ -478,13 +482,13 @@
 ========================================================= */
 
 .holiday-btn {
-    background: #fef2f2;
+  background: #f5f3ff;
 
-    color: #dc2626;
+  color: #6d28d9;
 }
 
 .holiday-btn:hover:not(:disabled) {
-    background: #fee2e2;
+  background: #ede9fe;
 }
 
 
@@ -493,13 +497,13 @@
 ========================================================= */
 
 .available-btn {
-    background: #ecfdf5;
+  background: #ecfdf5;
 
-    color: #059669;
+  color: #047857;
 }
 
 .available-btn:hover:not(:disabled) {
-    background: #d1fae5;
+  background: #d1fae5;
 }
 
 
@@ -508,474 +512,122 @@
 ========================================================= */
 
 .delete-venue-btn {
-    width: calc(100% - 40px);
+  display: block;
 
-    margin: 0 20px 20px;
+  width: calc(100% - 40px);
 
-    padding: 11px;
+  margin: 10px 20px 0;
 
-    border: 1px solid #fecaca;
+  min-height: 39px;
 
-    border-radius: 8px;
+  border: 1px solid #fecaca;
 
-    background: white;
+  border-radius: 8px;
 
-    color: #dc2626;
+  background: #fffafa;
 
-    font-size: 13px;
+  color: #dc2626;
 
-    font-weight: 600;
+  font-size: 12px;
 
-    cursor: pointer;
+  font-weight: 600;
 
-    transition: all 0.2s ease;
+  cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .delete-venue-btn:hover {
-    background: #fef2f2;
+  background: #fef2f2;
 
-    border-color: #fca5a5;
+  border-color: #fca5a5;
 }
 
 
 /* =========================================================
-   IMAGE MANAGER OVERLAY
-========================================================= */
-
-.image-manager-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(24, 21, 33, 0.78);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    z-index: 100;
-
-    animation: overlayFadeIn 0.2s ease;
-}
-
-@keyframes overlayFadeIn {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   IMAGE MANAGER
-========================================================= */
-
-.image-manager {
-    width: 100%;
-
-    max-width: 760px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    background: #ffffff;
-
-    border-radius: 18px;
-
-    padding: 28px;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.30);
-
-    animation: modalSlideUp 0.25s ease;
-}
-
-@keyframes modalSlideUp {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   MODAL HEADER
-========================================================= */
-
-.image-manager-header {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: flex-start;
-
-    padding-bottom: 20px;
-
-    border-bottom:
-        1px solid #ebe7f1;
-
-    margin-bottom: 25px;
-}
-
-.image-manager-header h2 {
-    margin: 0 0 5px;
-
-    color: #211c2b;
-
-    font-size: 23px;
-}
-
-.image-manager-header p {
-    margin: 0;
-
-    color: #766f80;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
-.close-image-manager {
-    width: 36px;
-    height: 36px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #f3f0f7;
-
-    color: #625a6d;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.2s ease;
-}
-
-.close-image-manager:hover {
-    background: #fee2e2;
-
-    color: #dc2626;
-
-    transform: rotate(90deg);
-}
-
-
-/* =========================================================
-   CURRENT IMAGES
-========================================================= */
-
-.current-images h3,
-.upload-images-section h3 {
-    margin: 0 0 14px;
-
-    color: #302938;
-
-    font-size: 17px;
-}
-
-.image-manager-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-
-    margin-bottom: 30px;
-}
-
-
-/* =========================================================
-   MANAGED IMAGE
-========================================================= */
-
-.managed-image {
-    position: relative;
-
-    height: 180px;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    background: #eeeaf5;
-
-    border: 1px solid #e5deef;
-}
-
-.managed-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition: transform 0.35s ease;
-}
-
-.managed-image:hover img {
-    transform: scale(1.07);
-}
-
-
-/* =========================================================
-   DELETE IMAGE
-========================================================= */
-
-.delete-image-btn {
-    position: absolute;
-
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-
-    padding: 9px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background:
-        rgba(220, 38, 38, 0.94);
-
-    color: white;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    opacity: 0;
-
-    transform: translateY(8px);
-
-    transition: all 0.25s ease;
-}
-
-.managed-image:hover .delete-image-btn {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-.delete-image-btn:hover {
-    background: #b91c1c;
-}
-
-
-/* =========================================================
-   UPLOAD SECTION
-========================================================= */
-
-.upload-images-section {
-    border-top:
-        1px solid #ebe7f1;
-
-    padding-top: 25px;
-}
-
-.upload-images-section > p {
-    color: #766f80;
-
-    font-size: 13px;
-
-    margin: 5px 0 15px;
-}
-
-
-/* =========================================================
-   FILE INPUT
-========================================================= */
-
-.upload-images-section input[type="file"] {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 13px;
-
-    border:
-        2px dashed #c4b5d9;
-
-    border-radius: 10px;
-
-    background: #faf8fd;
-
-    color: #51485b;
-
-    cursor: pointer;
-
-    transition: all 0.25s ease;
-}
-
-.upload-images-section input[type="file"]:hover {
-    border-color: #8b5cf6;
-
-    background: #f5f3ff;
-}
-
-
-/* =========================================================
-   UPLOAD BUTTON
-========================================================= */
-
-.upload-images-btn {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 13px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    background: #7c3aed;
-
-    color: white;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: all 0.25s ease;
-}
-
-.upload-images-btn:hover:not(:disabled) {
-    background: #6d28d9;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 18px rgba(124, 58, 237, 0.25);
-}
-
-.upload-images-btn:disabled {
-    background: #b8aec4;
-
-    cursor: not-allowed;
-}
-
-
-/* =========================================================
-   MAXIMUM MESSAGE
-========================================================= */
-
-.max-images-message {
-    margin: 20px 0 0;
-
-    padding: 13px 15px;
-
-    border-radius: 9px;
-
-    background: #f0fdf4;
-
-    border: 1px solid #bbf7d0;
-
-    color: #15803d;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   EMPTY STATE
+   EMPTY VENUES
 ========================================================= */
 
 .no-owner-venues {
-    background: white;
+  min-height: 420px;
 
-    border-radius: 16px;
+  display: flex;
 
-    padding: 70px 30px;
+  flex-direction: column;
 
-    text-align: center;
+  align-items: center;
+  justify-content: center;
 
-    border: 1px solid #ebe7f1;
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  padding: 40px;
 }
 
 .empty-icon {
-    font-size: 50px;
+  width: 70px;
+  height: 70px;
 
-    margin-bottom: 15px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #f3f4f6;
+
+  font-size: 32px;
+
+  margin-bottom: 18px;
 }
 
 .no-owner-venues h2 {
-    margin: 0 0 10px;
+  margin: 0 0 8px;
 
-    color: #211c2b;
+  font-size: 21px;
+
+  color: #111827;
 }
 
 .no-owner-venues p {
-    color: #766f80;
+  max-width: 440px;
 
-    max-width: 450px;
+  margin: 0 0 22px;
 
-    margin: 0 auto 25px;
+  color: #6b7280;
 
-    line-height: 1.6;
+  font-size: 14px;
+
+  line-height: 1.6;
 }
 
 .empty-add-btn {
-    display: inline-block;
+  display: inline-flex;
 
-    text-decoration: none;
+  align-items: center;
+  justify-content: center;
 
-    padding: 12px 20px;
+  min-height: 42px;
 
-    background: #7c3aed;
+  padding: 0 18px;
 
-    color: white;
+  border-radius: 8px;
 
-    border-radius: 8px;
+  background: #111827;
 
-    font-weight: 600;
+  color: white;
 
-    font-size: 14px;
-}
+  text-decoration: none;
 
-.empty-add-btn:hover {
-    background: #6d28d9;
+  font-size: 13px;
+
+  font-weight: 600;
 }
 
 
@@ -984,31 +636,51 @@
 ========================================================= */
 
 .owner-error {
-    background: #fef2f2;
+  padding: 22px;
 
-    border: 1px solid #fecaca;
+  margin-bottom: 25px;
 
-    border-radius: 12px;
+  border: 1px solid #fecaca;
 
-    padding: 20px;
+  border-radius: 12px;
 
-    margin-bottom: 25px;
+  background: #fef2f2;
 
-    color: #991b1b;
+  color: #991b1b;
+}
+
+.owner-error strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 15px;
+}
+
+.owner-error p {
+  margin: 0 0 14px;
+
+  font-size: 13px;
 }
 
 .owner-error button {
-    border: none;
+  min-height: 36px;
 
-    background: #dc2626;
+  padding: 0 14px;
 
-    color: white;
+  border: none;
 
-    padding: 9px 15px;
+  border-radius: 7px;
 
-    border-radius: 7px;
+  background: #991b1b;
 
-    cursor: pointer;
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 }
 
 
@@ -1017,211 +689,767 @@
 ========================================================= */
 
 .owner-loading {
-    min-height: 100vh;
+  min-height: 100vh;
 
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    background: #f7f5fb;
+  background: #f5f7fb;
+}
 
-    color: #40394a;
+.owner-loading h2 {
+  margin-top: 18px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  color: #6b7280;
 }
 
 .owner-spinner {
-    width: 38px;
-    height: 38px;
+  width: 38px;
+  height: 38px;
 
-    border: 4px solid #e5dff0;
+  border: 3px solid #e5e7eb;
 
-    border-top-color: #7c3aed;
+  border-top-color: #111827;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    animation: spin 0.8s linear infinite;
-
-    margin-bottom: 15px;
+  animation: ownerSpin 0.8s linear infinite;
 }
 
-@keyframes spin {
-
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes ownerSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 
 /* =========================================================
-   MODAL SCROLLBAR
+   IMAGE MANAGER OVERLAY
 ========================================================= */
 
-.image-manager::-webkit-scrollbar {
-    width: 7px;
+.image-manager-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9998;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(17, 24, 39, 0.65);
+
+  backdrop-filter: blur(3px);
+
+  overflow-y: auto;
 }
 
-.image-manager::-webkit-scrollbar-track {
-    background: #f5f3f8;
+.image-manager {
+  position: relative;
 
-    border-radius: 10px;
+  width: 100%;
+
+  max-width: 760px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 28px;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.25);
 }
 
-.image-manager::-webkit-scrollbar-thumb {
-    background: #c4b5d9;
 
-    border-radius: 10px;
+/* IMAGE MANAGER HEADER */
+
+.image-manager-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.image-manager::-webkit-scrollbar-thumb:hover {
-    background: #a78bca;
+.image-manager-header h2 {
+  margin: 0 0 5px;
+
+  font-size: 22px;
+
+  color: #111827;
+}
+
+.image-manager-header p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.close-image-manager {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #4b5563;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.close-image-manager:hover {
+  background: #e5e7eb;
+
+  color: #111827;
 }
 
 
 /* =========================================================
-   TABLET
+   CURRENT IMAGES
 ========================================================= */
 
-@media (max-width: 900px) {
+.current-images {
+  padding-top: 22px;
+}
 
-    .owner-sidebar {
-        width: 210px;
-    }
+.current-images h3,
+.upload-images-section h3 {
+  margin: 0 0 12px;
 
-    .owner-main {
-        margin-left: 210px;
+  font-size: 15px;
 
-        width: calc(100% - 210px);
+  color: #111827;
+}
 
-        padding: 25px;
-    }
+.image-manager-grid {
+  display: grid;
 
-    .venue-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+.image-manager-grid > p {
+  grid-column: 1 / -1;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* MANAGED IMAGE */
+
+.managed-image {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 11px;
+
+  background: #f3f4f6;
+
+  border: 1px solid #e5e7eb;
+}
+
+.managed-image img {
+  display: block;
+
+  width: 100%;
+
+  height: 160px;
+
+  object-fit: cover;
+}
+
+.delete-image-btn {
+  width: 100%;
+
+  min-height: 37px;
+
+  border: none;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.delete-image-btn:hover {
+  background: #fee2e2;
 }
 
 
 /* =========================================================
-   MOBILE
+   UPLOAD IMAGES
 ========================================================= */
+
+.upload-images-section {
+  margin-top: 25px;
+
+  padding-top: 23px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.upload-images-section p {
+  margin: 0 0 14px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.upload-images-section input[type="file"] {
+  width: 100%;
+
+  padding: 11px;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.upload-images-btn {
+  margin-top: 14px;
+
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #111827;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.upload-images-btn:hover:not(:disabled) {
+  background: #1f2937;
+}
+
+.upload-images-btn:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.max-images-message {
+  margin: 25px 0 0;
+
+  padding: 13px 15px;
+
+  border-radius: 8px;
+
+  background: #f3f4f6;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   STATUS MODAL
+========================================================= */
+
+.status-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 10000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(17, 24, 39, 0.62);
+
+  backdrop-filter: blur(3px);
+}
+
+.status-modal {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 440px;
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.25);
+
+  animation: statusModalOpen 0.2s ease-out;
+}
+
+@keyframes statusModalOpen {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-12px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* STATUS MODAL CLOSE */
+
+.status-modal-close {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #4b5563;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.status-modal-close:hover {
+  background: #e5e7eb;
+
+  color: #111827;
+}
+
+
+/* STATUS ICON */
+
+.status-modal-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 17px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  font-size: 28px;
+}
+
+
+/* STATUS TITLE */
+
+.status-modal h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 22px;
+
+  color: #111827;
+}
+
+.status-modal > p {
+  max-width: 360px;
+
+  margin: 10px auto 24px;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   DATE FIELD
+========================================================= */
+
+.status-date-field {
+  margin-bottom: 23px;
+}
+
+.status-date-field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #374151;
+}
+
+.status-date-field input {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: white;
+
+  color: #111827;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.status-date-field input:hover {
+  border-color: #9ca3af;
+}
+
+.status-date-field input:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================================
+   STATUS MODAL ACTIONS
+========================================================= */
+
+.status-modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+}
+
+.status-modal-actions button {
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+/* CANCEL */
+
+.status-cancel-btn {
+  background: #f3f4f6;
+
+  color: #374151;
+}
+
+.status-cancel-btn:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+
+/* CONFIRM MAINTENANCE */
+
+.confirm-maintenance-btn {
+  background: #f59e0b;
+
+  color: white;
+}
+
+.confirm-maintenance-btn:hover:not(:disabled) {
+  background: #d97706;
+}
+
+
+/* CONFIRM HOLIDAY */
+
+.confirm-holiday-btn {
+  background: #6366f1;
+
+  color: white;
+}
+
+.confirm-holiday-btn:hover:not(:disabled) {
+  background: #4f46e5;
+}
+
+
+/* DISABLED */
+
+.status-modal-actions button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .owner-main {
+    padding: 30px;
+  }
+
+  .venue-grid {
+    grid-template-columns:
+      repeat(2, minmax(280px, 1fr));
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .owner-sidebar {
+    width: 210px;
+  }
+
+  .owner-main {
+    margin-left: 210px;
+
+    width: calc(100% - 210px);
+
+    padding: 25px;
+  }
+
+  .venue-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 
 @media (max-width: 650px) {
 
-    .owner-sidebar {
-        position: relative;
+  .owner-sidebar {
+    position: static;
 
-        width: 100%;
+    width: 100%;
 
-        min-height: auto;
+    min-height: auto;
 
-        padding: 18px;
-    }
+    padding: 18px;
+  }
 
-    .owner-layout {
-        display: block;
-    }
+  .owner-layout {
+    display: block;
+  }
 
-    .owner-main {
-        margin-left: 0;
+  .owner-sidebar nav {
+    flex-direction: row;
 
-        width: 100%;
+    overflow-x: auto;
 
-        box-sizing: border-box;
+    padding-bottom: 3px;
+  }
 
-        padding: 20px;
-    }
+  .owner-sidebar nav a {
+    flex-shrink: 0;
 
-    .owner-sidebar nav {
-        flex-direction: row;
+    padding: 0 13px;
+  }
 
-        flex-wrap: wrap;
-    }
+  .owner-main {
+    margin-left: 0;
 
-    .owner-sidebar nav a {
-        font-size: 12px;
+    width: 100%;
 
-        padding: 9px 11px;
-    }
+    padding: 22px 17px;
+  }
 
-    .owner-page-header {
-        flex-direction: column;
+  .owner-page-header {
+    align-items: flex-start;
 
-        align-items: flex-start;
-    }
+    flex-direction: column;
+  }
 
-    .add-venue-btn {
-        width: 100%;
+  .owner-page-header h1 {
+    font-size: 27px;
+  }
 
-        text-align: center;
+  .add-venue-btn {
+    width: 100%;
+  }
 
-        box-sizing: border-box;
-    }
+  .venue-grid {
+    grid-template-columns: 1fr;
 
-    .venue-grid {
-        grid-template-columns: 1fr;
-    }
+    gap: 18px;
+  }
 
-    .image-manager-overlay {
-        padding: 12px;
-    }
+  .venue-card-top {
+    height: 220px;
+  }
 
-    .image-manager {
-        padding: 20px;
+  .image-manager {
+    padding: 22px;
 
-        max-height: 94vh;
+    max-height: 92vh;
+  }
 
-        border-radius: 14px;
-    }
+  .image-manager-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .image-manager-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
+  .managed-image img {
+    height: 200px;
+  }
 
-    .managed-image {
-        height: 145px;
-    }
-
-    .delete-image-btn {
-        opacity: 1;
-
-        transform: none;
-
-        font-size: 11px;
-    }
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+@media (max-width: 430px) {
 
-@media (max-width: 400px) {
+  .owner-main {
+    padding: 18px 13px;
+  }
 
-    .owner-main {
-        padding: 15px;
-    }
+  .owner-page-header {
+    margin-bottom: 24px;
+  }
 
-    .owner-page-header h1 {
-        font-size: 28px;
-    }
+  .owner-page-header h1 {
+    font-size: 24px;
+  }
 
-    .venue-actions {
-        flex-direction: column;
-    }
+  .venue-card > h2 {
+    font-size: 18px;
 
-    .venue-actions button {
-        width: 100%;
-    }
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 
-    .image-manager-grid {
-        grid-template-columns: 1fr;
-    }
+  .venue-details {
+    padding: 0 16px;
+  }
 
-    .managed-image {
-        height: 200px;
-    }
+  .venue-actions {
+    padding: 0 16px;
+  }
+
+  .delete-venue-btn {
+    width: calc(100% - 32px);
+
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .status-modal {
+    padding: 25px 20px;
+  }
+
+  .status-modal-actions {
+    flex-direction: column;
+  }
+
+  .status-modal-actions button {
+    width: 100%;
+  }
+
 }
+```

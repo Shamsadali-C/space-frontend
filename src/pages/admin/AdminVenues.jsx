@@ -13,19 +13,34 @@ function AdminVenues() {
         loadVenues();
     }, []);
 
+
     const loadVenues = async () => {
 
         try {
 
-            const response = await adminService.getVenues();
+            setLoading(true);
+            setError("");
 
-            console.log("Venues:", response.data);
+            const response =
+                await adminService.getVenues();
 
-            setVenues(response.data);
+            console.log("Venues:", response);
+
+            // adminService already returns response.data
+            setVenues(
+                Array.isArray(response)
+                    ? response
+                    : []
+            );
 
         } catch (error) {
 
-            console.error("Failed to load venues:", error);
+            console.error(
+                "Failed to load venues:",
+                error
+            );
+
+            setVenues([]);
 
             setError(
                 error.response?.data ||
@@ -66,6 +81,7 @@ function AdminVenues() {
                     ADMIN PANEL
                 </p>
 
+
                 <nav>
 
                     <Link to="/admin/dashboard">
@@ -87,6 +103,14 @@ function AdminVenues() {
                         Bookings
                     </Link>
 
+                    <Link to="/admin/durations">
+                        Slot Durations
+                    </Link>
+
+                    <Link to="/admin/owner-requests">
+                        Owner Requests
+                    </Link>
+
                 </nav>
 
             </aside>
@@ -99,17 +123,22 @@ function AdminVenues() {
                 <div className="admin-venues-header">
 
                     <div>
-                        <h1>Venues</h1>
+
+                        <h1>
+                            Venues
+                        </h1>
 
                         <p>
                             View all registered venues
                         </p>
+
                     </div>
 
 
                     <div className="venue-count">
 
                         Total Venues:
+
                         <strong>
                             {venues.length}
                         </strong>
@@ -119,23 +148,32 @@ function AdminVenues() {
                 </div>
 
 
+                {/* ERROR */}
+
                 {error && (
 
                     <div className="admin-venues-error">
-                        {error}
+                        {typeof error === "string"
+                            ? error
+                            : "Failed to load venues"}
                     </div>
 
                 )}
 
 
+                {/* NO VENUES */}
+
                 {venues.length === 0 ? (
 
                     <div className="no-venues">
 
-                        <h2>No Venues Found</h2>
+                        <h2>
+                            No Venues Found
+                        </h2>
 
                         <p>
-                            There are currently no venues registered.
+                            There are currently no venues
+                            registered.
                         </p>
 
                     </div>
@@ -162,55 +200,70 @@ function AdminVenues() {
 
                                     <th>Status</th>
 
-                                    <th>Owner</th>
+                                    <th>Owner Name</th>
 
                                 </tr>
 
                             </thead>
 
+
                             <tbody>
 
-                                {venues.map((venue) => (
+                                {Array.isArray(venues) &&
+                                    venues.map((venue) => (
 
-                                    <tr key={venue.id}>
+                                        <tr
+                                            key={venue.id}
+                                        >
 
-                                        <td>
-                                            {venue.id}
-                                        </td>
+                                            <td>
+                                                {venue.id}
+                                            </td>
 
-                                        <td className="venue-name">
-                                            {venue.venueName}
-                                        </td>
 
-                                        <td>
-                                            {venue.location}
-                                        </td>
+                                            <td className="venue-name">
+                                                {venue.venueName}
+                                            </td>
 
-                                        <td>
-                                            {venue.capacity}
-                                        </td>
 
-                                        <td className="venue-price">
-                                            ₹{venue.price}
-                                        </td>
+                                            <td>
+                                                {venue.location}
+                                            </td>
 
-                                        <td>
 
-                                            <span
-                                                className={`status ${venue.venueStatus?.toLowerCase()}`}
-                                            >
-                                                {venue.venueStatus}
-                                            </span>
+                                            <td>
+                                                {venue.capacity}
+                                            </td>
 
-                                        </td>
 
-                                        <td>
-                                            {venue.owner?.username || "N/A"}
-                                        </td>
+                                            <td className="venue-price">
+                                                ₹{venue.price}
+                                            </td>
 
-                                    </tr>
 
-                                ))}
+                                            <td>
+
+                                                <span
+                                                    className={`status ${
+                                                        venue.venueStatus
+                                                            ?.toLowerCase() || ""
+                                                    }`}
+                                                >
+                                                    {venue.venueStatus ||
+                                                        "N/A"}
+                                                </span>
+
+                                            </td>
+
+
+                                            <td>
+                                                {venue.owner?.username ||
+                                                    "N/A"}
+                                            </td>
+
+                                        </tr>
+
+                                    ))}
 
                             </tbody>
 

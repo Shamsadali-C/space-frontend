@@ -13,26 +13,32 @@ const AdminBookings = () => {
     }, []);
 
     const loadBookings = async () => {
-
         try {
+            setLoading(true);
+            setError("");
 
             const response = await adminService.getBookings();
 
-            console.log("Bookings:", response.data);
+            console.log("Bookings:", response);
 
-            setBookings(response.data);
+            // adminService already returns response.data
+            setBookings(
+                Array.isArray(response)
+                    ? response
+                    : []
+            );
 
         } catch (error) {
 
-            console.error(error);
+            console.error("Failed to load bookings:", error);
 
             setError(
+                error.response?.data?.message ||
                 error.response?.data ||
                 "Failed to load bookings"
             );
 
         } finally {
-
             setLoading(false);
         }
     };
@@ -48,7 +54,6 @@ const AdminBookings = () => {
 
 
     return (
-
         <div className="admin-bookings-page">
 
             <div className="bookings-header">
@@ -79,11 +84,13 @@ const AdminBookings = () => {
             {bookings.length === 0 ? (
 
                 <div className="no-bookings">
+
                     <h2>No Bookings Found</h2>
 
                     <p>
                         There are currently no bookings.
                     </p>
+
                 </div>
 
             ) : (
@@ -172,7 +179,7 @@ const AdminBookings = () => {
                                                     ?.toLowerCase()
                                             }`}
                                         >
-                                            {booking.bookingStatus}
+                                            {booking.bookingStatus || "N/A"}
                                         </span>
 
                                     </td>

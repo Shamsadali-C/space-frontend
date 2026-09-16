@@ -14,6 +14,7 @@ function Register() {
     });
 
     const [error, setError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -23,6 +24,16 @@ function Register() {
             [e.target.name]: e.target.value
         });
 
+        if (e.target.name === "username") {
+            setError("");
+        }
+
+        if (e.target.name === "password") {
+            setPasswordError("");
+        }
+        if (e.target.value.length > 0 && e.target.value.length < 8) {
+                setPasswordError("Password must be at least 8 characters");
+            }
     };
 
     const handleSubmit = async (e) => {
@@ -30,6 +41,13 @@ function Register() {
         e.preventDefault();
 
         setError("");
+        setPasswordError("");
+
+        if (formData.password.length < 8) {
+            setPasswordError("Password must be at least 8 characters");
+            return;
+        }
+
         setLoading(true);
 
         try {
@@ -49,6 +67,7 @@ function Register() {
             const message =
                 error.response?.data?.message ||
                 error.response?.data?.error ||
+                error.response.data||
                 "Registration failed";
 
             setError(message);
@@ -56,7 +75,6 @@ function Register() {
         } finally {
 
             setLoading(false);
-
         }
     };
 
@@ -69,14 +87,7 @@ function Register() {
 
                 <p>Register for Book My Space</p>
 
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
-
                 <form onSubmit={handleSubmit}>
-
                     <label>Username</label>
 
                     <input
@@ -87,6 +98,12 @@ function Register() {
                         onChange={handleChange}
                         required
                     />
+
+                    {error && (
+                        <div className="field-error">
+                            ⚠ {error}
+                        </div>
+                    )}
 
                     <label>Email</label>
 
@@ -109,6 +126,14 @@ function Register() {
                         onChange={handleChange}
                         required
                     />
+
+                    {passwordError && (
+                        <div className="field-error">
+                            ⚠ {passwordError}
+                        </div>
+                    )}
+
+
 
                     <button
                         type="submit"

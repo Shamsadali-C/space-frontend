@@ -1,61 +1,52 @@
-```css
-/* =========================================================
-   ADD VENUE PAGE
-========================================================= */
 
 .add-venue-page {
     min-height: 100vh;
+
     width: 100%;
 
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    padding: 50px 20px;
+    padding: 45px 20px;
+
+    box-sizing: border-box;
 
     background:
         radial-gradient(
             circle at top left,
-            rgba(99, 102, 241, 0.12),
+            rgba(37, 99, 235, 0.08),
             transparent 35%
         ),
-        radial-gradient(
-            circle at bottom right,
-            rgba(168, 85, 247, 0.10),
-            transparent 35%
-        ),
-        #f5f7fb;
-
-    box-sizing: border-box;
-
-    font-family:
-        "Inter",
-        "Segoe UI",
-        Arial,
-        sans-serif;
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef4ff
+        );
 }
 
 
-/* =========================================================
-   CARD
-========================================================= */
+/* =========================================
+   MAIN CARD
+========================================= */
 
 .add-venue-card {
     width: 100%;
-    max-width: 650px;
+    max-width: 720px;
 
-    background: #ffffff;
+    padding: 38px 42px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid rgba(226, 232, 240, 0.9);
 
     border-radius: 22px;
 
-    padding: 40px;
-
     box-sizing: border-box;
 
-    border: 1px solid #e8eaf0;
-
     box-shadow:
-        0 20px 50px rgba(15, 23, 42, 0.08);
+        0 20px 50px rgba(15, 23, 42, 0.10),
+        0 4px 12px rgba(15, 23, 42, 0.04);
 
     animation: cardAppear 0.5s ease;
 }
@@ -65,7 +56,7 @@
 
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(18px);
     }
 
     to {
@@ -75,11 +66,13 @@
 }
 
 
-/* =========================================================
+/* =========================================
    HEADER
-========================================================= */
+========================================= */
 
 .add-venue-header {
+    text-align: center;
+
     margin-bottom: 30px;
 }
 
@@ -87,22 +80,28 @@
 .form-label {
     display: inline-block;
 
-    font-size: 12px;
+    padding: 6px 12px;
 
-    font-weight: 700;
+    margin-bottom: 10px;
 
-    letter-spacing: 1.5px;
+    border-radius: 20px;
 
-    color: #6366f1;
+    background: #eff6ff;
 
-    margin-bottom: 8px;
+    color: #2563eb;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
 }
 
 
 .add-venue-header h1 {
-    margin: 0;
+    margin: 5px 0 8px;
 
-    font-size: 34px;
+    font-size: 32px;
 
     font-weight: 800;
 
@@ -113,38 +112,34 @@
 
 
 .form-description {
-    margin: 8px 0 0;
+    margin: 0;
 
-    font-size: 15px;
+    color: #64748b;
 
-    line-height: 1.6;
+    font-size: 14px;
 
-    color: #6b7280;
+    line-height: 1.5;
 }
 
 
-/* =========================================================
-   SUCCESS MESSAGE
-========================================================= */
+/* =========================================
+   SUCCESS / ERROR
+========================================= */
 
-.success-message {
+.success-message,
+.error-message {
+
     display: flex;
 
     align-items: center;
 
     gap: 10px;
 
-    padding: 14px 16px;
+    padding: 13px 16px;
 
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 
-    border-radius: 12px;
-
-    background: #ecfdf5;
-
-    border: 1px solid #a7f3d0;
-
-    color: #047857;
+    border-radius: 10px;
 
     font-size: 14px;
 
@@ -154,22 +149,54 @@
 }
 
 
-.success-message span {
-    width: 25px;
-    height: 25px;
+.success-message {
+    background: #ecfdf5;
+
+    border: 1px solid #a7f3d0;
+
+    color: #047857;
+}
+
+
+.error-message {
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #dc2626;
+}
+
+
+.success-message span,
+.error-message span {
+
+    width: 24px;
+    height: 24px;
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
 
     border-radius: 50%;
 
+    font-weight: 800;
+}
+
+
+.success-message span {
     background: #10b981;
 
     color: white;
+}
 
-    font-size: 14px;
+
+.error-message span {
+    background: #ef4444;
+
+    color: white;
 }
 
 
@@ -177,7 +204,7 @@
 
     from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-5px);
     }
 
     to {
@@ -187,76 +214,23 @@
 }
 
 
-/* =========================================================
-   ERROR MESSAGE
-========================================================= */
-
-.error-message {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 14px 16px;
-
-    margin-bottom: 24px;
-
-    border-radius: 12px;
-
-    background: #fef2f2;
-
-    border: 1px solid #fecaca;
-
-    color: #b91c1c;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.error-message span {
-    width: 25px;
-    height: 25px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: #ef4444;
-
-    color: white;
-
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-form {
-    width: 100%;
-}
-
+/* =========================================
+   FORM GROUP
+========================================= */
 
 .form-group {
+
     margin-bottom: 22px;
 }
 
 
 .form-group label {
+
     display: block;
 
     margin-bottom: 8px;
 
-    color: #374151;
+    color: #334155;
 
     font-size: 14px;
 
@@ -264,174 +238,160 @@ form {
 }
 
 
-/* =========================================================
-   INPUTS
-========================================================= */
+/* =========================================
+   TEXT / NUMBER INPUTS
+========================================= */
 
 .form-group input[type="text"],
 .form-group input[type="number"] {
+
     width: 100%;
 
-    height: 50px;
+    height: 48px;
 
     padding: 0 15px;
 
     box-sizing: border-box;
 
-    border: 1px solid #d9dde7;
+    border: 1px solid #dbe2ea;
 
-    border-radius: 11px;
-
-    background: #fafbfc;
-
-    color: #111827;
-
-    font-size: 15px;
+    border-radius: 10px;
 
     outline: none;
 
+    background: #f8fafc;
+
+    color: #111827;
+
+    font-size: 14px;
+
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-}
-
-
-.form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus {
-    background: #ffffff;
-
-    border-color: #6366f1;
-
-    box-shadow:
-        0 0 0 4px rgba(99, 102, 241, 0.10);
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
 }
 
 
 .form-group input::placeholder {
-    color: #9ca3af;
+    color: #94a3b8;
 }
 
 
-/* =========================================================
-   NUMBER INPUT
-========================================================= */
+.form-group input:hover {
+    border-color: #b8c5d6;
 
-.form-group input[type="number"] {
-    appearance: textfield;
+    background: #ffffff;
 }
 
 
-.form-group input[type="number"]::-webkit-inner-spin-button,
-.form-group input[type="number"]::-webkit-outer-spin-button {
-    opacity: 1;
+.form-group input:focus {
+
+    background: #ffffff;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
+
+    transform: translateY(-1px);
 }
 
 
-/* =========================================================
-   FILE INPUT
-========================================================= */
+/* =========================================
+   PRICE FIELD
+========================================= */
 
-.form-group input[type="file"] {
+#price {
+    font-weight: 600;
+}
+
+
+/* =========================================
+   IMAGE UPLOAD
+========================================= */
+
+#venue-images {
+
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
     box-sizing: border-box;
 
-    border: 1px dashed #c7cad5;
+    border: 2px dashed #cbd5e1;
 
     border-radius: 12px;
 
-    background: #f9fafb;
+    background: #f8fafc;
 
-    color: #6b7280;
+    color: #475569;
 
-    font-size: 14px;
+    font-size: 13px;
 
     cursor: pointer;
 
     transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 
-.form-group input[type="file"]:hover {
-    border-color: #6366f1;
+#venue-images:hover {
 
-    background: #f5f3ff;
+    border-color: #2563eb;
+
+    background: #eff6ff;
 }
 
 
-/* =========================================================
-   FILE BUTTON
-========================================================= */
+#venue-images:focus {
 
-.form-group input[type="file"]::file-selector-button {
-    margin-right: 12px;
+    outline: none;
 
-    padding: 9px 14px;
+    border-color: #2563eb;
 
-    border: none;
-
-    border-radius: 8px;
-
-    background: #6366f1;
-
-    color: white;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: background 0.2s ease;
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.08);
 }
 
-
-.form-group input[type="file"]::file-selector-button:hover {
-    background: #4f46e5;
-}
-
-
-/* =========================================================
-   IMAGE HELP
-========================================================= */
 
 .image-help {
+
     display: block;
 
-    margin-top: 7px;
+    margin-top: 8px;
 
-    color: #9ca3af;
+    color: #64748b;
 
     font-size: 12px;
 }
 
 
-/* =========================================================
+/* =========================================
    SELECTED FILES
-========================================================= */
+========================================= */
 
 .selected-files {
+
     margin-top: 14px;
 
     padding: 14px;
 
-    border-radius: 12px;
+    background: #f8fafc;
 
-    background: #f5f3ff;
+    border: 1px solid #e2e8f0;
 
-    border: 1px solid #ddd6fe;
+    border-radius: 10px;
 }
 
 
 .selected-files p {
+
     margin: 0 0 10px;
 
-    color: #4f46e5;
+    color: #334155;
 
     font-size: 13px;
 
@@ -440,100 +400,166 @@ form {
 
 
 .selected-files span {
+
     display: block;
 
-    padding: 7px 0;
+    padding: 8px 10px;
 
-    color: #4b5563;
+    margin-top: 6px;
 
-    font-size: 13px;
+    overflow: hidden;
 
-    border-bottom: 1px solid #e9e7f7;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 
-.selected-files span:last-child {
-    border-bottom: none;
+.selected-files span:hover {
+
+    border-color: #93c5fd;
+
+    transform: translateX(3px);
 }
 
 
-/* =========================================================
-   SUBMIT BUTTON
-========================================================= */
+/* =========================================
+   ADD VENUE BUTTON
+========================================= */
 
 .submit-venue-btn {
+
+    position: relative;
+
     width: 100%;
 
-    height: 52px;
+    height: 50px;
 
     margin-top: 8px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background:
         linear-gradient(
             135deg,
-            #6366f1,
-            #7c3aed
+            #2563eb,
+            #4f46e5
         );
 
-    color: white;
+    color: #ffffff;
 
     font-size: 15px;
 
     font-weight: 700;
 
+    letter-spacing: 0.2px;
+
     cursor: pointer;
 
+    overflow: hidden;
+
     box-shadow:
-        0 8px 20px rgba(99, 102, 241, 0.25);
+        0 8px 18px rgba(37, 99, 235, 0.20);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        opacity 0.2s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
 }
 
 
-.submit-venue-btn:hover:not(:disabled) {
+.submit-venue-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+.submit-venue-btn:hover::before {
+    left: 130%;
+}
+
+
+.submit-venue-btn:hover {
+
     transform: translateY(-2px);
 
+    filter: brightness(1.05);
+
     box-shadow:
-        0 12px 25px rgba(99, 102, 241, 0.32);
+        0 12px 25px rgba(37, 99, 235, 0.28);
 }
 
 
-.submit-venue-btn:active:not(:disabled) {
+.submit-venue-btn:active {
+
     transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.20);
 }
 
 
 .submit-venue-btn:disabled {
+
     cursor: not-allowed;
 
-    opacity: 0.65;
+    opacity: 0.7;
 
-    box-shadow: none;
+    transform: none;
 }
 
 
-/* =========================================================
+/* =========================================
    BUTTON SPINNER
-========================================================= */
+========================================= */
 
 .button-spinner {
+
     display: inline-block;
 
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
 
-    margin-right: 9px;
+    margin-right: 8px;
 
-    vertical-align: -2px;
+    vertical-align: middle;
 
-    border: 2px solid rgba(255, 255, 255, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.4);
 
     border-top-color: #ffffff;
 
@@ -551,24 +577,20 @@ form {
 }
 
 
-/* =========================================================
+/* =========================================
    BACK BUTTON
-========================================================= */
+========================================= */
 
-.back-button {
+.back-button,
+.my-venues-button {
+
     width: 100%;
 
-    height: 46px;
+    height: 45px;
 
-    margin-top: 18px;
+    margin-top: 12px;
 
-    border: 1px solid #e5e7eb;
-
-    border-radius: 11px;
-
-    background: #ffffff;
-
-    color: #4b5563;
+    border-radius: 10px;
 
     font-size: 14px;
 
@@ -579,140 +601,115 @@ form {
     transition:
         background 0.2s ease,
         border-color 0.2s ease,
-        color 0.2s ease;
-}
-
-
-.back-button:hover:not(:disabled) {
-    background: #f9fafb;
-
-    border-color: #c7cad5;
-
-    color: #111827;
-}
-
-
-/* =========================================================
-   MY VENUES BUTTON
-========================================================= */
-
-.my-venues-button {
-    width: 100%;
-
-    height: 46px;
-
-    margin-top: 10px;
-
-    border: none;
-
-    border-radius: 11px;
-
-    background: #eef2ff;
-
-    color: #4f46e5;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease;
 }
 
 
-.my-venues-button:hover:not(:disabled) {
-    background: #e0e7ff;
+.back-button {
+
+    background: #ffffff;
+
+    border: 1px solid #dbe2ea;
+
+    color: #475569;
+}
+
+
+.back-button:hover {
+
+    background: #f8fafc;
+
+    border-color: #94a3b8;
+
+    color: #1e293b;
 
     transform: translateY(-1px);
 }
 
 
-.back-button:disabled,
-.my-venues-button:disabled {
-    cursor: not-allowed;
+.my-venues-button {
 
-    opacity: 0.6;
+    border: 1px solid #bfdbfe;
+
+    background: #eff6ff;
+
+    color: #2563eb;
 }
 
 
-/* =========================================================
-   REQUIRED FIELD FEEDBACK
-========================================================= */
+.my-venues-button:hover {
 
-.form-group input:invalid:not(:placeholder-shown) {
-    border-color: #fca5a5;
+    background: #dbeafe;
+
+    border-color: #93c5fd;
+
+    transform: translateY(-1px);
 }
 
 
-.form-group input:valid:not(:placeholder-shown) {
-    border-color: #d9dde7;
-}
+/* =========================================
+   MOBILE
+========================================= */
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 700px) {
+@media (max-width: 650px) {
 
     .add-venue-page {
-        padding: 25px 15px;
+
+        padding: 25px 14px;
+
+        align-items: flex-start;
     }
 
 
     .add-venue-card {
-        padding: 28px 22px;
 
-        border-radius: 18px;
+        padding: 28px 20px;
+
+        border-radius: 17px;
     }
 
 
     .add-venue-header h1 {
-        font-size: 28px;
+
+        font-size: 27px;
     }
 
 
     .form-description {
-        font-size: 14px;
+
+        font-size: 13px;
     }
 }
 
 
-@media (max-width: 450px) {
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
 
     .add-venue-page {
+
         padding: 15px 10px;
     }
 
 
     .add-venue-card {
-        padding: 23px 17px;
 
-        border-radius: 15px;
+        padding: 24px 16px;
     }
 
 
     .add-venue-header h1 {
-        font-size: 25px;
+
+        font-size: 24px;
     }
 
 
     .form-group {
+
         margin-bottom: 18px;
-    }
-
-
-    .form-group input[type="text"],
-    .form-group input[type="number"] {
-        height: 47px;
-    }
-
-
-    .submit-venue-btn {
-        height: 49px;
     }
 }
 ```

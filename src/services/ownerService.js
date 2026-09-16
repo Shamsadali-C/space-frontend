@@ -1,7 +1,9 @@
-
 import api from "./api";
 
 
+/* =========================================
+   GET OWNER VENUES
+========================================= */
 
 const getVenues = async () => {
 
@@ -12,6 +14,10 @@ const getVenues = async () => {
     return response.data;
 };
 
+
+/* =========================================
+   ADD VENUE
+========================================= */
 
 const addVenue = async (venue) => {
 
@@ -28,16 +34,25 @@ const addVenue = async (venue) => {
    VENUE STATUS
 ========================================= */
 
-const maintenance = async (venueId) => {
-
+const maintenance = async (venueId, date) => {
     const response = await api.put(
-        `/owner/venue/maintanence/${venueId}`
+        `/owner/venue/maintenance/${venueId}`,
+        null,
+        { params: { date } }
     );
 
     return response.data;
 };
 
+const holiday = async (venueId, date) => {
+    const response = await api.put(
+        `/owner/venue/holiday/${venueId}`,
+        null,
+        { params: { date } }
+    );
 
+    return response.data;
+};
 const available = async (venueId) => {
 
     const response = await api.put(
@@ -48,14 +63,6 @@ const available = async (venueId) => {
 };
 
 
-const holiday = async (venueId) => {
-
-    const response = await api.put(
-        `/owner/venue/holiday/${venueId}`
-    );
-
-    return response.data;
-};
 
 
 const deleteVenue = async (venueId) => {
@@ -82,37 +89,12 @@ const getBookings = async () => {
 };
 
 
-/* =========================================
-   APPROVE BOOKING
-========================================= */
 
-const approveBooking = async (bookingId) => {
-
-    const response = await api.put(
-        `/owner/Approve/${bookingId}`
-    );
-
-    return response.data;
-};
-
-
-
-const rejectBooking = async (bookingId) => {
-
-    const response = await api.put(
-        `/owner/reject/${bookingId}`
-    );
-
-    return response.data;
-};
-
-
-
-const createTimeSlot = async (venueId, slot) => {
+const createTimeSlot = async (venueId, availability) => {
 
     const response = await api.post(
         `/owner/venue/${venueId}/slots`,
-        slot
+        availability
     );
 
     return response.data;
@@ -166,6 +148,12 @@ const deleteImage = async (id) => {
 
     return response.data;
 };
+
+
+/* =========================================
+   UPDATE IMAGE
+========================================= */
+
 const updateImage = async (imageId, file) => {
 
     const formData = new FormData();
@@ -179,7 +167,10 @@ const updateImage = async (imageId, file) => {
 
     return response.data;
 };
-
+const getDurations = async () => {
+    const response = await api.get("/owner/durations");
+    return response.data;
+};
 
 /* =========================================
    EXPORT
@@ -196,14 +187,12 @@ export default {
     deleteVenue,
 
     getBookings,
-    approveBooking,
-    rejectBooking,
 
     createTimeSlot,
+    getDurations,
 
     uploadImages,
     getImages,
     updateImage,
     deleteImage
 };
-

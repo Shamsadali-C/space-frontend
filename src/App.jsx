@@ -22,6 +22,7 @@ import OwnerRequests from "./pages/admin/OwnerRequests";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminBookings from "./pages/admin/AdminBookings";
 import AdminVenues from "./pages/admin/AdminVenues";
+import AdminDurations from "./pages/admin/AdminDurations";
 
 
 import OwnerDashboard from "./pages/owner/OwnerDashboard";
@@ -102,6 +103,11 @@ function App() {
                     path="/admin/venues"
                     element={<AdminVenues />}
                 />
+                <Route
+                    path="/admin/durations"
+                    element={<AdminDurations />}
+                />
+
                 <Route
                     path="/owner"
                     element={<OwnerDashboard />}

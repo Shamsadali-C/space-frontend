@@ -1,76 +1,3 @@
-//
-//import api from "./api";
-//
-//const getProfile = () => {
-//    return api.get("/user/Profile");
-//};
-//
-//const updateUser = (userData) => {
-//    return api.put("/user/profile", userData);
-//};
-//
-//const deleteUser = (id) => {
-//    return api.delete(`/user/${id}`);
-//};
-//
-//
-//const getVenues = () => {
-//    return api.get("/user/venues");
-//};
-//
-//const getVenueImages = (venueId) => {
-//    return api.get(`/user/images/${venueId}`);
-//};
-//
-//
-//const sendOwnerRequest = (requestData) => {
-//    return api.post("/user/owner-request", requestData);
-//};
-//
-//const getOwnerRequestStatus = () => {
-//    return api.get("/user/owner-request/status");
-//};
-//
-//
-//const getTimeSlots = (venueId, date) => {
-//
-//    return api.get( `/user/venues/${venueId}/slots`,
-//        {
-//         params: { date: date }
-//        }
-//    );
-//};
-//
-//
-//
-//const createBooking = (slotId) => {
-//
-//    return api.post(
-//        `/user/booking/${slotId}`
-//    );
-//};
-//
-//const getMyBookings = () => {
-//    return api.get("/user/bookings");
-//};
-//
-//
-//export default {
-//    getProfile,
-//    updateUser,
-//    deleteUser,
-//
-//    getVenues,
-//    getVenueImages,
-//
-//    sendOwnerRequest,
-//    getOwnerRequestStatus,
-//
-//    getTimeSlots,
-//
-//    createBooking,
-//    getMyBookings
-//};
 
 
 import api from "./api";
@@ -158,14 +85,17 @@ CREATE BOOKING
 =========================================================
 */
 
-const createBooking = async (slotId) => {
-
-    const response = await api.post(
-        `/user/booking/${slotId}`
-    );
-
-    return response.data;
-};
+//const createBooking = async (slotIds) => {
+//
+//    const response = await api.post(
+//        "/user/booking",
+//        {
+//            slotIds: slotIds
+//        }
+//    );
+//
+//    return response.data;
+//};
 
 
 /*
@@ -218,6 +148,25 @@ const getOwnerRequestStatus = async () => {
     return response.data;
 };
 
+const createPaymentOrder = async (slotIds) => {
+      const response = await api.post( "/user/payment/create-order",
+           { slotIds: slotIds }
+           );
+      return response.data; };
+
+const verifyPayment = async (paymentData) => {
+   const response = await api.post( "/user/payment/verify",
+         paymentData );
+   return response.data; };
+
+const paymentFailure = async (bookingId) => {
+
+    const response = await api.post(
+        `/user/payment/failure/${bookingId}`
+    );
+
+    return response.data;
+};
 
 
 export default {
@@ -230,8 +179,9 @@ export default {
 
     getTimeSlots,
 
-    createBooking,
-
+    createPaymentOrder,
+    verifyPayment,
+    paymentFailure,
     getMyBookings,
 
     sendOwnerRequest,

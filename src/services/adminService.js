@@ -1,112 +1,137 @@
-import axios from "axios";
+import api from "./api";
 
-const API_URL = "http://localhost:8080/admin";
+// =========================
+// DASHBOARD
+// =========================
 
-const getConfig = () => {
-    const token = localStorage.getItem("token");
+const getDashboard = async () => {
+    const response = await api.get("/admin/dashboard");
+    return response.data;
+};
 
-    return {
-        headers: {
-            Authorization: `Bearer ${token}`
+
+// =========================
+// USERS
+// =========================
+
+const getUsers = async () => {
+    const response = await api.get("/admin/users");
+    return response.data;
+};
+
+const deleteUser = async (id) => {
+    const response = await api.delete(`/admin/users/${id}`);
+    return response.data;
+};
+
+const makeOwner = async (id) => {
+    const response = await api.put(`/admin/users/${id}/make-owner`);
+    return response.data;
+};
+
+const makeUser = async (id) => {
+    const response = await api.put(`/admin/users/${id}/make-user`);
+    return response.data;
+};
+
+
+// =========================
+// VENUES
+// =========================
+
+const getVenues = async () => {
+    const response = await api.get("/admin/venues");
+    return response.data;
+};
+
+const deleteVenue = async (id) => {
+    const response = await api.delete(`/admin/venues/${id}`);
+    return response.data;
+};
+
+
+// =========================
+// BOOKINGS
+// =========================
+
+const getBookings = async () => {
+    const response = await api.get("/admin/bookings");
+    return response.data;
+};
+
+const deleteBooking = async (id) => {
+    const response = await api.delete(`/admin/bookings/${id}`);
+    return response.data;
+};
+
+
+// =========================
+// OWNER REQUESTS
+// =========================
+
+const getOwnerRequests = async () => {
+    const response = await api.get("/admin/owner-requests");
+    return response.data;
+};
+
+const approveOwnerRequest = async (id) => {
+    const response = await api.put(
+        `/admin/owner-requests/${id}/approve`
+    );
+
+    return response.data;
+};
+
+const rejectOwnerRequest = async (id) => {
+    const response = await api.put(
+        `/admin/owner-requests/${id}/reject`
+    );
+
+    return response.data;
+};
+
+
+// =========================
+// DURATIONS
+// =========================
+
+const getDurations = async () => {
+    const response = await api.get("/admin/durations");
+    return response.data;
+};
+
+const addDuration = async (durationMinutes) => {
+    const response = await api.post(
+        "/admin/durations/add",
+        null,
+        {
+            params: {
+                durationMinutes: durationMinutes
+            }
         }
-    };
-};
-
-
-const getDashboard = () => {
-    return axios.get(
-        `${API_URL}/dashboard`,
-        getConfig()
     );
+
+    return response.data;
 };
 
-
-const getUsers = () => {
-    return axios.get(
-        `${API_URL}/users`,
-        getConfig()
+const toggleDuration = async (id) => {
+    const response = await api.put(
+        `/admin/durations/${id}/toggle`
     );
+
+    return response.data;
 };
 
-const deleteUser = (id) => {
-    return axios.delete(
-        `${API_URL}/users/${id}`,
-        getConfig()
+const deleteDuration = async (id) => {
+    const response = await api.delete(
+        `/admin/duration/${id}`
     );
-};
 
-const makeOwner = (id) => {
-    return axios.put(
-        `${API_URL}/users/${id}/make-owner`,
-        {},
-        getConfig()
-    );
-};
-
-const makeUser = (id) => {
-    return axios.put(
-        `${API_URL}/users/${id}/make-user`,
-        {},
-        getConfig()
-    );
+    return response.data;
 };
 
 
-const getVenues = () => {
-    return axios.get(
-        `${API_URL}/venues`,
-        getConfig()
-    );
-};
-
-const deleteVenue = (id) => {
-    return axios.delete(
-        `${API_URL}/venues/${id}`,
-        getConfig()
-    );
-};
-
-
-const getBookings = () => {
-    return axios.get(
-        `${API_URL}/bookings`,
-        getConfig()
-    );
-};
-
-const deleteBooking = (id) => {
-    return axios.delete(
-        `${API_URL}/bookings/${id}`,
-        getConfig()
-    );
-};
-
-
-const getOwnerRequests = () => {
-    return axios.get(
-        `${API_URL}/owner-requests`,
-        getConfig()
-    );
-};
-
-const approveOwnerRequest = (id) => {
-    return axios.put(
-        `${API_URL}/owner-requests/${id}/approve`,
-        {},
-        getConfig()
-    );
-};
-
-const rejectOwnerRequest = (id) => {
-    return axios.put(
-        `${API_URL}/owner-requests/${id}/reject`,
-        {},
-        getConfig()
-    );
-};
-
-
-export default {
+const adminService = {
     getDashboard,
 
     getUsers,
@@ -122,5 +147,12 @@ export default {
 
     getOwnerRequests,
     approveOwnerRequest,
-    rejectOwnerRequest
+    rejectOwnerRequest,
+
+    getDurations,
+    addDuration,
+    toggleDuration,
+    deleteDuration
 };
+
+export default adminService;

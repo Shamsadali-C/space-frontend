@@ -9,6 +9,7 @@ const AdminDashboard = () => {
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         loadDashboard();
@@ -18,20 +19,33 @@ const AdminDashboard = () => {
 
         try {
 
+            setLoading(true);
+            setError("");
+
             const response =
                 await adminService.getDashboard();
 
-            setData(response.data);
+            console.log("Dashboard response:", response);
+
+            // adminService already returns response.data
+            setData(response);
 
         } catch (error) {
 
-            console.error(error);
+            console.error("Dashboard error:", error);
+
+            setError(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Failed to load dashboard."
+            );
 
         } finally {
 
             setLoading(false);
         }
     };
+
 
     const logout = () => {
 
@@ -85,41 +99,82 @@ const AdminDashboard = () => {
                 </p>
 
 
+                {/* ERROR */}
+
+                {error && (
+                    <div className="admin-error">
+                        {error}
+                    </div>
+                )}
+
+
                 {/* STATISTICS */}
 
                 {data && (
 
                     <div className="admin-stats">
 
-{/*                         <div className="admin-stat-card"> */}
-{/*                             <h3>Total Users</h3> */}
-{/*                             <strong>{data.totalUsers}</strong> */}
-{/*                         </div> */}
-
                         <div className="admin-stat-card">
                             <h3>Total Venues</h3>
-                            <strong>{data.totalVenues}</strong>
+
+                            <strong>
+                                {data.totalVenues ?? 0}
+                            </strong>
                         </div>
+
 
                         <div className="admin-stat-card">
                             <h3>Total Bookings</h3>
-                            <strong>{data.totalBookings}</strong>
+
+                            <strong>
+                                {data.totalBookings ?? 0}
+                            </strong>
                         </div>
+
 
                         <div className="admin-stat-card">
                             <h3>Users</h3>
-                            <strong>{data.users}</strong>
+
+                            <strong>
+                                {data.users ?? 0}
+                            </strong>
                         </div>
+
 
                         <div className="admin-stat-card">
                             <h3>Owners</h3>
-                            <strong>{data.owners}</strong>
+
+                            <strong>
+                                {data.owners ?? 0}
+                            </strong>
                         </div>
 
-{/*                         <div className="admin-stat-card"> */}
-{/*                             <h3>Admins</h3> */}
-{/*                             <strong>{data.admins}</strong> */}
-{/*                         </div> */}
+
+                        <div className="admin-stat-card">
+                            <h3>Booked</h3>
+
+                            <strong>
+                                {data.booked ?? 0}
+                            </strong>
+                        </div>
+
+
+                        <div className="admin-stat-card">
+                            <h3>Pending</h3>
+
+                            <strong>
+                                {data.pendingBookings ?? 0}
+                            </strong>
+                        </div>
+
+
+                        <div className="admin-stat-card">
+                            <h3>Cancelled</h3>
+
+                            <strong>
+                                {data.cancelledBookings ?? 0}
+                            </strong>
+                        </div>
 
                     </div>
                 )}
@@ -134,8 +189,15 @@ const AdminDashboard = () => {
                         className="admin-menu-card"
                     >
                         👥
-                        <h2>Users</h2>
-                        <p>Manage users and roles.</p>
+
+                        <h2>
+                            Users
+                        </h2>
+
+                        <p>
+                            Manage users and roles.
+                        </p>
+
                     </Link>
 
 
@@ -144,8 +206,15 @@ const AdminDashboard = () => {
                         className="admin-menu-card"
                     >
                         🏢
-                        <h2>Venues</h2>
-                        <p>View and manage venues.</p>
+
+                        <h2>
+                            Venues
+                        </h2>
+
+                        <p>
+                            View and manage venues.
+                        </p>
+
                     </Link>
 
 
@@ -154,8 +223,32 @@ const AdminDashboard = () => {
                         className="admin-menu-card"
                     >
                         📅
-                        <h2>Bookings</h2>
-                        <p>View all bookings.</p>
+
+                        <h2>
+                            Bookings
+                        </h2>
+
+                        <p>
+                            View all bookings.
+                        </p>
+
+                    </Link>
+
+
+                    <Link
+                        to="/admin/durations"
+                        className="admin-menu-card"
+                    >
+                        ⏱️
+
+                        <h2>
+                            Slot Durations
+                        </h2>
+
+                        <p>
+                            Manage available booking durations.
+                        </p>
+
                     </Link>
 
 
@@ -164,8 +257,15 @@ const AdminDashboard = () => {
                         className="admin-menu-card"
                     >
                         ⭐
-                        <h2>Owner Requests</h2>
-                        <p>Approve or reject owner requests.</p>
+
+                        <h2>
+                            Owner Requests
+                        </h2>
+
+                        <p>
+                            Approve or reject owner requests.
+                        </p>
+
                     </Link>
 
                 </div>
